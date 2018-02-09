@@ -1,0 +1,65 @@
+
+<div class="container">
+	<!-- The in-table search application scope will be defined within this <div>...</div> environment -->
+	<div ng-app="inTableSearchApp" ng-controller="inTableSearchController">
+		<div class="well well-lg">
+			<div class="row">
+				<div class="col-sm-3"></div>
+				<div class="col-sm-6">
+
+
+					<h2>Interactive Table Search Example</h2>
+					<input class="form-control" type="text" ng-model="query"
+						ng-change="search()" /> <br />Your query: {{query}}
+					<!-- any time the user types a keyword it will be immediately reflected back in the view -->
+
+
+					<div class="col-sm-3"></div>
+				</div>
+			</div>
+		</div>
+		<!-- this table holds the search results -->
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6 col-centered">
+				<table class="table table-condensed">
+					<tr>
+						<th>Username</th>
+						<th>Email</th>
+						<th>Street</th>
+						<th>StreetNum</th>
+						<th>City</th>
+						<th>ZipCode</th>
+						<th>PhoneNum</th>
+						<th>Password</th>
+						<th>NickName</th>
+						<th>Description</th>
+						<th>Photo</th>
+						<th>Affiliation</th>
+					</tr>
+					<!-- output each result into the table -->
+					<tr ng-repeat="x in result">
+						<!-- ng-bind-html allows to bind a variable to the innerHTML part of the HTML element -->
+						<td ng-bind-html="hlight(x.username,query)" />
+						<td ng-bind-html="hlight(x.email,query)" />
+						<td ng-bind-html="hlight(x.street,query)" />
+						<td ng-bind-html="hlight(x.streetNum,query)" />
+						<td ng-bind-html="hlight(x.city,query)" />
+						<td ng-bind-html="hlight(x.zipCode,query)" />
+						<td ng-bind-html="hlight(x.phoneNum,query)" />
+						<td ng-bind-html="hlight(x.password,query)" />
+						<td ng-bind-html="hlight(x.nickName,query)" />
+						<td ng-bind-html="hlight(x.description,query)" />
+						<td ng-bind-html="hlight(x.photo,query)" />
+						<td ng-bind-html="hlight(x.affiliation,query)" />
+					</tr>
+				</table>
+			</div>
+			<div class="col-sm-3"></div>
+		</div>
+
+	</div>
+
+</div>
+
+

@@ -1,0 +1,77 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register</h2>
+    <form name="form" ng-controller="registerController" role="form">
+        
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+            <label for="username">Email</label>
+            <input type="text" name="email" id="email" class="form-control" ng-model="email" required />
+            <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.street.$dirty && form.street.$error.required }">
+            <label for="username">street</label>
+            <input type="text" name="street" id="street" class="form-control" ng-model="street" required />
+            <span ng-show="form.street.$dirty && form.street.$error.required" class="help-block">street is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.streetNo.$dirty && form.streetNo.$error.required }">
+            <label for="username">street No.</label>
+            <input type="text" name="streetNo" id="streetNo" class="form-control" ng-model="streetNo" required />
+            <span ng-show="form.streetNo.$dirty && form.streetNo.$error.required" class="help-block">streetNo is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.city.$dirty && form.city.$error.required }">
+            <label for="username">city</label>
+            <input type="text" name="city" id="city" class="form-control" ng-model="city" required />
+            <span ng-show="form.city.$dirty && form.city.$error.required" class="help-block">city is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.zipCode.$dirty && form.zipCode.$error.required }">
+            <label for="username">Zip-Code</label>
+            <input type="text" name="zipCode" id="zipCode" class="form-control" ng-model="zipCode" required />
+            <span ng-show="form.zipCode.$dirty && form.zipCode.$error.required" class="help-block">Zip-Code is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.phoneNum.$dirty && form.phoneNum.$error.required }">
+            <label for="username">Phone-Number</label>
+            <input type="text" name="phoneNum" id="phoneNum" class="form-control" ng-model="phoneNum" required />
+            <span ng-show="form.phoneNum.$dirty && form.phoneNum.$error.required" class="help-block">Phone-Number is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.nickName.$dirty && form.nickName.$error.required }">
+            <label for="username">Nick-Name</label>
+            <input type="text" name="nickName" id="nickName" class="form-control" ng-model="nickName" required />
+            <span ng-show="form.nickName.$dirty && form.nickName.$error.required" class="help-block">Nick-Name is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.description.$dirty && form.description.$error.required }">
+            <label for="username">Short description</label>
+            <<textarea name="description" id="description" class="form-control" ng-model="description" required > </textarea>
+            <span ng-show="form.description.$dirty && form.description.$error.required" class="help-block">Short description is required</span>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">
+            <label for="username">photo</label>
+            <input type="text" name="photo" id="photo" class="form-control" ng-model="photo" required />
+            <span ng-show="form.photo.$dirty && form.photo.$error.required" class="help-block">photo is required</span>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" ng-click="submit()" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
+            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a href="" ng-click="nav('HTML/loginForm.html')" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>
