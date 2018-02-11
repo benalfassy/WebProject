@@ -32,13 +32,13 @@ import com.models.Customer;
  * into a Derby database
  */
 @WebListener
-public class ManageCustomerDBFromJsonFile implements ServletContextListener
+public class CustomerTableCreator implements ServletContextListener
 {
     
     /**
      * Default constructor.
      */
-    public ManageCustomerDBFromJsonFile()
+    public CustomerTableCreator()
     {
 	// TODO Auto-generated constructor stub
     }
@@ -64,37 +64,37 @@ public class ManageCustomerDBFromJsonFile implements ServletContextListener
     public void contextInitialized(ServletContextEvent event)
     {
 	ServletContext cntx = event.getServletContext();
-	
+		
 	try
 	{
 	    
-	    // obtain CustomerDB data source from Tomcat's context
 	    Context context = new InitialContext();
+	    
 	    BasicDataSource ds = (BasicDataSource) context
 		    .lookup(cntx.getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
 	    Connection conn = ds.getConnection();
 	    
 	    boolean created = false;
+	    
 	    try
 	    {
-		// create Customers table
 		Statement stmt = conn.createStatement();
+		
 		stmt.executeUpdate(AppConstants.CREATE_CUSTOMERS_TABLE);
+		
 		// commit update
+		
 		conn.commit();
+		
 		stmt.close();
 	    }
 	    catch (SQLException e)
 	    {
-		// check if exception thrown since table was already created (so
-		// we created the database already
-		// in the past
 		created = tableAlreadyExists(e);
+		
 		if (!created)
 		{
-		    throw e;// re-throw the exception so it will be caught in
-			    // the
-		    // external try..catch and recorded as error in the log
+		    throw e;
 		}
 	    }
 	    
@@ -105,10 +105,10 @@ public class ManageCustomerDBFromJsonFile implements ServletContextListener
 		// populate customers table with customer data from json file
 		Collection<Customer> customers = loadCustomers(
 			cntx.getResourceAsStream(File.separator + AppConstants.CUSTOMERS_FILE));
-						
+		
 		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_CUSTOMER_STMT);
 		for (Customer customer : customers)
-		{ 
+		{
 		    pstmt.setString(1, customer.getUsername());
 		    pstmt.setString(2, customer.getEmail());
 		    pstmt.setString(3, customer.getStreet());
@@ -121,6 +121,7 @@ public class ManageCustomerDBFromJsonFile implements ServletContextListener
 		    pstmt.setString(10, customer.getDescription());
 		    pstmt.setString(11, customer.getPhoto());
 		    pstmt.setString(12, customer.getAffiliation());
+		    pstmt.setString(13, customer.getMyBooks());
 		    pstmt.executeUpdate();
 		}
 		
@@ -136,7 +137,7 @@ public class ManageCustomerDBFromJsonFile implements ServletContextListener
 	}
 	catch (IOException | SQLException | NamingException e)
 	{
-	    // log error
+	    System.out.println(e);
 	    cntx.log("Error during database initialization", e);
 	}
     }

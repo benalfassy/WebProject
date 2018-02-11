@@ -30,8 +30,7 @@ import com.models.Customer;
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/customers",
-	"/customers/name/*" })
+@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/customers", "/customers/*" })
 public class CustomersServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -49,7 +48,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	super();
 	
-	 context = new InitialContext();
+	context = new InitialContext();
     }
     
     private void openConnection() throws SQLException, NamingException
@@ -78,34 +77,78 @@ public class CustomersServlet extends HttpServlet implements Closeable
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+	String uri = request.getRequestURI();
 	
-	try
+	System.out.println(uri);
+	
+	if (uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) != -1)
 	{
+	    Customer customer = null;
 	    
-	    Collection<Customer> customersResult = new ArrayList<Customer>();
+	    String username = uri
+		    .substring(uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) + AppConstants.CUSTOMERS_RESTFULL.length());
 	    
-	    // String uri = request.getRequestURI();
+	    System.out.println(username);
 	    
-	    /*
-	     * if (uri.indexOf(AppConstants.NAME) != -1) {// filter customer by
-	     * specific name String name =
-	     * uri.substring(uri.indexOf(AppConstants.NAME) +
-	     * AppConstants.NAME.length() + 1); PreparedStatement stmt; try {
-	     * stmt =
-	     * conn.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT);
-	     * name = name.replaceAll("\\%20", " "); stmt.setString(1, name);
-	     * ResultSet rs = stmt.executeQuery(); while (rs.next()) {
-	     * customersResult.add(new Customer(rs.getString(1),
-	     * rs.getString(2), rs.getString(3))); } rs.close(); stmt.close(); }
-	     * catch (SQLException e) {
-	     * getServletContext().log("Error while querying for customers", e);
-	     * response.sendError(500);// internal server error } }
-	     */
-	    
-	    Statement stmt;
+	    PreparedStatement preparedStatement;
 	    
 	    try
 	    {
+		openConnection();
+		
+		preparedStatement = connection.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT,
+			ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+		
+		preparedStatement.setString(1, username);
+		
+		ResultSet resultSet = preparedStatement.executeQuery();
+		
+		if (!resultSet.isBeforeFirst())
+		{
+		    response.sendError(404);
+		}
+		else
+		{
+		    resultSet.next();
+		    
+		    customer = new Customer(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+			    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
+			    resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
+			    resultSet.getString(10), resultSet.getString(11), resultSet.getString(12), resultSet.getString(13));
+		}
+		
+		resultSet.close();
+		preparedStatement.close();
+		
+		Gson gson = new Gson();
+		
+		String result = gson.toJson(customer, Customer.class);
+		
+		response.addHeader("Content-Type", "application/json");
+		
+		PrintWriter writer = response.getWriter();
+		
+		writer.println(result);
+		
+		writer.close();
+		
+	    }
+	    catch (Exception e)
+	    {
+		e.printStackTrace();
+		System.out.println(e);
+		response.sendError(500);
+	    }
+	}
+	else
+	{
+	    
+	    try
+	    {
+		Collection<Customer> customersResult = new ArrayList<Customer>();
+		
+		Statement stmt;
+		
 		openConnection();
 		
 		stmt = connection.createStatement();
@@ -116,39 +159,33 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		{
 		    customersResult.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 			    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-			    rs.getString(10), rs.getString(11), rs.getString(12)));
+			    rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
 		}
 		
 		rs.close();
 		
 		stmt.close();
+		
+		Gson gson = new Gson();
+		
+		// convert from customers collection to json
+		
+		String customerJsonResult = gson.toJson(customersResult, AppConstants.CUSTOMER_COLLECTION);
+		
+		response.addHeader("Content-Type", "application/json");
+		
+		PrintWriter writer = response.getWriter();
+		
+		writer.println(customerJsonResult);
+		
+		writer.close();
 	    }
 	    catch (SQLException | NamingException e)
 	    {
+		System.out.println(e);
 		getServletContext().log("Error while querying for customers", e);
 		response.sendError(500);// internal server error
 	    }
-	    
-	    connection.close();
-	    
-	    Gson gson = new Gson();
-	    
-	    // convert from customers collection to json
-	    
-	    String customerJsonResult = gson.toJson(customersResult, AppConstants.CUSTOMER_COLLECTION);
-	    
-	    response.addHeader("Content-Type", "application/json");
-	    
-	    PrintWriter writer = response.getWriter();
-	    
-	    writer.println(customerJsonResult);
-	    
-	    writer.close();
-	}
-	catch (SQLException e)
-	{
-	    getServletContext().log("Error on Customer get", e);
-	    response.sendError(500);
 	}
 	
     }
@@ -168,24 +205,47 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	{
 	    openConnection();
 	    
-	    pstmt = connection.prepareStatement(AppConstants.INSERT_CUSTOMER_STMT);
+	    pstmt = connection.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT,
+		    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 	    
 	    pstmt.setString(1, customer.getUsername());
-	    pstmt.setString(2, customer.getEmail());
-	    pstmt.setString(3, customer.getStreet());
-	    pstmt.setString(4, customer.getStreetNum());
-	    pstmt.setString(5, customer.getCity());
-	    pstmt.setString(6, customer.getZipCode());
-	    pstmt.setString(7, customer.getPhoneNum());
-	    pstmt.setString(8, customer.getPassword());
-	    pstmt.setString(9, customer.getNickName());
-	    pstmt.setString(10, customer.getDescription());
-	    pstmt.setString(11, customer.getPhoto());
-	    pstmt.setString(12, customer.getAffiliation());
-	    pstmt.executeUpdate();
 	    
-	    connection.commit();
-	    pstmt.close();
+	    ResultSet resultSet = pstmt.executeQuery();
+	    
+	    if (resultSet.isBeforeFirst())
+	    {
+		resultSet.close();
+		
+		pstmt.close();
+		
+		response.sendError(409);
+	    }
+	    else
+	    {
+		pstmt = connection.prepareStatement(AppConstants.INSERT_CUSTOMER_STMT);
+		
+		pstmt.setString(1, customer.getUsername());
+		pstmt.setString(2, customer.getEmail());
+		pstmt.setString(3, customer.getStreet());
+		pstmt.setString(4, customer.getStreetNum());
+		pstmt.setString(5, customer.getCity());
+		pstmt.setString(6, customer.getZipCode());
+		pstmt.setString(7, customer.getPhoneNum());
+		pstmt.setString(8, customer.getPassword());
+		pstmt.setString(9, customer.getNickName());
+		pstmt.setString(10, customer.getDescription());
+		pstmt.setString(11, customer.getPhoto());
+		pstmt.setString(12, customer.getAffiliation());
+		pstmt.setString(13, customer.getMyBooks());
+		pstmt.executeUpdate();
+		
+		connection.commit();
+		
+		resultSet.close();
+		
+		pstmt.close();
+	    }
+	    
 	}
 	catch (SQLException | NamingException e)
 	{

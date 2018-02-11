@@ -2,76 +2,87 @@
     <h2>Register</h2>
     <form name="form" ng-controller="registerController" role="form">
         
-        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && (form.username.$error.required || form.username.$error.pattern) }">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+            <input type="text" name="username" id="username" class="form-control" ng-model="username" ng-pattern="/^[a-zA-Z1-9]{1,10}$/" placeholder="Up to 10 characters" required maxlength="10"/>
             <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+            <span ng-show="form.username.$error.pattern" class="help-block">No spaces or special signs are allowed</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && (form.email.$error.required || form.email.$error.email) }">
             <label for="username">Email</label>
-            <input type="text" name="email" id="email" class="form-control" ng-model="email" required />
+            <input type="email" name="email" id="email" class="form-control" ng-model="email" required />
             <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+			<span ng-show="form.email.$dirty && form.email.$error.email" class="help-block">Invalid format</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.street.$dirty && form.street.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.street.$dirty && (form.street.$error.required || form.street.$error.pattern || form.street.$error.minlength) }">
             <label for="username">street</label>
-            <input type="text" name="street" id="street" class="form-control" ng-model="street" required />
+            <input type="text" name="street" id="street" class="form-control" ng-pattern="/^[a-zA-Z_ ]{1,100}$/" ng-minlength="3" ng-model="street" required />
             <span ng-show="form.street.$dirty && form.street.$error.required" class="help-block">street is required</span>
+			<span ng-show="form.street.$error.pattern" class="help-block">Invalid Address</span>
+			<span ng-show="form.street.$error.minlength" class="help-block">Must be a least 3 characters</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.streetNo.$dirty && form.streetNo.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.streetNo.$dirty && (form.streetNo.$error.required || form.streetNo.$error.pattern) }">
             <label for="username">street No.</label>
-            <input type="text" name="streetNo" id="streetNo" class="form-control" ng-model="streetNo" required />
+            <input type="text" name="streetNo" id="streetNo" class="form-control" ng-pattern="/^[1-9]\d{0,10}$/" ng-model="streetNo" required />
             <span ng-show="form.streetNo.$dirty && form.streetNo.$error.required" class="help-block">streetNo is required</span>
+            <span ng-show="form.streetNo.$error.pattern" class="help-block">Invalid Street number</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.city.$dirty && form.city.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.city.$dirty && (form.city.$error.required || form.city.$error.pattern || form.city.$error.minlength) }">
             <label for="username">city</label>
-            <input type="text" name="city" id="city" class="form-control" ng-model="city" required />
+            <input type="text" name="city" id="city" class="form-control" ng-pattern="/^[a-zA-Z_ ]{1,100}$/" ng-minlength="3" ng-model="city" required />
             <span ng-show="form.city.$dirty && form.city.$error.required" class="help-block">city is required</span>
+            <span ng-show="form.city.$error.pattern" class="help-block">Invalid Address</span>
+			<span ng-show="form.city.$error.minlength" class="help-block">Must be a least 3 characters</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.zipCode.$dirty && form.zipCode.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.zipCode.$dirty && (form.zipCode.$error.required || form.zipCode.$error.pattern)}">
             <label for="username">Zip-Code</label>
-            <input type="text" name="zipCode" id="zipCode" class="form-control" ng-model="zipCode" required />
+            <input type="text" name="zipCode" id="zipCode" class="form-control" ng-pattern="/^[1-9]{5,7}$/" ng-model="zipCode" required />
             <span ng-show="form.zipCode.$dirty && form.zipCode.$error.required" class="help-block">Zip-Code is required</span>
+            <span ng-show="form.zipCode.$error.pattern" class="help-block">Invalid Zip-Code</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.phoneNum.$dirty && form.phoneNum.$error.required }">
+        <!-- /^  [0][5]\d{1}[- ]?\d{3}[- ]?\d{4}  $  |  [0][2,3,4,8,9][- ]?\d{7}  -->
+        
+        <div class="form-group" ng-class="{ 'has-error': form.phoneNum.$dirty && ( form.phoneNum.$error.required || form.phoneNum.$error.pattern) }">
             <label for="username">Phone-Number</label>
-            <input type="text" name="phoneNum" id="phoneNum" class="form-control" ng-model="phoneNum" required />
+            <input type="text" name="phoneNum" id="phoneNum" class="form-control" ng-pattern="/^[0][5]\d{1}[- ]?\d{3}[- ]?\d{4}$/" ng-model="phoneNum" required />
             <span ng-show="form.phoneNum.$dirty && form.phoneNum.$error.required" class="help-block">Phone-Number is required</span>
+            <span ng-show="form.phoneNum.$dirty && form.phoneNum.$error.pattern" class="help-block">Invalid phone number</span>
         </div>
         
         <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+            <input type="password" name="password" id="password" class="form-control" maxlength="8" ng-model="password" placeholder="Up to 8 characters" required />
             <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
         </div>
         
         <div class="form-group" ng-class="{ 'has-error': form.nickName.$dirty && form.nickName.$error.required }">
             <label for="username">Nick-Name</label>
-            <input type="text" name="nickName" id="nickName" class="form-control" ng-model="nickName" required />
+            <input type="text" name="nickName" id="nickName" class="form-control" maxlength="20" placeholder="Up to 20 characters" ng-model="nickName" required />
             <span ng-show="form.nickName.$dirty && form.nickName.$error.required" class="help-block">Nick-Name is required</span>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.description.$dirty && form.description.$error.required }">
+        <div class="form-group">
             <label for="username">Short description</label>
-            <<textarea name="description" id="description" class="form-control" ng-model="description" required > </textarea>
-            <span ng-show="form.description.$dirty && form.description.$error.required" class="help-block">Short description is required</span>
+            <<textarea name="description" id="description" class="form-control" maxlength="50" placeholder="Up to 50 characters" ng-model="description" > </textarea>
         </div>
         
-        <div class="form-group" ng-class="{ 'has-error': form.photo.$dirty && form.photo.$error.required }">
+        <div class="form-group">
             <label for="username">photo</label>
-            <input type="text" name="photo" id="photo" class="form-control" ng-model="photo" required />
-            <span ng-show="form.photo.$dirty && form.photo.$error.required" class="help-block">photo is required</span>
+            <input type="text" name="photo" id="photo" class="form-control" placeholder="Photo's url" ng-model="photo" />
         </div>
         
         <div class="form-actions">
-            <button type="submit" ng-click="submit()" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Register</button>
-            <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <button type="submit" ng-click="submit()" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
             <a href="" ng-click="nav('HTML/loginForm.html')" class="btn btn-link">Cancel</a>
+            <br>
+            <div ng-if="alreadyExists"> <div class="alert alert-danger"> <strong>Username is already exist in our system</strong> </div> </div>
+            
         </div>
     </form>
 </div>

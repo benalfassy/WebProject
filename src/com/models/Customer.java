@@ -5,9 +5,9 @@ package com.models;
  */
 public class Customer
 {
-    static public final String  ADMIN_AFFILIATION = "Admin";
+    static public final String ADMIN_AFFILIATION = "Admin";
     
-    static public final String  CUSTOMER_AFFILIATION = "User";
+    static public final String CUSTOMER_AFFILIATION = "User";
     
     private String username;
     
@@ -33,8 +33,13 @@ public class Customer
     
     private String affiliation;
     
+    private String myBooks;
+    
+    private String[] myBookList;
+    
     public Customer(String username, String email, String street, String streetNum, String city, String zipCode,
-	    String phoneNum, String password, String nickName, String description, String phote, String affiliation)
+	    String phoneNum, String password, String nickName, String description, String phote, String affiliation,
+	    String books)
     {
 	this.username = username;
 	this.email = email;
@@ -48,6 +53,22 @@ public class Customer
 	this.description = description;
 	this.photo = phote;
 	this.affiliation = affiliation;
+	this.myBooks = books;
+	
+	if (books != null)
+	{
+	    this.myBookList = books.split(",");
+	}
+    }
+    
+    public String[] getMyBookList()
+    {
+	return myBookList;
+    }
+    
+    public String getMyBooks()
+    {
+	return myBooks;
     }
     
     public String getAffiliation()

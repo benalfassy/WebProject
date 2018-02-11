@@ -17,14 +17,20 @@ public class AppConstants
     
     static public final String CUSTOMERS_FILE = CUSTOMERS + ".json";
     
+    static public final String BOOKS = "books";
+    
+    static public final String BOOKS_FILE = BOOKS + ".json";
+    
     static public final String NAME = "name";
+    
+    static public final String CUSTOMERS_RESTFULL = "customers/";
     
     static public final Type CUSTOMER_COLLECTION = new TypeToken<Collection<Customer>>()
     {
     }.getType();
     
     // derby constants
-
+    
     static public final String DB_NAME = "DB_NAME";
     
     static public final String DB_DATASOURCE = "DB_DATASOURCE";
@@ -40,11 +46,30 @@ public class AppConstants
     static public final String CREATE_CUSTOMERS_TABLE = "CREATE TABLE CUSTOMERS(Username varchar(100),"
 	    + "Email varchar(100)," + "Street varchar(100)," + "StreetNum varchar(100)," + "City varchar(100),"
 	    + "ZipCode varchar(100)," + "PhoneNum varchar(100)," + "Password varchar(100)," + "NickName varchar(100),"
-	    + "Description varchar(100)," + "Photo varchar(100),"+"Affiliation varchar(100))";
-        
-    static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-        
+	    + "Description varchar(100)," + "Photo varchar(100)," + "Affiliation varchar(100)," + "Books varchar(500))";
+    
+    static public final String CREATE_BOOKS_TABLE = "CREATE TABLE BOOKS(BookName varchar(100)," + "Image varchar(200),"
+	    + "Price int," + "Description varchar(1000)," + "Likes varchar(1000))";
+    
+    static public final String CREATE_REVIEWS_TABLE = "CREATE TABLE REVIEWS(ReviewId varchar(100),"+"BookName varchar(100),"
+	    + "Review varchar(200)," + "ReviewerUsername varchar(100)," + "IsApproved int)";
+    
+    static public final String INSERT_BOOKS_STMT = "INSERT INTO BOOKS VALUES(?,?,?,?,?)";
+    
+    static public final String INSERT_REVIEWS_STMT = "INSERT INTO REVIEWS VALUES(?,?,?,?,?)";
+    
+    static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
     static public final String SELECT_ALL_CUSTOMERS_STMT = "SELECT * FROM CUSTOMERS";
     
+    static public final String SELECT_ALL_REVIEWS_STMT = "SELECT * FROM REVIEWS";
+    
+    static public final String SELECT_ALL_BOOKS_STMT = "SELECT * FROM BOOKS";
+    
     static public final String SELECT_CUSTOMER_BY_NAME_STMT = "SELECT * FROM CUSTOMERS " + "WHERE Username=?";
+    
+    static public final String SELECT_BOOK_BY_NAME_STMT = "SELECT * FROM BOOKS " + "WHERE BookName=?";
+    
+    static public final String SELECT_REVIEWS_BY_NAME_STMT = "SELECT * FROM REVIEWS " + "WHERE BookName=?";
+    
 }
