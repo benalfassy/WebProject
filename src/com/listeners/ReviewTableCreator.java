@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -27,19 +30,20 @@ import com.google.gson.reflect.TypeToken;
 import com.utilities.AppConstants;
 import com.models.Book;
 import com.models.Customer;
+import com.models.Review;
 
 /**
  * An example listener that reads the customer json file and populates the data
  * into a Derby database
  */
 @WebListener
-public class BooksTableCreator implements ServletContextListener
+public class ReviewTableCreator implements ServletContextListener
 {
     
     /**
      * Default constructor.
      */
-    public BooksTableCreator()
+    public ReviewTableCreator()
     {
 	// TODO Auto-generated constructor stub
     }
@@ -81,7 +85,7 @@ public class BooksTableCreator implements ServletContextListener
 	    {
 		Statement stmt = conn.createStatement();
 		
-		stmt.executeUpdate(AppConstants.CREATE_BOOKS_TABLE);
+		stmt.executeUpdate(AppConstants.CREATE_REVIEWS_TABLE);
 		
 		// commit update
 		
@@ -104,19 +108,19 @@ public class BooksTableCreator implements ServletContextListener
 	    if (!created)
 	    {
 		// populate customers table with customer data from json file
-		Collection<Book> books = loadBooks(
-			cntx.getResourceAsStream(File.separator + AppConstants.BOOKS_FILE));
+		Collection<Review> reviews = loadReviews(
+			cntx.getResourceAsStream(File.separator + AppConstants.REVIEWS_FILE));
 		
-		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_BOOKS_STMT);
+		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_REVIEWS_STMT);
 		
-		for (Book book : books)
+		for (Review review : reviews)
 		{
-		    pstmt.setString(1, book.getBookName());
-		    pstmt.setString(2, book.getImage());
-		    pstmt.setInt(3, book.getPrice());
-		    pstmt.setString(4, book.getDescription());
-		    pstmt.setString(5, book.getLikes());
-		    pstmt.setString(6, book.getBookPath());
+		    pstmt.setString(1, review.getReviewId());
+		    pstmt.setString(2, review.getBookName());
+		    pstmt.setString(3, review.getReview());
+		    pstmt.setString(4, review.getReviewerUsername());
+		    pstmt.setInt(5, review.getIsApproved());
+		    pstmt.setString(6, review.getDate());
 		    pstmt.executeUpdate();
 		}
 		
@@ -170,7 +174,7 @@ public class BooksTableCreator implements ServletContextListener
      * @return collection of customers
      * @throws IOException
      */
-    private Collection<Book> loadBooks(InputStream is) throws IOException
+    private Collection<Review> loadReviews(InputStream is) throws IOException
     {
 	BufferedReader br = new BufferedReader(new InputStreamReader(is));
 	
@@ -185,16 +189,17 @@ public class BooksTableCreator implements ServletContextListener
 	
 	Gson gson = new Gson();
 	
-	Type type = new TypeToken<Collection<Book>>()
+	Type type = new TypeToken<Collection<Review>>()
 	{
 	}.getType();
 	
-	Collection<Book> books = gson.fromJson(jsonFileContent.toString(), type);
+	//System.out.println("trying to parse: " + jsonFileContent.toString());
+	
+	Collection<Review> reviews = gson.fromJson(jsonFileContent.toString(), type);
 	
 	br.close();
 	
-	return books;
+	return reviews;
 	
     }
-    
 }

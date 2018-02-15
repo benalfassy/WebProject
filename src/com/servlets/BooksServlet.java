@@ -3,12 +3,15 @@ package com.servlets;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringReader;
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.naming.Context;
@@ -20,18 +23,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+import org.omg.CORBA.PRIVATE_MEMBER;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import com.utilities.AppConstants;
+import com.models.Book;
 import com.models.Customer;
+import com.models.LikeRequest;
 
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/customers", "/customers/*" })
-public class CustomersServlet extends HttpServlet implements Closeable
+@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/books", "/books/*" })
+public class BooksServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
     
@@ -44,14 +52,13 @@ public class CustomersServlet extends HttpServlet implements Closeable
      * @throws SQLException
      * @see HttpServlet#HttpServlet()
      */
-    public CustomersServlet() throws NamingException
+    public BooksServlet() throws NamingException
     {
 	super();
 	
 	try
 	{
 	    context = new InitialContext();
-	    
 	}
 	catch (NamingException e)
 	{
@@ -64,8 +71,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	BasicDataSource ds = (BasicDataSource) context
 		.lookup(getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
-	
-	System.out.println("after getting servlet context");
 	
 	connection = ds.getConnection();
     }
@@ -81,6 +86,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	{
 	    e.printStackTrace();
 	}
+	
     }
     
     /**
@@ -91,27 +97,30 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    
 	    String uri = request.getRequestURI();
 	    
 	    System.out.println(uri);
 	    
-	    if (uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) != -1)
+	    if (uri.indexOf(AppConstants.BOOKS_RESTFULL) != -1)
 	    {
-		Customer customer = null;
+		Book book = null;
 		
-		String username = uri.substring(
-			uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) + AppConstants.CUSTOMERS_RESTFULL.length());
+		String bookName = uri
+			.substring(uri.indexOf(AppConstants.BOOKS_RESTFULL) + AppConstants.BOOKS_RESTFULL.length());
 		
-		System.out.println("trying to get customer: " + username);
+		System.out.println("trying to get book: " + bookName);
+		
+		System.out.println(bookName);
 		
 		PreparedStatement preparedStatement;
 		
 		openConnection();
 		
-		preparedStatement = connection.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT,
+		preparedStatement = connection.prepareStatement(AppConstants.SELECT_BOOK_BY_NAME_STMT,
 			ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		
-		preparedStatement.setString(1, username);
+		preparedStatement.setString(1, bookName);
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
@@ -123,11 +132,8 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		{
 		    resultSet.next();
 		    
-		    customer = new Customer(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
-			    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
-			    resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
-			    resultSet.getString(10), resultSet.getString(11), resultSet.getString(12),
-			    resultSet.getString(13));
+		    book = new Book(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3),
+			    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
 		}
 		
 		resultSet.close();
@@ -135,9 +141,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		
 		Gson gson = new Gson();
 		
-		String result = gson.toJson(customer, Customer.class);
+		String result = gson.toJson(book, Book.class);
 		
-		System.out.println("trying to return customer: " + username);
+		System.out.println("trying to return book: " + bookName);
 		
 		response.addHeader("Content-Type", "application/json");
 		
@@ -148,10 +154,11 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		writer.close();
 		
 	    }
+	    
 	    else
 	    {
 		
-		Collection<Customer> customersResult = new ArrayList<Customer>();
+		Collection<Book> booksResult = new ArrayList<Book>();
 		
 		Statement stmt;
 		
@@ -159,13 +166,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		
 		stmt = connection.createStatement();
 		
-		ResultSet rs = stmt.executeQuery(AppConstants.SELECT_ALL_CUSTOMERS_STMT);
+		ResultSet rs = stmt.executeQuery(AppConstants.SELECT_ALL_BOOKS_STMT);
 		
 		while (rs.next())
 		{
-		    customersResult.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-			    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-			    rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+		    booksResult.add(new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),
+			    rs.getString(5), rs.getString(6)));
 		}
 		
 		rs.close();
@@ -176,16 +182,15 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		
 		// convert from customers collection to json
 		
-		String customerJsonResult = gson.toJson(customersResult, AppConstants.CUSTOMER_COLLECTION);
+		String booksJsonResult = gson.toJson(booksResult, AppConstants.BOOKS_COLLECTION);
 		
 		response.addHeader("Content-Type", "application/json");
 		
 		PrintWriter writer = response.getWriter();
 		
-		writer.println(customerJsonResult);
+		writer.println(booksJsonResult);
 		
 		writer.close();
-		
 	    }
 	}
 	catch (Exception e)
@@ -197,6 +202,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	{
 	    close();
 	}
+	
     }
     
     /**
@@ -205,61 +211,75 @@ public class CustomersServlet extends HttpServlet implements Closeable
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-	Gson gson = new GsonBuilder().create();
-	
-	Customer customer = gson.fromJson(request.getReader(), Customer.class);
-	
-	PreparedStatement pstmt;
+	response.sendError(400);
+    }
+    
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 	try
 	{
 	    openConnection();
 	    
-	    pstmt = connection.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT,
-		    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    Gson gson = new GsonBuilder().create();
 	    
-	    pstmt.setString(1, customer.getUsername());
+	    LikeRequest likeRequest = gson.fromJson(request.getReader(), LikeRequest.class);
 	    
-	    ResultSet resultSet = pstmt.executeQuery();
+	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
 	    
-	    if (resultSet.isBeforeFirst())
+	    ResultSet resultSet = statement.executeQuery("SELECT * FROM BOOKS");
+	    
+	    while (resultSet.next())
 	    {
-		resultSet.close();
-		
-		pstmt.close();
-		
-		response.sendError(409);
+		if (resultSet.getString(1).equals(likeRequest.getBookName()))
+		{
+		    
+		    ArrayList<String> likesArrayOld = new ArrayList<String>(
+			    Arrays.asList(resultSet.getString(5).split(",")));
+		    
+		    if (likeRequest.getIsLike())
+		    {
+			likesArrayOld.add(likeRequest.getUsername());
+		    }
+		    else
+		    {
+			likesArrayOld.removeIf(username -> username.equals(likeRequest.getUsername()));
+		    }
+		    String likesNew = "";
+		    
+		    for (String user : likesArrayOld)
+		    {
+			likesNew += (user + ",");
+		    }
+		    if (likesNew.length() > 0)
+		    {
+			likesNew += "$";
+			likesNew = likesNew.replace(",$","");
+		    }
+		    
+		    resultSet.updateString(5, likesNew);
+		    
+		    resultSet.updateRow();
+
+		}
 	    }
-	    else
-	    {
-		pstmt = connection.prepareStatement(AppConstants.INSERT_CUSTOMER_STMT);
-		
-		pstmt.setString(1, customer.getUsername());
-		pstmt.setString(2, customer.getEmail());
-		pstmt.setString(3, customer.getStreet());
-		pstmt.setString(4, customer.getStreetNum());
-		pstmt.setString(5, customer.getCity());
-		pstmt.setString(6, customer.getZipCode());
-		pstmt.setString(7, customer.getPhoneNum());
-		pstmt.setString(8, customer.getPassword());
-		pstmt.setString(9, customer.getNickName());
-		pstmt.setString(10, customer.getDescription());
-		pstmt.setString(11, customer.getPhoto());
-		pstmt.setString(12, customer.getAffiliation());
-		pstmt.setString(13, customer.getMyBooks());
-		pstmt.executeUpdate();
-		
-		connection.commit();
-		
-		resultSet.close();
-		
-		pstmt.close();
-	    }
+	    	    
+	    resultSet.close();
 	    
+	    statement.close();
 	}
-	catch (SQLException | NamingException e)
+	catch (Exception e)
 	{
-	    getServletContext().log("Error on Customer post", e);
+	    e.printStackTrace();
 	    response.sendError(500);
+	}
+	finally
+	{
+	    close();
 	}
 	
     }

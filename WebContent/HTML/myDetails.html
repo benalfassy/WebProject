@@ -1,0 +1,45 @@
+
+<br>
+<label>Username: {{user.username}}</label>
+<br>
+<br>
+<label>Email: {{user.email}}</label>
+<br>
+<br>
+<div class="row">
+	<div class="col-lg-4">
+		<label>street: {{user.street}}</label>
+		<button id="toggleMessage" ng-click="toggle=!toggle" type="button" class="btn btn-default btn-sm">
+			<span class="glyphicon glyphicon-pencil"></span>
+		</button>
+	</div>
+</div>
+<form name="form" ng-controller="registerController" role="form">
+	<div class="row">
+		<div class="col-lg-3">
+			<div ng-show="toggle" align="left">
+				<div align="left" class="input-group">
+					<table >
+						<tr>
+							<td align="left" class="col-lg-3">
+								<div class="form-group" ng-class="{ 'has-error': form.street.$dirty && (form.street.$error.required || form.street.$error.pattern || form.street.$error.minlength) }">
+									<input type="text" name="street" id="street" class="form-control" ng-pattern="/^[a-zA-Z_ ]{1,100}$/" ng-minlength="3" ng-model="street" required /> <span ng-show="form.street.$dirty && form.street.$error.required" class="help-block">street is required</span> <span ng-show="form.street.$error.pattern" class="help-block">Invalid
+										Address</span> <span ng-show="form.street.$error.minlength" class="help-block">Must be a least 3 characters</span>
+								</div>
+							</td>
+							<td align="left" class="col-lg-1">
+								<div class="form-actions">
+									<span class="input-group-btn">
+										<button type="button" ng-click="something()" ng-disabled="form.$invalid" class="btn btn-default btn-sm">
+											<span class="glyphicon glyphicon-ok"></span>
+										</button>
+									</span>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

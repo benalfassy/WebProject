@@ -1,0 +1,75 @@
+<style>
+.bookf {
+	font-family: Lucida Sans;
+}
+</style>
+<div class="container" ng-controller="bookPageController">
+	<div class="table-responsive">
+		<table class="table table-condensed">
+			<tr>
+				<td class="col-md-3"><div style="padding-left: 0px; padding-right: 0px;">
+						<img class="img-responsive" width="220" height="310" src={{book.image}}></img>
+					</div></td>
+				<td class="col-md-2">
+					<div class="bookf">
+						<b><font size="5">{{book.bookName}}</font></b>
+					</div> <br>
+					<div class="bookf">{{book.price}}$</div> <br>
+					<table>
+						<tr>
+							<td>
+								<div>
+									<div ng-switch on="isLiked()">
+										<div ng-switch-when="-1">
+											<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1">
+												<span class="glyphicon glyphicon-thumbs-up"></span> Like {{book.likesList.length}}
+											</button>
+										</div>
+										<div ng-switch-default>
+											<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1">
+												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span> Like {{book.likesList.length}}
+												</font>
+											</button>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div ng-switch on="hasBook()">
+									<div ng-switch-when="-1">
+										<button type="button" class="btn-default btn-sm">
+											<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+										</button>
+									</div>
+									<div ng-switch-default>
+										<button type="button" class="btn btn-default btn-sm" ng-click="nav(book.bookPath)">
+											<span class="glyphicon glyphicon-book"> </span>Read Me!
+										</button>
+									</div>
+								</div>
+							<td>
+						</tr>
+					</table>
+				</td>
+				<td class="col-md-4"></td>
+			</tr>
+		</table>
+	</div>
+	<div class="container-fluid">
+		<div class="col-md-12 product-info">
+			<ul id="myTab" class="nav nav-tabs nav_tabs">
+				<li class="active"><a href="" ng-click="showDescription()" data-toggle="tab">DESCRIPTION</a></li>
+				<li><a href="" ng-click="showReviews()" data-toggle="tab">REVIEWS</a></li>
+				<li ng-hide="hasBook(book) == -1"><a href="" ng-click="addReview()" data-toggle="tab">ADD REVIEW</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="service-one">
+					<section class="container product-info">
+						<div ng-include="bookPageBoxPath"></div>
+					</section>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>

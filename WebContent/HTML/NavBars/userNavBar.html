@@ -1,19 +1,16 @@
+
+
 <nav class="navbar navbar-default">
 	<div class="container">
-
 		<ul class="nav navbar-nav navbar-left">
-			<li><a class="navbar-brand"><img src="Images/logo.png">
-			</a></li>
+			<li><a class="navbar-brand"><img src="Images/logo.png"> </a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href=""
-				ng-click="nav('HTML/userHome.html')"><i
-					class="fa fa-home"></i>Home</a></li>
-			<li><a href="" ng-click="nav('HTML/myBooks.html')"><i
-					class="fa fa-home"></i>My Books</a></li>
-			<li><a href="" ng-click="nav('HTML/shoppingCart.html')"><i
-					class="fa fa-comment"></i>Cart</a></li>
-			<li><a href="" ng-click="LogOut()"><i class="fa fa-comment"></i>Log-Out</a></li>
+			<li><a href="" ng-click="nav('HTML/userProfile.html')"><span class="glyphicon glyphicon-user"> </span><i class="fa fa-home"></i>{{logedUser.username}}</a></li>
+			<li><a href="" ng-click="nav('HTML/userHome.html')"><span class="glyphicon glyphicon-home"></span><i class="fa fa-home"></i>Home</a></li>
+			<li><a href="" ng-click="nav('HTML/myBooks.html')"><span class="glyphicon glyphicon-book"></span><i class="fa fa-home"></i> My Books</a></li>
+			<li><a href="" ng-click="nav('HTML/shoppingCart.html')"><span class="glyphicon glyphicon-shopping-cart"></span><i class="fa fa-comment"></i> Cart</a></li>
+			<li><a href="" ng-click="LogOut()"><i class="fa fa-comment"><span class="glyphicon glyphicon-log-out"></span></i>Log-Out</a></li>
 		</ul>
 	</div>
 </nav>

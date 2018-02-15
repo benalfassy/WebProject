@@ -1,7 +1,5 @@
 package com.models;
 
-import java.util.ArrayList;
-
 /**
  * A simple bean to hold data
  */
@@ -19,18 +17,26 @@ public class Book
     
     private String[] likesList;
     
-    public Book(String bookName, String image, int price, String description, String likes)
+    private String bookPath;
+    
+    public Book(String bookName, String image, int price, String description, String likes, String bookPath)
     {
 	this.bookName = bookName;
 	this.image = image;
 	this.price = price;
 	this.description = description;
 	this.likes = likes;
+	this.bookPath = bookPath;
 	
 	if (likes != null)
 	{
 	    likesList = likes.split(",");
 	}
+    }
+    
+    public String getBookPath()
+    {
+	return bookPath;
     }
     
     public String getBookName()
