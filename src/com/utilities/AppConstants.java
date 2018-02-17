@@ -1,12 +1,15 @@
 package com.utilities;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import com.google.gson.reflect.TypeToken;
 import com.models.Book;
 import com.models.Customer;
 import com.models.Review;
+
+import javafx.util.Pair;
 
 /**
  * A simple place to hold global application constants
@@ -46,6 +49,10 @@ public class AppConstants
     {
     }.getType();
     
+    static public final Type SCROLL_COLLECTION = new TypeToken<ArrayList<Pair<String, String>>>()
+    {
+    }.getType();
+    
     // derby constants
     
     static public final String DB_NAME = "DB_NAME";
@@ -63,7 +70,7 @@ public class AppConstants
     static public final String CREATE_CUSTOMERS_TABLE = "CREATE TABLE CUSTOMERS(Username varchar(100),"
 	    + "Email varchar(100)," + "Street varchar(100)," + "StreetNum varchar(100)," + "City varchar(100),"
 	    + "ZipCode varchar(100)," + "PhoneNum varchar(100)," + "Password varchar(100)," + "NickName varchar(100),"
-	    + "Description varchar(100)," + "Photo varchar(100)," + "Affiliation varchar(100)," + "Books varchar(500))";
+	    + "Description varchar(100)," + "Photo varchar(100)," + "Affiliation varchar(100)," + "Books varchar(500),"+"BookScroll varchar(1000))";
     
     static public final String CREATE_BOOKS_TABLE = "CREATE TABLE BOOKS(BookName varchar(100)," + "Image varchar(200),"
 	    + "Price int," + "Description varchar(1000)," + "Likes varchar(1000)," + "BookPath varchar(200))";
@@ -76,7 +83,7 @@ public class AppConstants
     
     static public final String INSERT_REVIEWS_STMT = "INSERT INTO REVIEWS VALUES(?,?,?,?,?,?)";
     
-    static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     static public final String SELECT_ALL_CUSTOMERS_STMT = "SELECT * FROM CUSTOMERS";
     

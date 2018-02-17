@@ -1,7 +1,38 @@
+<style>
+.navbar {
+  min-height: 70px;
+}
+.navbar-nav > li > a {
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+  .navbar-left > li > a {
+    padding-top: 18.5px;
+    padding-bottom: 18.5px;
+    line-height: 19px;
+  }
+  .navbar-brand
+{
+    left: 0;
+}
+.navbar-default {
+	background-color:transparent !important;
+	border-color:transparent;
+	background-image:none;
+	box-shadow:none;	
+}
+
+.navbar-default .navbar-nav>li>a {
+   font-size:20px; 
+   color:black; 
+}
+</style>
+
 <nav class="navbar navbar-default">
 	<div class="container">
-		<ul class="nav navbar-nav navbar-left">
-			<li><a class="navbar-brand"><img src="Images/logo.png"> </a></li>
+		<ul class="nav navbar-left">
+			<li><a class="navbar-brand"><img src="Images/logo.png" width="210" height="40"></a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="" ng-click="nav('HTML/loginForm.html')"><span class="glyphicon glyphicon-log-in"></span><i class="fa fa-home"></i>Login</a></li>

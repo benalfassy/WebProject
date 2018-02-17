@@ -2,8 +2,9 @@
 .bookf {
 	font-family: Lucida Sans;
 }
+
 </style>
-<div class="container" ng-controller="booksController">
+<div class="container ourBackGround" ng-controller="booksController">
 	<table class="table table-condensed">
 		<tr ng-repeat="book in books">
 			<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
@@ -11,7 +12,7 @@
 				</div></td>
 			<td class="col-lg-6" align="left">
 				<div class="bookf">
-					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>{{book.bookName}}</b></u></a>
+					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>"{{book.bookName}}"</b></u></a>
 				</div> <br>
 				<div class="bookf">
 					{{shortDescription(book.description)}} <a href="" ng-click="goToBookPage(book)"> (read more) </a>
@@ -39,12 +40,24 @@
 						<td>
 							<div ng-switch on="hasBook(book)">
 								<div ng-switch-when="-1">
-									<button type="button" class="btn-default btn-sm">
-										<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
-									</button>
+									<div ng-switch on="isOnCart(book)">
+										<div ng-switch-when="0">
+											<button type="button" ng-click="addToCart(book)" class="btn-default btn-sm">
+												<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+											</button>
+											<button type="button" ng-click="buyNow(book)" class="btn-default btn-sm">
+												<span class="glyphicon glyphicon-credit-card"></span> Buy Now!
+											</button>
+										</div>
+										<div ng-switch-default>
+											<button type="button" ng-click="removeFromCart(book)" class="btn-default btn-sm">
+												<span class="glyphicon glyphicon-shopping-cart"></span> Remove From Cart
+											</button>
+										</div>
+									</div>
 								</div>
 								<div ng-switch-default>
-									<button type="button" class="btn-default btn-sm" ng-click="nav(book.bookPath)">
+									<button type="button" class="btn-default btn-sm" ng-click="goToReadBook(book)">
 										<span class="glyphicon glyphicon-book"> </span>Read Me!
 									</button>
 								</div>

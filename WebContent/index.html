@@ -27,21 +27,33 @@
 
 .masonImage {
 	width: 100%;
-	height: 35%
+	height: 27%
+}
+
+jumbotron.ourBackGround{
+	background-color:#FAF2F8;
+}
+.ourBackGround{
+	background-color:#FAF2F8;
 }
 </style>
 
+
+
 </head>
 
-<body ng-controller="appController">
+<body ng-controller="appController" class="ourBackGround">
 
-	<div ng-include="navPath"></div>
+	<header>
+			<div ng-include="navPath"></div>
+		
+	</header>
 
 	<div>
 		<img class="masonImage" src="Images/mason.jpg">
 	</div>
-
-	<div id="main" class="jumbotron">
+	
+	<div id="main" class="jumbotron ourBackGround">
 		<div ng-include="filePath"></div>
 	</div>
 

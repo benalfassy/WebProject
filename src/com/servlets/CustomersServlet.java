@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import javax.naming.Context;
@@ -19,13 +20,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.Scrollable;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.utilities.AppConstants;
+
+import javafx.util.Pair;
+
 import com.models.Customer;
+import com.models.LikeRequest;
+import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
  * Servlet implementation class CustomersServlet1
@@ -91,6 +99,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    
+	    Gson gson = new Gson();
+	    
 	    String uri = request.getRequestURI();
 	    
 	    System.out.println(uri);
@@ -123,17 +134,18 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		{
 		    resultSet.next();
 		    
+		    ArrayList<Pair<String, String>> bookScroll = gson.fromJson(resultSet.getString(14),
+			    AppConstants.SCROLL_COLLECTION);
+		    
 		    customer = new Customer(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
 			    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
 			    resultSet.getString(7), resultSet.getString(8), resultSet.getString(9),
 			    resultSet.getString(10), resultSet.getString(11), resultSet.getString(12),
-			    resultSet.getString(13));
+			    resultSet.getString(13), bookScroll);
 		}
 		
 		resultSet.close();
 		preparedStatement.close();
-		
-		Gson gson = new Gson();
 		
 		String result = gson.toJson(customer, Customer.class);
 		
@@ -163,16 +175,17 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		
 		while (rs.next())
 		{
+		    ArrayList<Pair<String, String>> bookScroll = gson.fromJson(rs.getString(14),
+			    AppConstants.SCROLL_COLLECTION);
+		    
 		    customersResult.add(new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
 			    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9),
-			    rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13)));
+			    rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), bookScroll));
 		}
 		
 		rs.close();
 		
 		stmt.close();
-		
-		Gson gson = new Gson();
 		
 		// convert from customers collection to json
 		
@@ -246,6 +259,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		pstmt.setString(11, customer.getPhoto());
 		pstmt.setString(12, customer.getAffiliation());
 		pstmt.setString(13, customer.getMyBooks());
+		pstmt.setString(14, gson.toJson(new ArrayList<Pair<String, String>>()));
 		pstmt.executeUpdate();
 		
 		connection.commit();
@@ -261,6 +275,89 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    getServletContext().log("Error on Customer post", e);
 	    response.sendError(500);
 	}
+	
+    }
+    
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+	try
+	{
+	    openConnection();
+	    
+	    Gson gson = new GsonBuilder().create();
+	    
+	    Customer customer = gson.fromJson(request.getReader(), Customer.class);
+	    
+	    System.out.println("--------------------------");
+	    System.out.println("updating customer: " + customer.getUsername());
+	    System.out.println(customer.getBookScroll());
+	    System.out.println(customer.getMyBooks());
+	    System.out.println(customer.getMyBookList());
+	    System.out.println("--------------------------");
+
+	    
+	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
+	    
+	    ResultSet resultSet = statement.executeQuery(AppConstants.SELECT_ALL_CUSTOMERS_STMT);
+	    
+	    while (resultSet.next())
+	    {
+		if (resultSet.getString(1).equals(customer.getUsername()))
+		{
+		    resultSet.updateString(1, customer.getUsername());
+		    resultSet.updateString(2, customer.getEmail());
+		    resultSet.updateString(3, customer.getStreet());
+		    resultSet.updateString(4, customer.getStreetNum());
+		    resultSet.updateString(5, customer.getCity());
+		    resultSet.updateString(6, customer.getZipCode());
+		    resultSet.updateString(7, customer.getPhoneNum());
+		    resultSet.updateString(8, customer.getPassword());
+		    resultSet.updateString(9, customer.getNickName());
+		    resultSet.updateString(10, customer.getDescription());
+		    resultSet.updateString(11, customer.getPhoto());
+		    resultSet.updateString(12, customer.getAffiliation());
+		    resultSet.updateString(13, customer.getMyBooks());
+		    resultSet.updateString(14, gson.toJson(customer.getBookScroll()));
+		    resultSet.updateRow();
+		}
+	    }
+	    
+	    resultSet.close();
+	    
+	    statement.close();
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	    response.sendError(500);
+	}
+	finally
+	{
+	    close();
+	}
+    }
+    
+    public static void main(String[] args)
+    {
+	ArrayList<Pair<String, String>> scroll = new ArrayList<>();
+	
+	scroll.add(new Pair<String, String>("book1", "123"));
+	scroll.add(new Pair<String, String>("book2", "333"));
+	
+	Gson gson = new Gson();
+	
+	String result = gson.toJson(scroll);
+	
+	System.out.println(result);
+	
+	ArrayList<Pair<String, String>> test = gson.fromJson(result, AppConstants.SCROLL_COLLECTION);
+	
+	scroll.add(new Pair<String, String>("book3", "444"));
+	
+	result = gson.toJson(scroll);
+	
+	System.out.println(result);
 	
     }
     

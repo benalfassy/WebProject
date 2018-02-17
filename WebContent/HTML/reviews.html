@@ -1,20 +1,20 @@
-<div class="myReview">
+<div id="bookf" class="myReview">
 	<br>
-	<div ng-repeat="review in reviews">
+	<div ng-repeat="review in reviews" ng-if="review.isApproved > 0">
 		<div ng-if="review.bookName == book.bookName">
-			<a class="pull-left" href="#"> <img class="media-object img-circle" ng-src="imgSource" onerror="this.src='Images/default.jpg'" alt="profile">
+			<a class="pull-left"> <img class="media-object img-circle" ng-src="imgSource" onerror="this.src='Images/default.jpg'" alt="profile">
 			</a>
 			<div class="media-body">
 				<div class="well well-lg">
-					<span style="display: inline-block">
+					<div style="display: inline-block">
 						<div>
 							<h4 class="text-uppercase">{{review.reviewerUsername}}</h4>
 						</div>
 						<div>
-							<h4 class="text-uppercase">{{review.date}}</h4>
+							<h5 class="text-uppercase">{{review.date}}</h5>
 						</div>
-					</span>
-					<p>{{review.review}}</p>
+					</div>
+					<h5 style="font-weight:normal;">{{review.review}}</h5>
 				</div>
 			</div>
 		</div>

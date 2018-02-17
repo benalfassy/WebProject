@@ -64,7 +64,7 @@ public class CustomerTableCreator implements ServletContextListener
     public void contextInitialized(ServletContextEvent event)
     {
 	ServletContext cntx = event.getServletContext();
-		
+	
 	try
 	{
 	    
@@ -122,6 +122,13 @@ public class CustomerTableCreator implements ServletContextListener
 		    pstmt.setString(11, customer.getPhoto());
 		    pstmt.setString(12, customer.getAffiliation());
 		    pstmt.setString(13, customer.getMyBooks());
+		    
+		    Gson gson = new Gson();
+		    
+		    String pairAsJson = gson.toJson(customer.getBookScroll());
+		    
+		    pstmt.setString(14, pairAsJson);
+		    
 		    pstmt.executeUpdate();
 		}
 		

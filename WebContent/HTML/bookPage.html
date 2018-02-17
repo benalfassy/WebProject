@@ -1,5 +1,5 @@
 <style>
-.bookf {
+#bookf {
 	font-family: Lucida Sans;
 }
 </style>
@@ -7,14 +7,16 @@
 	<div class="table-responsive">
 		<table class="table table-condensed">
 			<tr>
-				<td class="col-md-3"><div style="padding-left: 0px; padding-right: 0px;">
+				<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
 						<img class="img-responsive" width="220" height="310" src={{book.image}}></img>
 					</div></td>
-				<td class="col-md-2">
-					<div class="bookf">
-						<b><font size="5">{{book.bookName}}</font></b>
+				<td class="col-lg-2" align="left">
+					<div id="bookf">
+						<b><u><font size="5">"{{book.bookName}}"</font></u></b>
 					</div> <br>
-					<div class="bookf">{{book.price}}$</div> <br>
+					<div id="bookf">
+						<b>{{book.price}}$</b>
+					</div> <br>
 					<table>
 						<tr>
 							<td>
@@ -37,12 +39,24 @@
 							<td>
 								<div ng-switch on="hasBook()">
 									<div ng-switch-when="-1">
-										<button type="button" class="btn-default btn-sm">
-											<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
-										</button>
+										<div ng-switch on="isOnCart(book)">
+											<div ng-switch-when="0">
+												<button type="button" ng-click="addToCart()" class="btn-default btn-sm">
+													<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+												</button>
+												<button type="button" ng-click="buyNow()" class="btn-default btn-sm">
+													<span class="glyphicon glyphicon-credit-card"></span> Buy Now!
+												</button>
+											</div>
+											<div ng-switch-default>
+												<button type="button" ng-click="removeFromCart(book)" class="btn-default btn-sm">
+													<span class="glyphicon glyphicon-shopping-cart"></span> Remove From Cart
+												</button>
+											</div>
+										</div>
 									</div>
 									<div ng-switch-default>
-										<button type="button" class="btn btn-default btn-sm" ng-click="nav(book.bookPath)">
+										<button type="button" class="btn btn-default btn-sm" ng-click="goToReadBook()">
 											<span class="glyphicon glyphicon-book"> </span>Read Me!
 										</button>
 									</div>
@@ -51,7 +65,7 @@
 						</tr>
 					</table>
 				</td>
-				<td class="col-md-4"></td>
+				<td class="col-lg-3"></td>
 			</tr>
 		</table>
 	</div>

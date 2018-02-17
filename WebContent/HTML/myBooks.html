@@ -11,7 +11,7 @@
 				</div></td>
 			<td class="col-lg-6" align="left">
 				<div class="bookf">
-					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>{{book.bookName}}</b></u></a>
+					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>"{{book.bookName}}"</b></u></a>
 				</div> <br>
 				<div class="bookf">
 					{{shortDescription(book.description)}} <a href="" ng-click="goToBookPage(book)"> (read more) </a>
@@ -44,7 +44,7 @@
 									</button>
 								</div>
 								<div ng-switch-default>
-									<button type="button" class="btn-default btn-sm" ng-click="nav(book.bookPath)">
+									<button type="button" class="btn-default btn-sm" ng-click="goToReadBook(book)">
 										<span class="glyphicon glyphicon-book"> </span>Read Me!
 									</button>
 								</div>
