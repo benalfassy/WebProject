@@ -1,9 +1,9 @@
 package com.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javafx.util.Pair;
-
 
 /**
  * A simple bean to hold data
@@ -40,7 +40,7 @@ public class Customer
     
     private String myBooks;
     
-    private String[] myBookList;
+    private ArrayList<String> myBookList;
     
     private ArrayList<Pair<String, String>> bookScroll;
     
@@ -63,12 +63,21 @@ public class Customer
 	this.myBooks = books;
 	this.bookScroll = bookScroll;
 	
-	if (books != "")
+	if (affiliation.equals(ADMIN_AFFILIATION))
 	{
-	    this.myBookList = books.split(",");
+	    this.myBookList = new ArrayList<>();
+	    this.myBooks = "All";
 	}
-	else {
-	    this.myBookList=new String[1];
+	else
+	{
+	    if (books != "")
+	    {
+		this.myBookList = new ArrayList<>(Arrays.asList(books.split(",")));
+	    }
+	    else
+	    {
+		this.myBookList = new ArrayList<>();
+	    }
 	}
     }
     
@@ -77,7 +86,7 @@ public class Customer
 	return bookScroll;
     }
     
-    public String[] getMyBookList()
+    public ArrayList<String> getMyBookList()
     {
 	return myBookList;
     }

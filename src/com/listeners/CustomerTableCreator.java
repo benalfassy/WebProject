@@ -209,5 +209,4 @@ public class CustomerTableCreator implements ServletContextListener
 	return customers;
 	
     }
-    
 }

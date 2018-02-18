@@ -1,8 +1,8 @@
-<div id="bookf" class="myReview">
+<div class="myReview">
 	<br>
 	<div ng-repeat="review in reviews" ng-if="review.isApproved > 0">
 		<div ng-if="review.bookName == book.bookName">
-			<a class="pull-left"> <img class="media-object img-circle" ng-src="imgSource" onerror="this.src='Images/default.jpg'" alt="profile">
+			<a class="pull-left"> <img class="media-object img-circle" ng-src="{{getReviewImage(review)}}" onerror="this.src='Images/default.jpg'" alt="profile">
 			</a>
 			<div class="media-body">
 				<div class="well well-lg">

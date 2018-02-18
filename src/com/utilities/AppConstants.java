@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import com.models.Book;
 import com.models.Customer;
 import com.models.Review;
+import com.models.Transaction;
 
 import javafx.util.Pair;
 
@@ -29,6 +30,10 @@ public class AppConstants
     
     static public final String REVIEWS_FILE = REVIEWS + ".json";
     
+    static public final String TRANSACTIONS = "transactions";
+    
+    static public final String TRANSACTIONS_FILE = TRANSACTIONS + ".json";
+    
     static public final String NAME = "name";
     
     static public final String CUSTOMERS_RESTFULL = "customers/";
@@ -37,7 +42,13 @@ public class AppConstants
     
     static public final String REVIEWS_RESTFULL = "reviews/";
     
+    static public final String TRANSACTIONS_RESTFULL = "reviews/";
+    
     static public final Type CUSTOMER_COLLECTION = new TypeToken<Collection<Customer>>()
+    {
+    }.getType();
+    
+    static public final Type TRANSACTION_COLLECTION = new TypeToken<Collection<Transaction>>()
     {
     }.getType();
     
@@ -50,6 +61,10 @@ public class AppConstants
     }.getType();
     
     static public final Type SCROLL_COLLECTION = new TypeToken<ArrayList<Pair<String, String>>>()
+    {
+    }.getType();
+    
+    static public final Type ARRAYLISTSTRING_COLLECTION = new TypeToken<ArrayList<String>>()
     {
     }.getType();
     
@@ -70,7 +85,8 @@ public class AppConstants
     static public final String CREATE_CUSTOMERS_TABLE = "CREATE TABLE CUSTOMERS(Username varchar(100),"
 	    + "Email varchar(100)," + "Street varchar(100)," + "StreetNum varchar(100)," + "City varchar(100),"
 	    + "ZipCode varchar(100)," + "PhoneNum varchar(100)," + "Password varchar(100)," + "NickName varchar(100),"
-	    + "Description varchar(100)," + "Photo varchar(100)," + "Affiliation varchar(100)," + "Books varchar(500),"+"BookScroll varchar(1000))";
+	    + "Description varchar(100)," + "Photo varchar(100)," + "Affiliation varchar(100)," + "Books varchar(500),"
+	    + "BookScroll varchar(1000))";
     
     static public final String CREATE_BOOKS_TABLE = "CREATE TABLE BOOKS(BookName varchar(100)," + "Image varchar(200),"
 	    + "Price int," + "Description varchar(1000)," + "Likes varchar(1000)," + "BookPath varchar(200))";
@@ -79,6 +95,10 @@ public class AppConstants
 	    + "BookName varchar(100)," + "Review varchar(500)," + "ReviewerUsername varchar(100)," + "IsApproved int,"
 	    + "date varchar(100))";
     
+    static public final String CREATE_TRANSACTION_TABLE = "CREATE TABLE TRANSACTIONS(Username varchar(100), Date varchar(100), BookList varchar(1000), TotalPrice int)";
+    
+    static public final String INSERT_TRANSACTION_STMT = "INSERT INTO TRANSACTIONS VALUES(?,?,?,?)";
+    
     static public final String INSERT_BOOKS_STMT = "INSERT INTO BOOKS VALUES(?,?,?,?,?,?)";
     
     static public final String INSERT_REVIEWS_STMT = "INSERT INTO REVIEWS VALUES(?,?,?,?,?,?)";
@@ -86,6 +106,8 @@ public class AppConstants
     static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     
     static public final String SELECT_ALL_CUSTOMERS_STMT = "SELECT * FROM CUSTOMERS";
+    
+    static public final String SELECT_ALL_TRANSACTIONS_STMT = "SELECT * FROM TRANSACTIONS";
     
     static public final String SELECT_ALL_REVIEWS_STMT = "SELECT * FROM REVIEWS";
     

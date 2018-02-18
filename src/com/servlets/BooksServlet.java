@@ -31,6 +31,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.utilities.AppConstants;
+
+import javafx.util.Pair;
+
 import com.models.Book;
 import com.models.Customer;
 import com.models.LikeRequest;
@@ -97,6 +100,7 @@ public class BooksServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    Gson gson = new Gson();
 	    
 	    String uri = request.getRequestURI();
 	    
@@ -127,19 +131,20 @@ public class BooksServlet extends HttpServlet implements Closeable
 		if (!resultSet.isBeforeFirst())
 		{
 		    response.sendError(404);
+		    return;
 		}
 		else
 		{
 		    resultSet.next();
 		    
+		    ArrayList<String> likes = gson.fromJson(resultSet.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
+		    
 		    book = new Book(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3),
-			    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6));
+			    resultSet.getString(4), likes, resultSet.getString(6));
 		}
 		
 		resultSet.close();
 		preparedStatement.close();
-		
-		Gson gson = new Gson();
 		
 		String result = gson.toJson(book, Book.class);
 		
@@ -170,16 +175,16 @@ public class BooksServlet extends HttpServlet implements Closeable
 		
 		while (rs.next())
 		{
+		    ArrayList<String> likes = gson.fromJson(rs.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
+		    
 		    booksResult.add(new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),
-			    rs.getString(5), rs.getString(6)));
+			    likes, rs.getString(6)));
 		}
 		
 		rs.close();
 		
 		stmt.close();
-		
-		Gson gson = new Gson();
-		
+				
 		// convert from customers collection to json
 		
 		String booksJsonResult = gson.toJson(booksResult, AppConstants.BOOKS_COLLECTION);
@@ -238,36 +243,25 @@ public class BooksServlet extends HttpServlet implements Closeable
 		if (resultSet.getString(1).equals(likeRequest.getBookName()))
 		{
 		    
-		    ArrayList<String> likesArrayOld = new ArrayList<String>(
-			    Arrays.asList(resultSet.getString(5).split(",")));
+		    ArrayList<String> likesArray = gson.fromJson(resultSet.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
 		    
 		    if (likeRequest.getIsLike())
 		    {
-			likesArrayOld.add(likeRequest.getUsername());
+			likesArray.add(likeRequest.getUsername());
 		    }
 		    else
 		    {
-			likesArrayOld.removeIf(username -> username.equals(likeRequest.getUsername()));
+			likesArray.removeIf(username -> username.equals(likeRequest.getUsername()));
 		    }
-		    String likesNew = "";
+		
 		    
-		    for (String user : likesArrayOld)
-		    {
-			likesNew += (user + ",");
-		    }
-		    if (likesNew.length() > 0)
-		    {
-			likesNew += "$";
-			likesNew = likesNew.replace(",$","");
-		    }
-		    
-		    resultSet.updateString(5, likesNew);
+		    resultSet.updateString(5, gson.toJson(likesArray));
 		    
 		    resultSet.updateRow();
-
+		    
 		}
 	    }
-	    	    
+	    
 	    resultSet.close();
 	    
 	    statement.close();

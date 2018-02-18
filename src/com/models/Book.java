@@ -1,5 +1,7 @@
 package com.models;
 
+import java.util.ArrayList;
+
 /**
  * A simple bean to hold data
  */
@@ -13,13 +15,11 @@ public class Book
     
     private String description;
     
-    private String likes;
-    
-    private String[] likesList;
+    private ArrayList<String> likes;
     
     private String bookPath;
     
-    public Book(String bookName, String image, int price, String description, String likes, String bookPath)
+    public Book(String bookName, String image, int price, String description, ArrayList<String> likes, String bookPath)
     {
 	this.bookName = bookName;
 	this.image = image;
@@ -27,11 +27,6 @@ public class Book
 	this.description = description;
 	this.likes = likes;
 	this.bookPath = bookPath;
-	
-	if (likes != null)
-	{
-	    likesList = likes.split(",");
-	}
     }
     
     public String getBookPath()
@@ -54,14 +49,9 @@ public class Book
 	return image;
     }
     
-    public String getLikes()
+    public ArrayList<String> getLikes()
     {
 	return likes;
-    }
-    
-    public String[] getLikesList()
-    {
-	return likesList;
     }
     
     public int getPrice()

@@ -23,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
@@ -125,6 +126,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		if (!resultSet.isBeforeFirst())
 		{
 		    response.sendError(404);
+		    return;
 		}
 		else
 		{
@@ -232,6 +234,117 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    connection.commit();
 	    
 	    pstmt.close();
+	    
+	}
+	catch (SQLException | NamingException e)
+	{
+	    getServletContext().log("Error on Customer post", e);
+	    response.sendError(500);
+	}
+	finally
+	{
+	    close();
+	}
+	
+    }
+    
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+	try
+	{
+	    openConnection();
+	    
+	    Gson gson = new GsonBuilder().create();
+	    
+	    Review review = gson.fromJson(request.getReader(), Review.class);
+	    
+	    System.out.println("--------------------------");
+	    System.out.println("updating review: " + review.getReviewId());
+	    System.out.println("--------------------------");
+	    
+	    PreparedStatement preparedStatement = connection.prepareStatement(AppConstants.SELECT_REVIEWS_BY_ID_STMT,
+		    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    
+	    preparedStatement.setString(1, review.getReviewId());
+	    
+	    ResultSet resultSet = preparedStatement.executeQuery();
+	    
+	    if (!resultSet.isBeforeFirst())
+	    {
+		response.sendError(404);
+		return;
+	    }
+	    
+	    resultSet.next();
+	    
+	    resultSet.updateString(2, review.getBookName());
+	    resultSet.updateString(3, review.getReview());
+	    resultSet.updateString(4, review.getReviewerUsername());
+	    resultSet.updateInt(5, review.getIsApproved());
+	    resultSet.updateString(6, review.getDate());
+	    
+	    resultSet.updateRow();
+	    
+	    resultSet.close();
+	    
+	    preparedStatement.close();
+	}
+	catch (Exception e)
+	{
+	    e.printStackTrace();
+	    response.sendError(500);
+	}
+	finally
+	{
+	    close();
+	}
+    }
+    
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException
+    {
+	String uri = request.getRequestURI();
+	
+	if (uri.indexOf(AppConstants.REVIEWS_RESTFULL) == -1)
+	{
+	    response.sendError(400);
+	    return;
+	}
+	
+	String reviewId = uri
+		.substring(uri.indexOf(AppConstants.REVIEWS_RESTFULL) + AppConstants.REVIEWS_RESTFULL.length());
+	
+	PreparedStatement pstmt;
+	try
+	{
+	    openConnection();
+	    
+	    pstmt = connection.prepareStatement(AppConstants.SELECT_REVIEWS_BY_ID_STMT, ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
+	    
+	    pstmt.setString(1, reviewId);
+	    
+	    ResultSet resultSet = pstmt.executeQuery();
+	    
+	    if (!resultSet.isBeforeFirst())
+	    {
+		resultSet.close();
+		
+		pstmt.close();
+		
+		response.sendError(404);
+		return;
+	    }
+	    else
+	    {
+		resultSet.next();
+		
+		resultSet.deleteRow();
+		
+		resultSet.close();
+		
+		pstmt.close();
+	    }
 	    
 	}
 	catch (SQLException | NamingException e)

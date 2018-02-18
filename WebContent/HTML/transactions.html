@@ -1,0 +1,26 @@
+<div class="container-fluid" ng-controller="transactionsController">
+	<div>
+		<h4>Transactions:</h4>
+	</div>
+	<br> <br>
+	<div class="table-responsive">
+		<table class="table table-condensed">
+			<tr>
+				<th>DATE</th>
+				<th>USERNAME</th>
+				<th>BOOKS</th>
+				<th>TOTAL PRICE</th>
+			</tr>
+			<tr ng-repeat="transaction in transactions">
+				<td class="col-lg-2">{{getDate(transaction)}} <br>
+				</td>
+				<td class="col-lg-2">{{transaction.username}} <br>
+				</td>
+				<td class="col-lg-6">{{getBookList(transaction)}} <br>
+				</td>
+				<td class="col-lg-2">{{transaction.totalPrice}}$ <br>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

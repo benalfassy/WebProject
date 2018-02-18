@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -72,9 +73,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	BasicDataSource ds = (BasicDataSource) context
 		.lookup(getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
-	
-	System.out.println("after getting servlet context");
-	
+		
 	connection = ds.getConnection();
     }
     
@@ -129,6 +128,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		if (!resultSet.isBeforeFirst())
 		{
 		    response.sendError(404);
+		    return;
 		}
 		else
 		{
@@ -241,6 +241,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		pstmt.close();
 		
 		response.sendError(409);
+		return;
 	    }
 	    else
 	    {
@@ -275,6 +276,10 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    getServletContext().log("Error on Customer post", e);
 	    response.sendError(500);
 	}
+	finally
+	{
+	    close();
+	}
 	
     }
     
@@ -294,7 +299,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    System.out.println(customer.getMyBooks());
 	    System.out.println(customer.getMyBookList());
 	    System.out.println("--------------------------");
-
 	    
 	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
@@ -338,24 +342,79 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	}
     }
     
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException
+    {	
+	String uri = request.getRequestURI();
+	
+	if (uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) == -1)
+	{
+	    response.sendError(400);
+	    return;
+	}
+	
+	String username = uri
+		.substring(uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) + AppConstants.CUSTOMERS_RESTFULL.length());
+	
+	PreparedStatement pstmt;
+	try
+	{
+	    openConnection();
+	    
+	    pstmt = connection.prepareStatement(AppConstants.SELECT_CUSTOMER_BY_NAME_STMT,
+		    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    
+	    pstmt.setString(1, username);
+	    
+	    ResultSet resultSet = pstmt.executeQuery();
+	    
+	    if (!resultSet.isBeforeFirst())
+	    {
+		resultSet.close();
+		
+		pstmt.close();
+		
+		response.sendError(404);
+		return;
+	    }
+	    else
+	    {
+		resultSet.next();
+		
+		resultSet.deleteRow();
+		
+		resultSet.close();
+		
+		pstmt.close();
+	    }
+	    
+	}
+	catch (SQLException | NamingException e)
+	{
+	    getServletContext().log("Error on Customer post", e);
+	    response.sendError(500);
+	}
+	finally
+	{
+	    close();
+	}
+	
+    }
+    
     public static void main(String[] args)
     {
-	ArrayList<Pair<String, String>> scroll = new ArrayList<>();
+	LocalDate date = LocalDate.now();
 	
-	scroll.add(new Pair<String, String>("book1", "123"));
-	scroll.add(new Pair<String, String>("book2", "333"));
+	
 	
 	Gson gson = new Gson();
 	
-	String result = gson.toJson(scroll);
+	String result = gson.toJson(date);
 	
 	System.out.println(result);
 	
-	ArrayList<Pair<String, String>> test = gson.fromJson(result, AppConstants.SCROLL_COLLECTION);
+	date = gson.fromJson(result, LocalDate.class);
 	
-	scroll.add(new Pair<String, String>("book3", "444"));
-	
-	result = gson.toJson(scroll);
 	
 	System.out.println(result);
 	

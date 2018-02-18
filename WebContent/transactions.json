@@ -1,0 +1,14 @@
+[
+	{
+		"username": "ben",
+		"bookList": [
+			"A Popular School Girl"
+		],
+		"totalPrice": "25",
+		"date": {
+			"year": "2018",
+			"month": "2",
+			"day": "18"
+		}
+	}
+]

@@ -1,9 +1,4 @@
-<style>
-.bookf {
-	font-family: Lucida Sans;
-}
 
-</style>
 <div class="container ourBackGround" ng-controller="booksController">
 	<table class="table table-condensed">
 		<tr ng-repeat="book in books">
@@ -25,13 +20,13 @@
 						<td>
 							<div ng-switch on="isLiked(book)">
 								<div ng-switch-when="-1">
-									<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1">
-										<span class="glyphicon glyphicon-thumbs-up"></span> Like {{book.likesList.length}}
+									<button type="button" class="btn-default btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+										<span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
 									</button>
 								</div>
 								<div ng-switch-default>
-									<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1">
-										<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span> Like {{book.likesList.length}}
+									<button data-container="body" data-toggle="popover" data-content="test" data-placement="top" type="button" class="btn-default btn-sm pop" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+										<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
 										</font>
 									</button>
 								</div>

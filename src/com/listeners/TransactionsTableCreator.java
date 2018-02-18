@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -27,19 +30,21 @@ import com.google.gson.reflect.TypeToken;
 import com.utilities.AppConstants;
 import com.models.Book;
 import com.models.Customer;
+import com.models.Review;
+import com.models.Transaction;
 
 /**
  * An example listener that reads the customer json file and populates the data
  * into a Derby database
  */
 @WebListener
-public class BooksTableCreator implements ServletContextListener
+public class TransactionsTableCreator implements ServletContextListener
 {
     
     /**
      * Default constructor.
      */
-    public BooksTableCreator()
+    public TransactionsTableCreator()
     {
 	// TODO Auto-generated constructor stub
     }
@@ -65,9 +70,10 @@ public class BooksTableCreator implements ServletContextListener
     public void contextInitialized(ServletContextEvent event)
     {
 	ServletContext cntx = event.getServletContext();
-	
+		
 	try
 	{
+	    Gson gson = new Gson();
 	    
 	    Context context = new InitialContext();
 	    
@@ -81,7 +87,7 @@ public class BooksTableCreator implements ServletContextListener
 	    {
 		Statement stmt = conn.createStatement();
 		
-		stmt.executeUpdate(AppConstants.CREATE_BOOKS_TABLE);
+		stmt.executeUpdate(AppConstants.CREATE_TRANSACTION_TABLE);
 		
 		// commit update
 		
@@ -104,23 +110,18 @@ public class BooksTableCreator implements ServletContextListener
 	    if (!created)
 	    {
 		// populate customers table with customer data from json file
-		Collection<Book> books = loadBooks(cntx.getResourceAsStream(File.separator + AppConstants.BOOKS_FILE));
+		Collection<Transaction> transactions = loadTransactions(
+			cntx.getResourceAsStream(File.separator + AppConstants.TRANSACTIONS_FILE));
 		
-		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_BOOKS_STMT);
+		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_TRANSACTION_STMT);
 		
-		for (Book book : books)
+		for (Transaction transaction : transactions)
 		{
-		    pstmt.setString(1, book.getBookName());
-		    pstmt.setString(2, book.getImage());
-		    pstmt.setInt(3, book.getPrice());
-		    pstmt.setString(4, book.getDescription());
+		    pstmt.setString(1, transaction.getUsername());
+		    pstmt.setString(2, transaction.getDate().toString());
+		    pstmt.setString(3, gson.toJson(transaction.getBookList()));
+		    pstmt.setInt(4, transaction.getTotalPrice());
 		    
-		    Gson gson = new Gson();
-		    
-		    String likesAsJson = gson.toJson(book.getLikes());
-		    
-		    pstmt.setString(5, likesAsJson);
-		    pstmt.setString(6, book.getBookPath());
 		    pstmt.executeUpdate();
 		}
 		
@@ -174,12 +175,12 @@ public class BooksTableCreator implements ServletContextListener
      * @return collection of customers
      * @throws IOException
      */
-    private Collection<Book> loadBooks(InputStream is) throws IOException
+    private Collection<Transaction> loadTransactions(InputStream is) throws IOException
     {
 	BufferedReader br = new BufferedReader(new InputStreamReader(is));
 	
 	StringBuilder jsonFileContent = new StringBuilder();
-	
+		
 	String nextLine = null;
 	
 	while ((nextLine = br.readLine()) != null)
@@ -189,16 +190,17 @@ public class BooksTableCreator implements ServletContextListener
 	
 	Gson gson = new Gson();
 	
-	Type type = new TypeToken<Collection<Book>>()
+	Type type = new TypeToken<Collection<Transaction>>()
 	{
 	}.getType();
 	
-	Collection<Book> books = gson.fromJson(jsonFileContent.toString(), type);
+	//System.out.println("trying to parse: " + jsonFileContent.toString());
+	
+	Collection<Transaction> transactions = gson.fromJson(jsonFileContent.toString(), type);
 	
 	br.close();
 	
-	return books;
+	return transactions;
 	
     }
-    
 }

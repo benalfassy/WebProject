@@ -1,0 +1,71 @@
+<div class="container-fluid" ng-controller="customerPageController">
+	<div class="table-responsive">
+		<table class="table table-condensed">
+			<tr>
+				<td class="col-lg-2" align="left"><div style="padding-left: 0px; padding-right: 0px;">
+						<a href=""><img class="media-object img-circle img-responsive" ng-src="{{getPhoto()}}" onerror="this.src='Images/default.jpg'" alt="profile"></img></a>
+					</div></td>
+				<td class="col-lg-6" align="left">
+					<div>
+						<b>Username:</b> {{customer.username}} , <b>Email:</b> {{customer.email}} , <b>Password:</b> {{customer.password}}
+					</div> <br>
+					<div>
+						<b>User NickName:</b> {{customer.nickName}}, <b>Telephone number:</b> {{customer.phoneNum}}
+					</div> <br>
+					<div>
+						<b>Address:</b> {{customer.street}} {{customer.streetNum}} , {{customer.city}} , {{customer.zipCode}}
+					</div> <br>
+					<div>
+						<b>Description:</b> {{customer.description}}
+					</div>
+					<br>
+					<div>
+						<button type="button" ng-click="toggle=!toggle" class="btn-danger btn">
+							<span class="glyphicon glyphicon-remove"></span> Remove User
+						</button>
+					</div> <br>
+					<div class="row" ng-show="toggle">
+						<label>Are you sure ? </label>
+						<button type="button" ng-click="deleteCustomer()" class="btn-default btn">
+							<span class="glyphicon glyphicon-ok"></span> Yes
+						</button>
+						<button type="button" ng-click="toggle=!toggle" class="btn-default btn">
+							<span class="glyphicon glyphicon-remove"></span> No
+						</button>
+					</div>
+				<td class="col-lg-4"></td>
+			</tr>
+		</table>
+		<br> <br>
+	</div>
+	<div align="left">
+		<h4>User's eBooks:</h4>
+		<br> <br>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-condensed">
+			<tr>
+				<th>Book name</th>
+				<th>Like</th>
+				<th>Review</th>
+			</tr>
+			<tr ng-repeat="book in books" ng-if="hasBook(book) != -1">
+				<td class="col-lg-3">{{book.bookName}} <br>
+				</td>
+				<td class="col-lg-3">
+					<div ng-if="isLiked(book) != -1">
+						<span class="glyphicon glyphicon-thumbs-up"></span>
+					</div>
+					<div ng-if="isLiked(book) == -1">
+						<span class="glyphicon glyphicon-minus"></span>
+					</div> <br>
+				</td>
+				<td class="col-lg-6">
+					<div>
+						{{getReviewDate(book)}} <br> <br> {{getReview(book)}}
+					</div> <br>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
