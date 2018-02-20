@@ -23,6 +23,18 @@ app.controller('registerController', function($http, $scope, $rootScope) {
 
 		var res = $http.post('customers', customer);
 		res.success(function(data, status, headers, config) {
+			
+			var message = {
+					from: "BooksForAll",
+					to: customer.username,
+					content: "Welcome to Books For All! We hope you enjoy!!!"
+			}
+			$http.post('messages', message).success(function(data, status, headers, config) {
+				$http.get('messages').success(function(data, status, headers, config) {
+					$rootScope.rootMessages = data;
+				});
+			});
+			
 			$rootScope.rootLogedUser = customer;
 			$rootScope.rootNavPath = "HTML/NavBars/userNavBar.html";
 			$rootScope.path = "HTML/userHome.html";

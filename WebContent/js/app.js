@@ -11,7 +11,7 @@ app.controller('appController', function($http, $scope, $rootScope) {
 	$rootScope.rootLogedUser = null;
 
 	$scope.logedUser = null;
-	
+
 	$rootScope.customers = null;
 
 	$rootScope.rootCartBooks = [];
@@ -22,6 +22,14 @@ app.controller('appController', function($http, $scope, $rootScope) {
 	$scope.filePath = $rootScope.path;
 
 	$scope.adminPath = $rootScope.rootAdminPath;
+
+	$scope.messages = null;
+	
+	$rootScope.rootMessages = null;
+
+	$http.get('messages').success(function(data, status, headers, config) {
+		$rootScope.rootMessages = data;
+	});
 
 	$http.get("books").success(function(data, status, headers, config) {
 		$scope.books = data;
@@ -34,6 +42,23 @@ app.controller('appController', function($http, $scope, $rootScope) {
 	$scope.cartNavDisplay = function() {
 		if ($rootScope.rootCartBooks.length > 0) {
 			return "(" + $rootScope.rootCartBooks.length + ")";
+		} else {
+			return "";
+		}
+	}
+	
+	$scope.usertNavDisplay = function() {
+		
+		var newMessages = 0;
+		
+		angular.forEach($scope.messages, function(m){
+			if(m.to == $rootScope.rootLogedUser.username && m.isViewed == 0){
+				newMessages ++;
+			}
+		})
+		
+		if (newMessages > 0) {
+			return "(" + newMessages + ")";
 		} else {
 			return "";
 		}
@@ -57,6 +82,12 @@ app.controller('appController', function($http, $scope, $rootScope) {
 			$rootScope.path = "HTML/loginForm.html";
 		}
 	}
+	
+	$scope.$watch(function() {
+		return $rootScope.rootMessages;
+	}, function() {
+		$scope.messages = $rootScope.rootMessages;
+	}, true);
 
 	$scope.$watch(function() {
 		return $rootScope.path;

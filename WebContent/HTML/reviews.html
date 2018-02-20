@@ -1,22 +1,53 @@
 <div class="myReview">
 	<br>
-	<div ng-repeat="review in reviews" ng-if="review.isApproved > 0">
-		<div ng-if="review.bookName == book.bookName">
-			<a class="pull-left"> <img class="media-object img-circle" ng-src="{{getReviewImage(review)}}" onerror="this.src='Images/default.jpg'" alt="profile">
-			</a>
-			<div class="media-body">
-				<div class="well well-lg">
-					<div style="display: inline-block">
-						<div>
-							<h4 class="text-uppercase">{{review.reviewerUsername}}</h4>
+	<table>
+		<tr ng-repeat="review in reviews" ng-if="review.isApproved > 0 && review.bookName == book.bookName">
+			<td class="col-lg-1"><a class="pull-left"> <img class="media-object img-circle" ng-src="{{getReviewImage(review)}}" onerror="this.src='Images/default.jpg'" alt="profile">
+			</a></td>
+			<td class="col-lg-3">
+				<div class="media-body">
+					<div class="well well-lg">
+						<div style="display: inline-block">
+							<div>
+								<h4 class="text-uppercase">{{review.reviewerUsername}}</h4>
+							</div>
+							<div>
+								<h5 class="text-uppercase">{{review.date}}</h5>
+							</div>
 						</div>
-						<div>
-							<h5 class="text-uppercase">{{review.date}}</h5>
-						</div>
+						<h5 style="font-weight: normal;">{{review.review}}</h5>
 					</div>
-					<h5 style="font-weight:normal;">{{review.review}}</h5>
 				</div>
-			</div>
-		</div>
-	</div>
+			</td>
+			<td class="col-lg-3" align="center">
+				<div ng-if="isAdmin()">
+					<table>
+						<tr>
+							<td align="center">
+								<button type="button" ng-click="toggle=!toggle" class="btn-danger btn">
+									<span class="glyphicon glyphicon-remove"></span> Remove Review
+								</button>
+							</td>
+						</tr>
+						<tr>
+						<br>
+						</tr>
+						<tr ng-show="toggle">
+							<td><label>Are you sure ? </label></td>
+							<td>
+								<button type="button" ng-click="deleteReview(review)" class="btn-default btn">
+									<span class="glyphicon glyphicon-ok"></span> Yes
+								</button>
+							</td>
+							<td>
+								<button type="button" ng-click="toggle=!toggle" class="btn-default btn">
+									<span class="glyphicon glyphicon-remove"></span> No
+								</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table>
 </div>

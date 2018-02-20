@@ -1,0 +1,65 @@
+<div ng-controller="adminMessagesController">
+	<br>
+	<table class="table table-condensed">
+		<tr ng-repeat="message in messages" ng-if="isForMe(message)">
+			<td class="col-lg-1"><a class="pull-left"> <img class="media-object img-circle" ng-src="{{getMessageImage(message)}}" onerror="this.src='Images/default.jpg'" alt="profile">
+			</a></td>
+			<td align="left" class="col-lg-3">
+				<div align="left" class="media-body">
+					<div align="left" class="well well-lg">
+						<div align="left" style="display: inline-block">
+							<div>
+								<h4 class="text-uppercase">From: {{message.from}}</h4>
+							</div>
+							<div>
+								<h5 class="text-uppercase">{{message.date}}</h5>
+							</div>
+						</div>
+						<h5 style="font-weight: normal;">{{message.content}}</h5>
+					</div>
+				</div>
+				<div ng-show="toggle">
+					<div ng-controller="adminReplyController">
+						<br>
+						<form name="form" class="form-horizontal" role="form">
+							<div class="form-group">
+								<div class="col-sm-8">
+									<textarea class="form-control" ng-model="replyMessage" rows="5" placeholder="Up to 500 characters" required maxlength="500"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button class="btn btn-success text-uppercase" ng-click="submitReplyMessage(message); replyMessage='';" ng-disabled="form.$invalid" type="submit">
+										<span class="glyphicon glyphicon-send"></span> Submit
+									</button>
+								</div>
+							</div>
+							<div ng-if="submitReplyMessageSucceed">
+								<div class="alert alert-success">
+									<strong>Your message has been sent successfully</strong>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</td>
+			<td class="col-lg-2"><br>
+				<table>
+					<tr>
+						<td>
+							<button type="button" ng-click="deleteMsg(message)" class="btn-danger btn">
+								<span class="glyphicon glyphicon-remove"></span> Delete Message <br>
+							</button> <br> <br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="button" ng-click="toggle=!toggle" ng-disabled="message.isViewed==2" class="btn-success btn">
+								<span ng-show="message.isViewed != 2" class="glyphicon glyphicon-share-alt"></span> {{replyOrReplied(message)}}
+							</button>
+						</td>
+					</tr>
+				</table></td>
+		</tr>
+	</table>
+</div>

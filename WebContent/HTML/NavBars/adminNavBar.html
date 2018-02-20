@@ -14,15 +14,15 @@
 </nav>
  -->
 <style>
-#sidebar {
+ #sidebar {
 	background-color: transparent !important;
 	border-color: transparent;
 	background-image: none;
 	box-shadow: none;
-}
+} 
 </style>
 
-<div id="sidebar" class="well sidebar-nav-fixed affix">
+<div id="sidebar" class="well sidebar-nav">
 	<h5>
 		<i class="glyphicon glyphicon-user"></i> <small><b>USERS</b></small>
 	</h5>
@@ -39,12 +39,12 @@
 		<li><a href="" ng-click="adminNav('HTML/transactions.html')" >Books Transactions</a></li>
 	</ul>
 	<h5>
-		<i class="glyphicon glyphicon-envelope"></i> <small><b>MESSAGES</b></small>
+		<i class="glyphicon glyphicon-envelope"></i> <small><b>MESSAGES</b> <font color="blue">{{totalMessagesNavDisplay()}}</font> </small>
 	</h5>
 	<ul class="nav nav-pills nav-stacked">
-		<li><a href="" ng-click="adminNav('HTML/reviewsMessages.html')" >Reviews Messages</a></li>
+		<li><a href="" ng-click="adminNav('HTML/reviewsMessages.html')" >Reviews Messages <font color="blue">{{reviewsNavDisplay()}}</font></a></li>
 	</ul>
 		<ul class="nav nav-pills nav-stacked">
-		<li><a href="" ng-click="adminNav('HTML/transactions.html')" >Help me! Messages</a></li>
+		<li><a href="" ng-click="adminNav('HTML/adminMessages.html'); updateMessagesStatus();" >Help me! Messages <font color="blue">{{messagesNavDisplay()}}</font></a></li>
 	</ul>
 </div>

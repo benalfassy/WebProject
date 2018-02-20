@@ -14,6 +14,7 @@ app.controller('addReviewController', function($rootScope, $scope, $http) {
 
 		res.success(function(data, status, headers, config) {
 			$scope.submitSucceed = true;
+			$scope.review = "";
 		});
 
 		res.error(function(data, status, headers, config) {

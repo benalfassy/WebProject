@@ -1,45 +1,215 @@
-
-<br>
-<label>Username: {{user.username}}</label>
-<br>
-<br>
-<label>Email: {{user.email}}</label>
-<br>
-<br>
-<div class="row">
-	<div class="col-lg-4">
-		<label>street: {{user.street}}</label>
-		<button id="toggleMessage" ng-click="toggle=!toggle" type="button" class="btn btn-default btn-sm">
-			<span class="glyphicon glyphicon-pencil"></span>
-		</button>
+<div class="container-fluid">
+	<div>
+		<img class="media-object img-circle img-responsive" ng-src="{{getPhoto()}}" onerror="this.src='Images/default.jpg'" alt="profile"></img>
 	</div>
-</div>
-<form name="form" ng-controller="registerController" role="form">
-	<div class="row">
-		<div class="col-lg-3">
-			<div ng-show="toggle" align="left">
-				<div align="left" class="input-group">
-					<table >
-						<tr>
-							<td align="left" class="col-lg-3">
+	<br>
+	<div>
+		<h4>My Details:</h4>
+	</div>
+	<br>
+	<div class="container">
+		<form name="form" ng-controller="userProfileController" role="form">
+			<div class="table-responsive">
+				<table class="table table-condensed">
+					<tr>
+						<td class="col-lg-2">Username: {{user.username}}</td>
+						<td class="col-lg-2"></td>
+						<td class="col-lg-2"></td>
+						<td class="col-lg-4"></td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Email: {{user.email}}</td>
+						<td class="col-lg-2">
+						<td class="col-lg-2"></td>
+						<td class="col-lg-4"></td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Nickname: {{user.nickName}}</td>
+						<td class="col-lg-2"></td>
+						<td class="col-lg-2"></td>
+						<td class="col-lg-4"></td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Street: {{user.street}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="toggleStreet=!toggleStreet" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="toggleStreet">
 								<div class="form-group" ng-class="{ 'has-error': form.street.$dirty && (form.street.$error.required || form.street.$error.pattern || form.street.$error.minlength) }">
 									<input type="text" name="street" id="street" class="form-control" ng-pattern="/^[a-zA-Z_ ]{1,100}$/" ng-minlength="3" ng-model="street" required /> <span ng-show="form.street.$dirty && form.street.$error.required" class="help-block">street is required</span> <span ng-show="form.street.$error.pattern" class="help-block">Invalid
 										Address</span> <span ng-show="form.street.$error.minlength" class="help-block">Must be a least 3 characters</span>
 								</div>
-							</td>
-							<td align="left" class="col-lg-1">
-								<div class="form-actions">
-									<span class="input-group-btn">
-										<button type="button" ng-click="something()" ng-disabled="form.$invalid" class="btn btn-default btn-sm">
-											<span class="glyphicon glyphicon-ok"></span>
-										</button>
-									</span>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="toggleStreet">
+								<button type="button" ng-click="updateUserStreet()" ng-disabled="form.street.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="toggleStreet=!toggleStreet" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Street No. : {{user.streetNum}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="toggleStreetNum=!toggleStreetNum" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="toggleStreetNum">
+								<div class="form-group" ng-class="{ 'has-error': form.streetNo.$dirty && (form.streetNo.$error.required || form.streetNo.$error.pattern) }">
+									<input type="text" name="streetNo" id="streetNo" class="form-control" ng-pattern="/^[1-9]\d{0,10}$/" ng-model="streetNo" required /> <span ng-show="form.streetNo.$dirty && form.streetNo.$error.required" class="help-block">streetNo is required</span> <span ng-show="form.streetNo.$error.pattern" class="help-block">Invalid Street
+										number</span>
 								</div>
-							</td>
-						</tr>
-					</table>
-				</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="toggleStreetNum">
+								<button type="button" ng-click="updateUserStreetNum()" ng-disabled="form.streetNo.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="toggleStreetNum=!toggleStreetNum" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Zip Code : {{user.zipCode}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="toggleStreetZip=!toggleStreetZip" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="toggleStreetZip">
+								<div class="form-group" ng-class="{ 'has-error': form.zipCode.$dirty && (form.zipCode.$error.required || form.zipCode.$error.pattern)}">
+									<input type="text" name="zipCode" id="zipCode" class="form-control" ng-pattern="/^[1-9]{5,7}$/" ng-model="zipCode" required /> <span ng-show="form.zipCode.$dirty && form.zipCode.$error.required" class="help-block">Zip-Code is required</span> <span ng-show="form.zipCode.$error.pattern" class="help-block">Invalid Zip-Code</span>
+								</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="toggleStreetZip">
+								<button type="button" ng-click="updateUserZip()" ng-disabled="form.zipCode.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="toggleStreetZip=!toggleStreetZip" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">City: {{user.city}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="toggleCity=!toggleCity" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="toggleCity">
+								<div class="form-group" ng-class="{ 'has-error': form.city.$dirty && (form.city.$error.required || form.city.$error.pattern || form.city.$error.minlength) }">
+									<input type="text" name="city" id="city" class="form-control" ng-pattern="/^[a-zA-Z_ ]{1,100}$/" ng-minlength="3" ng-model="city" required /> <span ng-show="form.city.$dirty && form.city.$error.required" class="help-block">city is required</span> <span ng-show="form.city.$error.pattern" class="help-block">Invalid Address</span> <span
+										ng-show="form.city.$error.minlength" class="help-block">Must be a least 3 characters</span>
+								</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="toggleCity">
+								<button type="button" ng-click="updateUserCity()" ng-disabled="form.city.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="toggleCity=!toggleCity" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Phone Number: {{user.phoneNum}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="togglePhoneNum=!togglePhoneNum" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="togglePhoneNum">
+								<div class="form-group" ng-class="{ 'has-error': form.phoneNum.$dirty && ( form.phoneNum.$error.required || form.phoneNum.$error.pattern) }">
+									<input type="text" name="phoneNum" id="phoneNum" class="form-control" ng-pattern="/^[0][5]\d{1}[- ]?\d{3}[- ]?\d{4}$/" ng-model="phoneNum" required /> <span ng-show="form.phoneNum.$dirty && form.phoneNum.$error.required" class="help-block">Phone-Number is required</span> <span ng-show="form.phoneNum.$dirty && form.phoneNum.$error.pattern"
+										class="help-block">Invalid phone number</span>
+								</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="togglePhoneNum">
+								<button type="button" ng-click="updateUserPhone()" ng-disabled="form.phoneNum.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="togglePhoneNum=!togglePhoneNum" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Password: {{user.password}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="togglePassword=!togglePassword" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="togglePassword">
+								<div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+									<input type="password" name="password" id="password" class="form-control" maxlength="8" ng-model="password" placeholder="Up to 8 characters" required /> <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+								</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="togglePassword">
+								<button type="button" ng-click="updateUserPassword()" ng-disabled="form.password.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="togglePassword=!togglePassword" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-lg-2">Description: {{user.description}}</td>
+						<td class="col-lg-2">
+							<button type="button" ng-click="toggleDescription=!toggleDescription" class="btn btn-info btn-md">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+						<td class="col-lg-2" align="left">
+							<div class="row" ng-show="toggleDescription">
+								<div class="form-group" ng-class="{ 'has-error': form.description.$dirty && form.description.$error.required }">
+									<textarea name="description" id="description" class="form-control" maxlength="50" placeholder="Up to 50 characters" ng-model="description" required> </textarea>
+								</div>
+							</div>
+						</td>
+						<td class="col-lg-4" align="center">
+							<div class="row" ng-show="toggleDescription">
+								<button type="button" ng-click="updateUserDescription()" ng-disabled="form.description.$invalid" class="btn-success btn-sm">
+									<span class="glyphicon glyphicon-ok"></span> Approve
+								</button>
+								<button type="button" ng-click="toggleDescription=!toggleDescription" class="btn-danger btn-sm">
+									<span class="glyphicon glyphicon-remove"></span> Cancel
+								</button>
+							</div>
+						</td>
+					</tr>
+				</table>
 			</div>
-		</div>
+		</form>
 	</div>
-</form>
+</div>

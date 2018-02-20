@@ -108,4 +108,24 @@ app
 							$scope.book.likes.splice(index, 1);
 						});
 					}
+					
+					$scope.deleteReview = function(review){
+						
+						var res = $http.delete('reviews/'+review.reviewId);
+						
+						res.success(function(data, status, headers, config) {
+							
+							var index = $scope.reviews.indexOf(review);
+							$scope.reviews.splice(index, 1);
+							
+						});
+						
+						res.error(function(data, status, headers, config) {
+							
+							alert("failure message: " + JSON.stringify({
+								data : data
+							}));
+							
+						});
+					}
 				});

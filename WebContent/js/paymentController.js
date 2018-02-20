@@ -74,6 +74,18 @@ app.controller('paymentController', function($http, $scope, $rootScope) {
 			}
 			
 			$http.post('transactions', transaction);
+			
+			var message = {
+					from : "BooksForAll",
+					to : $rootScope.rootLogedUser.username,
+					content : "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) " 
+			}
+			
+			$http.post('messages', message).success(function(data, status, headers, config) {
+				$http.get('messages').success(function(data, status, headers, config) {
+					$rootScope.rootMessages = data;
+				});
+			});
 
 			if ($rootScope.rootBuyNow.length == 0) {
 				$rootScope.rootCartBooks = [];

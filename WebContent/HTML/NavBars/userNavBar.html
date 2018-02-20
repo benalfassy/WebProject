@@ -1,40 +1,8 @@
-<style>
-.navbar {
-	min-height: 70px;
-}
-
-.navbar-nav>li>a {
-	/* (80px - line-height of 27px) / 2 = 26.5px */
-	padding-top: 26.5px;
-	padding-bottom: 26.5px;
-	line-height: 27px;
-}
-
-.navbar-left>li>a {
-	padding-top: 18.5px;
-	padding-bottom: 18.5px;
-	line-height: 19px;
-}
-.navbar-default {
-	background-color:transparent !important;
-	border-color:transparent;
-	background-image:none;
-	box-shadow:none;	
-}
-
-.navbar-default .navbar-nav>li>a {
-   font-size:20px; 
-   color:black; 
-}
-</style>
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
-		<ul class="nav navbar-left">
-			<li><a class="navbar-brand"><img class="img-responsive pull-left" src="Images/logo.png" width="350" height="100"></a></li>
-		</ul>
+		<a class="navbar-left"><img src="Images/logo3.png"></a>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="" ng-click="nav('HTML/userProfile.html')"><span class="glyphicon glyphicon-user"> </span><i class="fa fa-home"></i>{{logedUser.username}}</a></li>
+			<li><a href="" ng-click="nav('HTML/userProfile.html')"><span class="glyphicon glyphicon-user"> </span><i class="fa fa-home"></i>{{logedUser.username}} <font color="blue">{{usertNavDisplay()}}</font></a></li>
 			<li><a href="" ng-click="nav('HTML/userHome.html')"><span class="glyphicon glyphicon-home"></span><i class="fa fa-home"></i>Home</a></li>
 			<li><a href="" ng-click="nav('HTML/myBooks.html')"><span class="glyphicon glyphicon-book"></span><i class="fa fa-home"></i> My Books</a></li>
 			<li><a href="" ng-click="nav('HTML/shoppingCart.html')"><span class="glyphicon glyphicon-shopping-cart"></span><i class="fa fa-comment"></i> Cart <font color="blue">{{cartNavDisplay()}}</font></a></li>

@@ -24,53 +24,55 @@
 <script src="js/customerPageController.js"></script>
 <script src="js/transactionsController.js"></script>
 <script src="js/reviewsMessagesController.js"></script>
+<script src="js/helpMeController.js"></script>
+<script src="js/adminMessagesController.js"></script>
+<script src="js/adminController.js"></script>
+
 
 <style type="text/css">
-.navbar-brand {
-	margin: 1;
-}
 
-.navbar {
-	position: fixed;
-	width: 100%;
-	z-index: 1;
-}
-
-.masonImage {
-	width: 100%;
-	height: 27%
-}
-
-jumbotron.ourBackGround{
-	background-color:#FEF9F0;
-}
-.ourBackGround{
-	background-color:#FEF9F0;
-}
 *{
   font-family:Lucida Sans;
 }
 
+.bg {
+    background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)),
+		url(Images/backgroundImage3.jpg) no-repeat center center fixed;
+	background-attachment: fixed;
 
+    height: 100%; 
 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    position: relative;
+    
+    background-size: 100% 100%;
+}
+
+body {
+  padding-top: 60px;
+  
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+} 
 </style>
 
 
 
 </head>
 
-<body ng-controller="appController" class="ourBackGround">
 
-	<header>
-			<div ng-include="navPath"></div>
-		
-	</header>
 
-	<div>
-		<img class="masonImage" src="Images/mason.jpg">
-	</div>
+<body ng-controller="appController" class="ourBackGround bg">
+
+	<div ng-include="navPath"></div>
 	
-	<div id="main" class="jumbotron ourBackGround">
+	<div>
 		<div ng-include="filePath"></div>
 	</div>
 

@@ -2,8 +2,6 @@ package com.servlets;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,23 +21,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.models.Message;
 import com.utilities.AppConstants;
-import com.models.Book;
-import com.models.Customer;
-import com.models.Review;
-import com.sun.jmx.snmp.Timestamp;
 
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/reviews", "/reviews/*" })
-public class ReviewsServlet extends HttpServlet implements Closeable
+@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/messages", "/messages/*" })
+public class MessagesServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
     
@@ -52,7 +46,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
      * @throws SQLException
      * @see HttpServlet#HttpServlet()
      */
-    public ReviewsServlet() throws NamingException
+    public MessagesServlet() throws NamingException
     {
 	super();
 	
@@ -101,25 +95,23 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    
 	    System.out.println(uri);
 	    
-	    if (uri.indexOf(AppConstants.REVIEWS_RESTFULL) != -1)
+	    if (uri.indexOf(AppConstants.MESSAGES_RESTFULL) != -1)
 	    {
-		Review review = null;
+		Message message = null;
 		
-		String reviewId = uri
-			.substring(uri.indexOf(AppConstants.REVIEWS_RESTFULL) + AppConstants.REVIEWS_RESTFULL.length());
+		String messageId = uri.substring(
+			uri.indexOf(AppConstants.MESSAGES_RESTFULL) + AppConstants.MESSAGES_RESTFULL.length());
 		
-		System.out.println("trying to get review: " + reviewId);
-		
-		System.out.println(reviewId);
+		System.out.println("trying to get message: " + messageId);
 		
 		PreparedStatement preparedStatement;
 		
 		openConnection();
 		
-		preparedStatement = connection.prepareStatement(AppConstants.SELECT_REVIEWS_BY_ID_STMT,
+		preparedStatement = connection.prepareStatement(AppConstants.SELECT_MESSAGE_BY_ID_STMT,
 			ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		
-		preparedStatement.setString(1, reviewId);
+		preparedStatement.setString(1, messageId);
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
@@ -132,8 +124,8 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		{
 		    resultSet.next();
 		    
-		    review = new Review(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
-			    resultSet.getString(4), resultSet.getInt(5), resultSet.getString(6));
+		    message = new Message(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+			    resultSet.getString(4), resultSet.getString(5), resultSet.getInt(6));
 		}
 		
 		resultSet.close();
@@ -141,9 +133,9 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		
 		Gson gson = new Gson();
 		
-		String result = gson.toJson(review, Review.class);
+		String result = gson.toJson(message, Message.class);
 		
-		System.out.println("trying to return review: " + reviewId);
+		System.out.println("trying to return message: " + messageId);
 		
 		response.addHeader("Content-Type", "application/json");
 		
@@ -157,7 +149,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    else
 	    {
 		
-		Collection<Review> reviewsResult = new ArrayList<Review>();
+		Collection<Message> messagesResult = new ArrayList<Message>();
 		
 		Statement stmt;
 		
@@ -165,12 +157,12 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		
 		stmt = connection.createStatement();
 		
-		ResultSet rs = stmt.executeQuery(AppConstants.SELECT_ALL_REVIEWS_STMT);
+		ResultSet rs = stmt.executeQuery(AppConstants.SELECT_ALL_MESSAGES_STMT);
 		
 		while (rs.next())
 		{
-		    reviewsResult.add(new Review(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-			    rs.getInt(5), rs.getString(6)));
+		    messagesResult.add(new Message(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+			    rs.getString(5), rs.getInt(6)));
 		}
 		
 		rs.close();
@@ -179,15 +171,15 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		
 		Gson gson = new Gson();
 		
-		// convert from customers collection to json
+		// convert from message collection to json
 		
-		String reviewsJsonResult = gson.toJson(reviewsResult, AppConstants.REVIEWS_COLLECTION);
+		String messagesJsonResult = gson.toJson(messagesResult, AppConstants.MESSAGES_COLLECTION);
 		
 		response.addHeader("Content-Type", "application/json");
 		
 		PrintWriter writer = response.getWriter();
 		
-		writer.println(reviewsJsonResult);
+		writer.println(messagesJsonResult);
 		
 		writer.close();
 		
@@ -213,21 +205,24 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     {
 	Gson gson = new GsonBuilder().create();
 	
-	Review review = gson.fromJson(request.getReader(), Review.class);
-		
+	Message message = gson.fromJson(request.getReader(), Message.class);
+	
+	System.out.println("Posting message from: " + message.getFrom() + " to: " + message.getTo() + " content: "
+		+ message.getContent());
+	
 	PreparedStatement pstmt;
 	try
 	{
 	    openConnection();
 	    
-	    pstmt = connection.prepareStatement(AppConstants.INSERT_REVIEWS_STMT);
+	    pstmt = connection.prepareStatement(AppConstants.INSERT_MESSAGES_STMT);
 	    
 	    pstmt.setString(1, UUID.randomUUID().toString());
-	    pstmt.setString(2, review.getBookName());
-	    pstmt.setString(3, review.getReview());
-	    pstmt.setString(4, review.getReviewerUsername());
-	    pstmt.setInt(5, 0);
-	    pstmt.setString(6, LocalDate.now().toString());
+	    pstmt.setString(2, message.getFrom());
+	    pstmt.setString(3, message.getTo());
+	    pstmt.setString(4, message.getContent());
+	    pstmt.setString(5, LocalDate.now().toString());
+	    pstmt.setInt(6, 0);
 	    
 	    pstmt.executeUpdate();
 	    
@@ -248,7 +243,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	
     }
     
-    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected synchronized void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 	try
 	{
@@ -256,16 +251,16 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    
 	    Gson gson = new GsonBuilder().create();
 	    
-	    Review review = gson.fromJson(request.getReader(), Review.class);
+	    Message message = gson.fromJson(request.getReader(), Message.class);
 	    
 	    System.out.println("--------------------------");
-	    System.out.println("updating review: " + review.getReviewId());
+	    System.out.println("updating message: " + message.getMessageId());
 	    System.out.println("--------------------------");
 	    
-	    PreparedStatement preparedStatement = connection.prepareStatement(AppConstants.SELECT_REVIEWS_BY_ID_STMT,
+	    PreparedStatement preparedStatement = connection.prepareStatement(AppConstants.SELECT_MESSAGE_BY_ID_STMT,
 		    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
 	    
-	    preparedStatement.setString(1, review.getReviewId());
+	    preparedStatement.setString(1, message.getMessageId());
 	    
 	    ResultSet resultSet = preparedStatement.executeQuery();
 	    
@@ -277,11 +272,11 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    
 	    resultSet.next();
 	    
-	    resultSet.updateString(2, review.getBookName());
-	    resultSet.updateString(3, review.getReview());
-	    resultSet.updateString(4, review.getReviewerUsername());
-	    resultSet.updateInt(5, review.getIsApproved());
-	    resultSet.updateString(6, review.getDate());
+	    resultSet.updateString(2, message.getFrom());
+	    resultSet.updateString(3, message.getTo());
+	    resultSet.updateString(4, message.getContent());
+	    resultSet.updateString(5, message.getDate());
+	    resultSet.updateInt(6, message.getIsViewed());
 	    
 	    resultSet.updateRow();
 	    
@@ -305,24 +300,24 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     {
 	String uri = request.getRequestURI();
 	
-	if (uri.indexOf(AppConstants.REVIEWS_RESTFULL) == -1)
+	if (uri.indexOf(AppConstants.MESSAGES_RESTFULL) == -1)
 	{
 	    response.sendError(400);
 	    return;
 	}
 	
-	String reviewId = uri
-		.substring(uri.indexOf(AppConstants.REVIEWS_RESTFULL) + AppConstants.REVIEWS_RESTFULL.length());
+	String messageId = uri
+		.substring(uri.indexOf(AppConstants.MESSAGES_RESTFULL) + AppConstants.MESSAGES_RESTFULL.length());
 	
 	PreparedStatement pstmt;
 	try
 	{
 	    openConnection();
 	    
-	    pstmt = connection.prepareStatement(AppConstants.SELECT_REVIEWS_BY_ID_STMT, ResultSet.TYPE_SCROLL_SENSITIVE,
+	    pstmt = connection.prepareStatement(AppConstants.SELECT_MESSAGE_BY_ID_STMT, ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
 	    
-	    pstmt.setString(1, reviewId);
+	    pstmt.setString(1, messageId);
 	    
 	    ResultSet resultSet = pstmt.executeQuery();
 	    

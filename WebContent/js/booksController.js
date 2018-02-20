@@ -1,8 +1,18 @@
 app.controller('booksController',function($rootScope, $scope, $http) {
 	
+	$scope.filterNameValue = "";
+	
+	$scope.filterType = 0;
+	
+	$scope.filterMinValue = "";
+	
+	$scope.filterMaxValue = "";
+	
+	$scope.filterMaxLikeValue = "";
+	
+	$scope.filterMinLikeValue = "";
 
 	var getResult = $http.get("books");
-
 		
 	getResult.success(function(data, status, headers, config) {
 		$scope.books = data;
@@ -110,5 +120,39 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		}
 		result += '...';
 		return result;
+	}
+	
+	$scope.passFilter = function(book){
+		if($scope.filterType == 0){
+			return filterByName(book);
+		}
+		if($scope.filterType == 1){
+			return filterByPrice(book);
+		}
+		if($scope.filterType == 2){
+			return filterByLike(book);
+			return true;
+		}
+	}
+	
+	var filterByName = function(book){
+		if($scope.filterNameValue == ""){
+			return true;
+		}
+		return book.bookName.indexOf($scope.filterNameValue) !== -1;	
+	}
+	
+	var filterByPrice = function(book){
+		if($scope.filterMinValue == "" || $scope.filterMaxValue == ""){
+			return true;
+		}
+		return book.price >= $scope.filterMinValue && book.price <=  $scope.filterMaxValue;
+	}
+	
+	var filterByLike = function(book){
+		if($scope.filterMinLikeValue == "" || $scope.filterMaxLikeValue == ""){
+			return true;
+		}
+		return book.likes.length >= $scope.filterMinLikeValue && book.likes.length <=  $scope.filterMaxLikeValue;
 	}
 });

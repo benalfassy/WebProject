@@ -7,6 +7,7 @@ import java.util.Collection;
 import com.google.gson.reflect.TypeToken;
 import com.models.Book;
 import com.models.Customer;
+import com.models.Message;
 import com.models.Review;
 import com.models.Transaction;
 
@@ -20,7 +21,11 @@ public class AppConstants
     
     static public final String CUSTOMERS = "customers";
     
+    static public final String MESSAGES = "messages";
+    
     static public final String CUSTOMERS_FILE = CUSTOMERS + ".json";
+    
+    static public final String MESSAGES_FILE = MESSAGES + ".json";
     
     static public final String BOOKS = "books";
     
@@ -36,6 +41,8 @@ public class AppConstants
     
     static public final String NAME = "name";
     
+    static public final String MESSAGES_RESTFULL = "messages/";
+    
     static public final String CUSTOMERS_RESTFULL = "customers/";
     
     static public final String BOOKS_RESTFULL = "books/";
@@ -49,6 +56,10 @@ public class AppConstants
     }.getType();
     
     static public final Type TRANSACTION_COLLECTION = new TypeToken<Collection<Transaction>>()
+    {
+    }.getType();
+    
+    static public final Type MESSAGES_COLLECTION = new TypeToken<Collection<Message>>()
     {
     }.getType();
     
@@ -97,6 +108,10 @@ public class AppConstants
     
     static public final String CREATE_TRANSACTION_TABLE = "CREATE TABLE TRANSACTIONS(Username varchar(100), Date varchar(100), BookList varchar(1000), TotalPrice int)";
     
+    static public final String CREATE_MESSAGES_TABLE = "CREATE TABLE MESSAGES(MessageId varchar(100), MessageFrom varchar(100), MessageTo varchar(100), Content varchar(1000), Date varchar(100), isViewed int)";
+    
+    static public final String INSERT_MESSAGES_STMT = "INSERT INTO MESSAGES VALUES(?,?,?,?,?,?)";
+    
     static public final String INSERT_TRANSACTION_STMT = "INSERT INTO TRANSACTIONS VALUES(?,?,?,?)";
     
     static public final String INSERT_BOOKS_STMT = "INSERT INTO BOOKS VALUES(?,?,?,?,?,?)";
@@ -104,6 +119,8 @@ public class AppConstants
     static public final String INSERT_REVIEWS_STMT = "INSERT INTO REVIEWS VALUES(?,?,?,?,?,?)";
     
     static public final String INSERT_CUSTOMER_STMT = "INSERT INTO CUSTOMERS VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    static public final String SELECT_ALL_MESSAGES_STMT = "SELECT * FROM MESSAGES";
     
     static public final String SELECT_ALL_CUSTOMERS_STMT = "SELECT * FROM CUSTOMERS";
     
@@ -113,10 +130,11 @@ public class AppConstants
     
     static public final String SELECT_ALL_BOOKS_STMT = "SELECT * FROM BOOKS";
     
+    static public final String SELECT_MESSAGE_BY_ID_STMT = "SELECT * FROM MESSAGES " + "WHERE MessageId=?";
+    
     static public final String SELECT_CUSTOMER_BY_NAME_STMT = "SELECT * FROM CUSTOMERS " + "WHERE Username=?";
     
     static public final String SELECT_BOOK_BY_NAME_STMT = "SELECT * FROM BOOKS " + "WHERE BookName=?";
     
     static public final String SELECT_REVIEWS_BY_ID_STMT = "SELECT * FROM REVIEWS " + "WHERE ReviewId=?";
-    
 }

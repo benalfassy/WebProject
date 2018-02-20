@@ -1,0 +1,23 @@
+<div ng-controller="helpMeController">
+	<br>
+	<form name="form" class="form-horizontal" role="form">
+		<div class="form-group">
+			<div class="col-sm-8">
+				<textarea class="form-control" ng-model="helpMessage" rows="5" placeholder="Up to 500 characters" required maxlength="500"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button class="btn btn-success text-uppercase" ng-click="submitHelpMessage(); helpMessage='';" ng-disabled="form.$invalid" type="submit">
+					<span class="glyphicon glyphicon-send"></span> Submit
+				</button>
+			</div>
+		</div>
+		<br>
+		<div ng-if="submitHelpMessageSucceed">
+			<div class="alert alert-success">
+				<strong>Your message has been sent. You will get a reply soon.</strong>
+			</div>
+		</div>
+	</form>
+</div>

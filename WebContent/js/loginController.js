@@ -11,6 +11,7 @@ app.controller('loginController', function($http, $scope, $rootScope) {
 			if (data.password == $scope.password) {
 				if (data.affiliation == "Admin") {
 					$rootScope.path = "HTML/Admin.html";
+					$rootScope.rootAdminPath = "HTML/userHome.html";
 					$rootScope.rootNavPath = "HTML/NavBars/adminUpBar.html";
 				} else {
 					$rootScope.path = "HTML/userHome.html";

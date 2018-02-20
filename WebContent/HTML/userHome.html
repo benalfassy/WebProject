@@ -1,18 +1,57 @@
 
-<div class="container ourBackGround" ng-controller="booksController">
-	<table class="table table-condensed">
-		<tr ng-repeat="book in books">
+<div class="container" ng-controller="booksController">
+	<div class="container-fluid">
+		<form class="navbar-form navbar-left">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+							Filter Types <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="" ng-click="filterType = 0">Filter by name</a></li>
+							<li><a href="" ng-click="filterType = 1">Filter by price</a></li>
+							<li><a href="" ng-click="filterType = 2">Filter by likes</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div ng-show="filterType == 0">
+						<input type="text" class="form-control" ng-model="filterNameValue" placeholder="Filter by Book's name">
+					</div>
+					<div align="left" ng-show="filterType == 1">
+						<table>
+							<tr>
+								<td align="right"><input type="text" class="form-control" ng-model="filterMinValue" size="5" placeholder="Min price"></td>
+								<td align="left"><input type="text" class="form-control" ng-model="filterMaxValue" size="5" placeholder="Max price"></td>
+							</tr>
+						</table>
+					</div>
+					<div align="left" ng-show="filterType == 2">
+						<table>
+							<tr>
+								<td align="right"><input type="text" class="form-control" ng-model="filterMinLikeValue" size="5" placeholder="Min likes"></td>
+								<td align="left"><input type="text" class="form-control" ng-model="filterMaxLikeValue" size="5" placeholder="Max likes"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div> 
+	<table class="table">
+		<tr ng-repeat="book in books" ng-if="passFilter(book)">
 			<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
 					<a href=""><img ng-click="goToBookPage(book)" class="img-responsive" width="140" height="220" src={{book.image}}></img></a>
 				</div></td>
 			<td class="col-lg-6" align="left">
-				<div class="bookf">
+				<div>
 					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>"{{book.bookName}}"</b></u></a>
 				</div> <br>
-				<div class="bookf">
+				<div>
 					{{shortDescription(book.description)}} <a href="" ng-click="goToBookPage(book)"> (read more) </a>
 				</div> <br>
-				<div class="bookf">
+				<div>
 					<b>{{book.price}}$</b>
 				</div> <br>
 				<table>
@@ -60,8 +99,7 @@
 						<td>
 					</tr>
 				</table>
-			</td>
-			<td class="col-lg-4"></td>
+				</td>
 		</tr>
 	</table>
 </div>
