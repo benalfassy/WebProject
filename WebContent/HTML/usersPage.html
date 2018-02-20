@@ -1,10 +1,22 @@
-<div class="container" ng-controller="usersPageController">
+<style>
+
+#userRow {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+</style>
+
+<div align="center">
+<h2>Users:</h2>
+</div>
+<br>
+<div class="container well well-ng"  id="userRow" ng-controller="usersPageController">
 	<table class="table table-condensed">
 		<tr ng-repeat="customer in customers" ng-if="customer.affiliation != 'Admin'">
-			<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
+			<td class="col-lg-2" align="center"><br><div style="padding-left: 0px; padding-right: 0px;">
 					<a href=""><img ng-click="goToCustomerPage(customer)" class="media-object img-circle img-responsive" ng-src="{{getPhoto(customer)}}" onerror="this.src='Images/default.jpg'" alt="profile"></img></a>
 				</div></td>
-			<td class="col-lg-6" align="left">
+			<td class="col-lg-6" align="left"><br>
 				<div>
 					Username: <a href="" ng-click="goToCustomerPage(customer)" style="color: black;"> <b>{{customer.username}}</b></a>
 				</div> <br>

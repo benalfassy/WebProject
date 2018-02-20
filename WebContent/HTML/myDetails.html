@@ -1,13 +1,29 @@
-<div class="container-fluid">
-	<div>
+<style>
+#editBtn {
+	background-color: rgba(253, 216, 53, 1);
+	color: white;
+}
+
+#detailsArea {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+table {
+	width: 100%;
+	max-width: 800px;
+	display: block;
+}
+</style>
+<div class="container-fluid" ng-controller="userProfileController">
+	<div align="center">
 		<img class="media-object img-circle img-responsive" ng-src="{{getPhoto()}}" onerror="this.src='Images/default.jpg'" alt="profile"></img>
 	</div>
 	<br>
-	<div>
-		<h4>My Details:</h4>
-	</div>
+	<h2 align="center">
+		<b>My Profile:</b>
+	</h2>
 	<br>
-	<div class="container">
+	<div id="detailsArea" class="container well well-lg">
 		<form name="form" ng-controller="userProfileController" role="form">
 			<div class="table-responsive">
 				<table class="table table-condensed">
@@ -32,7 +48,7 @@
 					<tr>
 						<td class="col-lg-2">Street: {{user.street}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="toggleStreet=!toggleStreet" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="toggleStreet=!toggleStreet" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -58,7 +74,7 @@
 					<tr>
 						<td class="col-lg-2">Street No. : {{user.streetNum}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="toggleStreetNum=!toggleStreetNum" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="toggleStreetNum=!toggleStreetNum" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -84,7 +100,7 @@
 					<tr>
 						<td class="col-lg-2">Zip Code : {{user.zipCode}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="toggleStreetZip=!toggleStreetZip" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="toggleStreetZip=!toggleStreetZip" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -109,7 +125,7 @@
 					<tr>
 						<td class="col-lg-2">City: {{user.city}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="toggleCity=!toggleCity" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="toggleCity=!toggleCity" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -135,7 +151,7 @@
 					<tr>
 						<td class="col-lg-2">Phone Number: {{user.phoneNum}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="togglePhoneNum=!togglePhoneNum" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="togglePhoneNum=!togglePhoneNum" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -161,7 +177,7 @@
 					<tr>
 						<td class="col-lg-2">Password: {{user.password}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="togglePassword=!togglePassword" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="togglePassword=!togglePassword" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>
@@ -186,7 +202,7 @@
 					<tr>
 						<td class="col-lg-2">Description: {{user.description}}</td>
 						<td class="col-lg-2">
-							<button type="button" ng-click="toggleDescription=!toggleDescription" class="btn btn-info btn-md">
+							<button id="editBtn" type="button" ng-click="toggleDescription=!toggleDescription" class="btn btn-md">
 								<span class="glyphicon glyphicon-pencil"></span>
 							</button>
 						</td>

@@ -1,8 +1,21 @@
+<style>
+
+#payBtn {
+	background-color: rgba(253, 216, 53, 0.7);
+	color: white;
+}
+
+#payBody {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+
+</style>
 
 <div class="container-fluid" ng-controller="paymentController">
 	<div class="row">
 		<div class="col-md-6">
-			<div class="panel panel-default ">
+			<div id="payBody" class="panel panel-default ">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-md-6">
@@ -16,7 +29,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel-body">
+				<div  class="panel-body">
 					<form role="form" name="form">
 						<div class="row">
 							<div class="col-md-12">
@@ -86,7 +99,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<button ng-disabled="form.$invalid" ng-click="onBuy()" class="subscribe btn btn-success btn-lg btn-block" type="button">Start Subscription</button>
+								<button id="payBtn" ng-disabled="form.$invalid" ng-click="onBuy()" class="subscribe btn btn-lg btn-block" type="button">Start Subscription</button>
 							</div>
 						</div>
 					</form>
@@ -94,7 +107,7 @@
 			</div>
 		</div>
 		<div class="col-md-6">
-			<div class="panel panel-default ">
+			<div id="payBody" class="panel panel-default ">
 				<div align="left" class="panel-heading">
 					<h4>
 						<b>Order summary:</b>
@@ -104,7 +117,7 @@
 					<div ng-repeat="book in cartBooks">
 						<div class="row">
 							<div class="col-md-6">
-								<label>{{book.bookName}}</label>
+								<label>"{{book.bookName}}"</label>
 							</div>
 							<div class="col-md-6">
 								<label>{{book.price}}$</label>

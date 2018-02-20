@@ -1,35 +1,42 @@
+<style>
+#reviewTable {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+</style>
 <div class="container-fluid" ng-controller="reviewsMessagesController">
-	<div>
-		<h4>Review Requests:</h4>
+	<div align="center">
+		<h2>Review Requests:</h2>
 	</div>
 	<br> <br>
-	<div class="table-responsive">
-		<table class="table table-condensed">
-			<tr>
-				<th>DATE</th>
-				<th>USERNAME</th>
-				<th>BOOK</th>
-				<th>REVIEW</th>
-				<th></th>
-			</tr>
-			<tr ng-repeat="review in reviews" ng-if="review.isApproved==0">
-				<td class="col-lg-2">{{review.date}} <br>
-				</td>
-				<td class="col-lg-2">{{review.reviewerUsername}} <br>
-				</td>
-				<td class="col-lg-2">"{{review.bookName}}" <br>
-				</td>
-				<td class="col-lg-3">{{review.review}}<br>
-				</td>
-				<td class="col-lg-3">
-					<button type="button" ng-click="approveReview(review)" class="btn-success btn-sm">
-						<span class="glyphicon glyphicon-ok"></span> Approve
-					</button>
-					<button type="button" ng-click="rejectReview(review)" class="btn-danger btn-sm">
-						<span class="glyphicon glyphicon-remove"></span> Decline
-					</button> <br>
-				</td>
-			</tr>
-		</table>
+	<div id="reviewTable" class="container well well-lg">
+		<div class="table-responsive">
+			<table class="table table-condensed">
+				<tr>
+					<th>DATE</th>
+					<th>USERNAME</th>
+					<th>BOOK</th>
+					<th>REVIEW</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="review in reviews" ng-if="review.isApproved==0">
+					<td class="col-lg-2">{{review.date}} <br>
+					</td>
+					<td class="col-lg-2">{{review.reviewerUsername}} <br>
+					</td>
+					<td class="col-lg-2">"{{review.bookName}}" <br>
+					</td>
+					<td class="col-lg-3">{{review.review}}<br>
+					</td>
+					<td class="col-lg-3">
+						<button type="button" ng-click="approveReview(review)" class="btn-success btn-sm">
+							<span class="glyphicon glyphicon-ok"></span> Approve
+						</button>
+						<button type="button" ng-click="rejectReview(review)" class="btn-danger btn-sm">
+							<span class="glyphicon glyphicon-remove"></span> Decline
+						</button> <br>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>

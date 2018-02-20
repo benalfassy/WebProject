@@ -1,9 +1,30 @@
+<style>
+#bookBtn {
+	border-radius: 7px;
+	background-color: rgba(253, 216, 53, 0.7);
+	color: white;
+	margin-right: 5px;
+}
+
+
+.nav .active a{
+background-color: rgba(253, 216, 53, 0.7)!important;
+
+}
+
+#bookLi {
+	background-color: rgba(253, 216, 53, 0.7);
+	color: white;
+}
+
+
+</style>
 <div class="container" ng-controller="bookPageController">
 	<div class="table-responsive">
 		<table class="table table-condensed">
 			<tr>
 				<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
-						<img class="img-responsive" width="220" height="310" src={{book.image}}></img>
+						<img class="img-responsive img-rounded" width="220" height="310" src={{book.image}}></img>
 					</div></td>
 				<td class="col-lg-2" align="left">
 					<div id="bookf">
@@ -18,14 +39,14 @@
 								<div>
 									<div ng-switch on="isLiked()">
 										<div ng-switch-when="-1">
-											<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+											<button id="bookBtn" data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
 												<span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
 											</button>
 										</div>
 										<div ng-switch-default>
-											<button data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn-default btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
-												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
-												</font>
+											<button id="bookBtn" data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span></font> Like {{(book.likes.length)>0? book.likes.length : ""}}
+												
 											</button>
 										</div>
 									</div>
@@ -36,22 +57,22 @@
 									<div ng-switch-when="-1">
 										<div ng-switch on="isOnCart(book)">
 											<div ng-switch-when="0">
-												<button type="button" ng-click="addToCart()" class="btn-default btn-sm">
+												<button id="bookBtn" type="button" ng-click="addToCart()" class="btn btn-sm">
 													<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
 												</button>
-												<button type="button" ng-click="buyNow()" class="btn-default btn-sm">
+												<button id="bookBtn" type="button" ng-click="buyNow()" class="btn btn-sm">
 													<span class="glyphicon glyphicon-credit-card"></span> Buy Now!
 												</button>
 											</div>
 											<div ng-switch-default>
-												<button type="button" ng-click="removeFromCart(book)" class="btn-default btn-sm">
+												<button id="bookBtn" type="button" ng-click="removeFromCart(book)" class="btn btn-sm">
 													<span class="glyphicon glyphicon-shopping-cart"></span> Remove From Cart
 												</button>
 											</div>
 										</div>
 									</div>
 									<div ng-switch-default>
-										<button type="button" class="btn btn-default btn-sm" ng-click="goToReadBook()">
+										<button id="bookBtn" type="button" class="btn btn-sm" ng-click="goToReadBook()">
 											<span class="glyphicon glyphicon-book"> </span>Read Me!
 										</button>
 									</div>
@@ -67,9 +88,9 @@
 	<div class="container-fluid">
 		<div class="col-md-12 product-info">
 			<ul id="myTab" class="nav nav-tabs nav_tabs">
-				<li class="active"><a href="" ng-click="showDescription()" data-toggle="tab">DESCRIPTION</a></li>
-				<li><a href="" ng-click="showReviews()" data-toggle="tab">REVIEWS</a></li>
-				<li ng-hide="hasBook(book) == -1 || isAdmin()"><a href="" ng-click="addReview()" data-toggle="tab">ADD REVIEW</a></li>
+				<li id="bookLi" class="active"><a href="" ng-click="showDescription()" data-toggle="tab"><b><font color="white">DESCRIPTION</font></b></a></li>
+				<li id="bookLi"><a href="" ng-click="showReviews()" data-toggle="tab"><b><font color="white">REVIEWS</font></b></a></li>
+				<li id="bookLi" ng-hide="hasBook(book) == -1 || isAdmin()"><a href="" ng-click="addReview()" data-toggle="tab"><b><font color="white">ADD REVIEW</font></b></a></li>
 			</ul>
 			<div id="myTabContent" class="tab-content">
 				<div class="tab-pane fade in active" id="service-one">

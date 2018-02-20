@@ -1,6 +1,10 @@
 <style>
 #cancelLink{
-color:#ffbb33;
+color:#f9a825;
+}
+#registerBtn {
+background-color: rgba(253, 216, 53, 1);
+color: white;
 }
 </style>
 
@@ -56,8 +60,8 @@ color:#ffbb33;
 				<label for="username">Photo</label> <input type="text" name="photo" id="photo" class="form-control" placeholder="Photo's url" ng-model="photo" />
 			</div>
 			<div class="form-actions" align="center">
-				<button type="submit" ng-click="submit()" ng-disabled="form.$invalid" class="btn btn-warning">Register</button>
-				<a href="" id="cancelLink" ng-click="nav('HTML/loginForm.html')" class="btn btn-link">Cancel</a> <br>
+				<button id="registerBtn" type="submit" ng-click="submit()" ng-disabled="form.$invalid" class="btn">Register</button>
+				<a href="" id="cancelLink" ng-click="nav('HTML/loginForm.html')" class="btn btn-link"><b>Cancel</b></a> <br>
 				<div ng-if="alreadyExists">
 					<div class="alert alert-danger">
 						<strong>Username is already exist in our system</strong>

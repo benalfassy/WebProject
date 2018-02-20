@@ -1,105 +1,124 @@
+<style>
+#bookBtn {
+	border-radius: 7px;
+	background-color: rgba(253, 216, 53, 0.7);
+	color: white;
+	margin-right: 5px;
+}
 
+#bookColumn {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+</style>
 <div class="container" ng-controller="booksController">
-	<div class="container-fluid">
-		<form class="navbar-form navbar-left">
-			<div class="row">
-				<div class="col-lg-4">
-					<div class="dropdown">
-						<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-							Filter Types <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li><a href="" ng-click="filterType = 0">Filter by name</a></li>
-							<li><a href="" ng-click="filterType = 1">Filter by price</a></li>
-							<li><a href="" ng-click="filterType = 2">Filter by likes</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4">
-					<div ng-show="filterType == 0">
-						<input type="text" class="form-control" ng-model="filterNameValue" placeholder="Filter by Book's name">
-					</div>
-					<div align="left" ng-show="filterType == 1">
-						<table>
-							<tr>
-								<td align="right"><input type="text" class="form-control" ng-model="filterMinValue" size="5" placeholder="Min price"></td>
-								<td align="left"><input type="text" class="form-control" ng-model="filterMaxValue" size="5" placeholder="Max price"></td>
-							</tr>
-						</table>
-					</div>
-					<div align="left" ng-show="filterType == 2">
-						<table>
-							<tr>
-								<td align="right"><input type="text" class="form-control" ng-model="filterMinLikeValue" size="5" placeholder="Min likes"></td>
-								<td align="left"><input type="text" class="form-control" ng-model="filterMaxLikeValue" size="5" placeholder="Max likes"></td>
-							</tr>
-						</table>
-					</div>
+	<!-- <nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-left">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+						Filter Types <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="" ng-click="filterType = 0">Filter by name</a></li>
+						<li><a href="" ng-click="filterType = 1">Filter by price</a></li>
+						<li><a href="" ng-click="filterType = 2">Filter by likes</a></li>
+					</ul>
 				</div>
 			</div>
-		</form>
-	</div> 
-	<table class="table">
-		<tr ng-repeat="book in books" ng-if="passFilter(book)">
-			<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
-					<a href=""><img ng-click="goToBookPage(book)" class="img-responsive" width="140" height="220" src={{book.image}}></img></a>
-				</div></td>
-			<td class="col-lg-6" align="left">
-				<div>
-					<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>"{{book.bookName}}"</b></u></a>
-				</div> <br>
-				<div>
-					{{shortDescription(book.description)}} <a href="" ng-click="goToBookPage(book)"> (read more) </a>
-				</div> <br>
-				<div>
-					<b>{{book.price}}$</b>
-				</div> <br>
-				<table>
-					<tr>
-						<td>
-							<div ng-switch on="isLiked(book)">
-								<div ng-switch-when="-1">
-									<button type="button" class="btn-default btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
-										<span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
-									</button>
-								</div>
-								<div ng-switch-default>
-									<button data-container="body" data-toggle="popover" data-content="test" data-placement="top" type="button" class="btn-default btn-sm pop" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
-										<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
-										</font>
-									</button>
-								</div>
-							</div>
-						</td>
-						<td>
-							<div ng-switch on="hasBook(book)">
-								<div ng-switch-when="-1">
-									<div ng-switch on="isOnCart(book)">
-										<div ng-switch-when="0">
-											<button type="button" ng-click="addToCart(book)" class="btn-default btn-sm">
-												<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
-											</button>
-											<button type="button" ng-click="buyNow(book)" class="btn-default btn-sm">
-												<span class="glyphicon glyphicon-credit-card"></span> Buy Now!
+			<div class="col-lg-4">
+				<div ng-show="filterType == 0">
+					<input type="text" class="form-control" ng-model="filterNameValue" placeholder="Filter by Book's name">
+				</div>
+				<div align="left" ng-show="filterType == 1">
+					<table>
+						<tr>
+							<td align="right"><input type="text" class="form-control" ng-model="filterMinValue" size="5" placeholder="Min price"></td>
+							<td align="left"><input type="text" class="form-control" ng-model="filterMaxValue" size="5" placeholder="Max price"></td>
+						</tr>
+					</table>
+				</div>
+				<div align="left" ng-show="filterType == 2">
+					<table>
+						<tr>
+							<td align="right"><input type="text" class="form-control" ng-model="filterMinLikeValue" size="5" placeholder="Min likes"></td>
+							<td align="left"><input type="text" class="form-control" ng-model="filterMaxLikeValue" size="5" placeholder="Max likes"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<input type="checkbox" ng-model="filterMyBooks"> My books
+			</div>
+			</ul>
+		</div>
+	</nav> -->
+	<div id="bookColumn" class="container well well-lg">
+		<table class="table">
+			<tr ng-repeat="book in books" ng-if="passFilter(book)">
+				<td class="col-lg-2" align="center"><div style="padding-left: 0px; padding-right: 0px;">
+						<a href=""><img ng-click="goToBookPage(book)" class="img-responsive img-rounded" width="140" height="220" src={{book.image}}></img></a>
+					</div></td>
+				<td class="col-lg-6" align="left">
+					<div>
+						<div>
+							<a href="" ng-click="goToBookPage(book)" style="color: black;"><u><b>"{{book.bookName}}"</b></u></a>
+						</div>
+						<br>
+						<div>
+							{{shortDescription(book.description)}} <a href="" ng-click="goToBookPage(book)"> (read more) </a>
+						</div>
+						<br>
+						<div>
+							<b>{{book.price}}$</b>
+						</div>
+						<br>
+						<table>
+							<tr>
+								<td>
+									<div ng-switch on="isLiked(book)">
+										<div ng-switch-when="-1">
+											<button id="bookBtn" type="button" class="btn btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+												<span class="glyphicon glyphicon-thumbs-up"></span><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
 											</button>
 										</div>
 										<div ng-switch-default>
-											<button type="button" ng-click="removeFromCart(book)" class="btn-default btn-sm">
-												<span class="glyphicon glyphicon-shopping-cart"></span> Remove From Cart
+											<button id="bookBtn" data-container="body" data-toggle="popover" data-content="test" data-placement="top" type="button" class=" btn btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span></font><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
 											</button>
 										</div>
 									</div>
-								</div>
-								<div ng-switch-default>
-									<button type="button" class="btn-default btn-sm" ng-click="goToReadBook(book)">
-										<span class="glyphicon glyphicon-book"> </span>Read Me!
-									</button>
-								</div>
-							</div>
-						<td>
-					</tr>
-				</table>
+								</td>
+								<td>
+									<div ng-switch on="hasBook(book)">
+										<div ng-switch-when="-1">
+											<div ng-switch on="isOnCart(book)">
+												<div ng-switch-when="0">
+													<button id="bookBtn" type="button" ng-click="addToCart(book)" class=" btn btn-sm">
+														<span class="glyphicon glyphicon-shopping-cart"></span><b> Shopping Cart </b>
+													</button>
+													<button id="bookBtn" type="button" ng-click="buyNow(book)" class=" btn btn-sm">
+														<span class="glyphicon glyphicon-credit-card"></span><b> Buy Now! </b>
+													</button>
+												</div>
+												<div ng-switch-default>
+													<button id="bookBtn" type="button" ng-click="removeFromCart(book)" class=" btn btn-sm">
+														<span class="glyphicon glyphicon-shopping-cart"></span><b> Remove From Cart </b>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div ng-switch-default>
+											<button id="bookBtn" type="button" class=" btn btn-sm" ng-click="goToReadBook(book)">
+												<span class="glyphicon glyphicon-book"> </span><b> Read Me! </b>
+											</button>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</td>
-		</tr>
-	</table>
+			</tr>
+		</table>
+	</div>
 </div>

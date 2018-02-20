@@ -1,11 +1,20 @@
+<style>
+
+#transactionRow {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+
+</style>
+
 <div class="container-fluid" ng-controller="transactionsController">
-	<div>
-		<h4>Transactions:</h4>
+	<div align="center">
+		<h2>Transactions:</h2>
 	</div>
-	<br> <br>
+	<br>
+	<div id="transactionRow" class="well well-lg">
 	<div class="table-responsive">
 		<table class="table table-condensed">
-			<tr>
+			<tr >
 				<th>DATE</th>
 				<th>USERNAME</th>
 				<th>BOOKS</th>

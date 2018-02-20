@@ -20,12 +20,8 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 
 	$scope.goToBookPage = function(book) {
 		$rootScope.book = book;
-		if($rootScope.rootLogedUser.affiliation == "Admin" ){
-			$rootScope.rootAdminPath = "HTML/bookPage.html";
-		}
-		else{
-			$rootScope.path = "HTML/bookPage.html";
-		}
+		
+		$rootScope.path = "HTML/bookPage.html";
 	}
 
 	$scope.goToReadBook = function(book) {

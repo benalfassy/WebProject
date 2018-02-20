@@ -1,5 +1,7 @@
 app.controller('reviewsMessagesController', function($rootScope, $scope, $http) {
 	
+	$scope.reviews = $rootScope.rootReviews;
+	
 	$scope.approveReview = function(review){
 		
 		review.isApproved = 1;

@@ -1,10 +1,20 @@
-<div>
+<style>
+#messages {
+	background-color: rgba(255, 255, 255, 0.6);
+}
+</style>
+
+
+<div class="container" ng-controller="userProfileController">
 	<br>
+	<div align="center">
+	 <h2><b>Inbox:</b></h2>
+	</div>
 	<table class="table table-condensed">
 		<tr ng-repeat="message in messages" ng-if="isForMe(message)">
 			<td class="col-lg-3">
 				<div align="left" class="media-body">
-					<div class="well well-lg">
+					<div id="messages" class="well well-lg">
 						<div style="display: inline-block">
 							<div>
 								<h4 class="text-uppercase">From: {{message.from}}</h4>

@@ -1,8 +1,22 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="userProfileController">
 	<div class="container-fluid">
 		<a class="navbar-left"><img src="Images/logo3.png"></a>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="" ng-click="nav('HTML/userProfile.html')"><span class="glyphicon glyphicon-user"> </span><i class="fa fa-home"></i>{{logedUser.username}} <font color="blue">{{usertNavDisplay()}}</font></a></li>
+			<li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expendad="false"><span class="glyphicon glyphicon-user"> </span><i class="fa fa-home"></i>{{logedUser.username}} <span class="caret"></span> <font color="blue">{{usertNavDisplay()}}</font></a>
+				<ul class="dropdown-menu">
+					<li align="center"><h5>
+							<i class="glyphicon glyphicon-user"></i> <small><b>MY ACCOUNT</b></small>
+						</h5></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="" ng-click="nav('HTML/myDetails.html')">Account Details</a></li>
+					<li><a href="" ng-click="nav('HTML/userMessages.html'); updateMessagesStatus();">My Messages <font color="blue">{{messagesNavDisplay()}}</font></a></li>
+					<li role="separator" class="divider"></li>
+					<li align="center"><h5>
+							<i class="glyphicon glyphicon-envelope""></i> <small><b>HELP ME!</b></small>
+						</h5></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="" ng-click="nav('HTML/helpMe.html')">Contact Us</a></li>
+				</ul></li>
 			<li><a href="" ng-click="nav('HTML/userHome.html')"><span class="glyphicon glyphicon-home"></span><i class="fa fa-home"></i>Home</a></li>
 			<li><a href="" ng-click="nav('HTML/myBooks.html')"><span class="glyphicon glyphicon-book"></span><i class="fa fa-home"></i> My Books</a></li>
 			<li><a href="" ng-click="nav('HTML/shoppingCart.html')"><span class="glyphicon glyphicon-shopping-cart"></span><i class="fa fa-comment"></i> Cart <font color="blue">{{cartNavDisplay()}}</font></a></li>
@@ -10,3 +24,4 @@
 		</ul>
 	</div>
 </nav>
+<!-- ng-click="nav('HTML/userProfile.html')" -->
