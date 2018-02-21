@@ -1,15 +1,13 @@
 <style>
-#bookBtn {
+.bookBtn {
 	border-radius: 7px;
 	background-color: rgba(253, 216, 53, 0.7);
 	color: white;
 	margin-right: 5px;
 }
 
-
-.nav .active a{
-background-color: rgba(253, 216, 53, 0.7)!important;
-
+.nav .active a {
+	background-color: rgba(253, 216, 53, 0.7) !important;
 }
 
 #bookLi {
@@ -17,6 +15,54 @@ background-color: rgba(253, 216, 53, 0.7)!important;
 	color: white;
 }
 
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	color: black;
+	position: absolute;
+	display: none;
+	min-width: 122px;
+	padding: 1px;
+	background-color: rgba(255, 255, 255, 0.9);
+	text-align: center;
+	z-index: 1;
+	top: 110%;
+	left: 50%;
+	margin-left: -60px;
+	box-shadow: 0px 8px 16px 0px white;
+	border-radius: 10px;
+	position: absolute;
+}
+
+.dropdown-content a {
+	padding: 8px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	color: #99A3A4;
+	text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+	visibility: visible;
+}
+
+.dropdown .dropdown-content::after {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent transparent white transparent;
+}
 
 </style>
 <div class="container" ng-controller="bookPageController">
@@ -39,14 +85,33 @@ background-color: rgba(253, 216, 53, 0.7)!important;
 								<div>
 									<div ng-switch on="isLiked()">
 										<div ng-switch-when="-1">
-											<button id="bookBtn" data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn btn-sm" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
-												<span class="glyphicon glyphicon-thumbs-up"></span> Like {{(book.likes.length)>0? book.likes.length : ""}}
+											<button id="{{book.bookName}}" type="button" class="btn btn-sm bookBtn dropdown dropmenu" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+												<span class="glyphicon glyphicon-thumbs-up"></span><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
+												<div ng-show="book.likes.length > 0" class="dropdown-content" id="{{book.bookName}}-likesContent">
+													<div ng-switch on="isAdmin()">
+														<div ng-switch-when="true">
+															<a href="" ng-repeat="nickName in book.likes" ng-click="goToCustomerPage(nickName)"><b>{{nickName}}</b></a>
+														</div>
+														<div ng-switch-default>
+															<div ng-repeat="nickName in book.likes">{{nickName}}</div>
+														</div>
+													</div>
+												</div>
 											</button>
 										</div>
 										<div ng-switch-default>
-											<button id="bookBtn" data-toggle="tooltip" data-placement="top" title={{book.likes}} type="button" class="btn btn-sm" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
-												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span></font> Like {{(book.likes.length)>0? book.likes.length : ""}}
-												
+											<button id="{{book.bookName}}" data-container="body" data-toggle="popover" data-content="test" data-placement="top" type="button" class="btn btn-sm bookBtn dropdown dropmenu" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
+												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span></font><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
+												<div ng-show="book.likes.length > 0" class="dropdown-content" id="{{book.bookName}}-likesContent">
+													<div ng-switch on="isAdmin()">
+														<div ng-switch-when="true">
+															<a href="" ng-repeat="nickName in book.likes" ng-click="goToCustomerPage(nickName)"><b>{{nickName}}</b></a>
+														</div>
+														<div ng-switch-default>
+															<div ng-repeat="nickName in book.likes">{{nickName}}</div>
+														</div>
+													</div>
+												</div>
 											</button>
 										</div>
 									</div>
@@ -57,22 +122,22 @@ background-color: rgba(253, 216, 53, 0.7)!important;
 									<div ng-switch-when="-1">
 										<div ng-switch on="isOnCart(book)">
 											<div ng-switch-when="0">
-												<button id="bookBtn" type="button" ng-click="addToCart()" class="btn btn-sm">
+												<button id="bookBtn" type="button" ng-click="addToCart()" class="btn btn-sm bookBtn">
 													<span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
 												</button>
-												<button id="bookBtn" type="button" ng-click="buyNow()" class="btn btn-sm">
+												<button id="bookBtn" type="button" ng-click="buyNow()" class="btn btn-sm bookBtn">
 													<span class="glyphicon glyphicon-credit-card"></span> Buy Now!
 												</button>
 											</div>
 											<div ng-switch-default>
-												<button id="bookBtn" type="button" ng-click="removeFromCart(book)" class="btn btn-sm">
+												<button id="bookBtn" type="button" ng-click="removeFromCart(book)" class="btn btn-sm bookBtn">
 													<span class="glyphicon glyphicon-shopping-cart"></span> Remove From Cart
 												</button>
 											</div>
 										</div>
 									</div>
 									<div ng-switch-default>
-										<button id="bookBtn" type="button" class="btn btn-sm" ng-click="goToReadBook()">
+										<button id="bookBtn" type="button" class="btn btn-sm bookBtn" ng-click="goToReadBook()">
 											<span class="glyphicon glyphicon-book"> </span>Read Me!
 										</button>
 									</div>

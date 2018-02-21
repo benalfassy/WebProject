@@ -247,11 +247,11 @@ public class BooksServlet extends HttpServlet implements Closeable
 		    
 		    if (likeRequest.getIsLike())
 		    {
-			likesArray.add(likeRequest.getUsername());
+			likesArray.add(likeRequest.getNickName());
 		    }
 		    else
 		    {
-			likesArray.removeIf(username -> username.equals(likeRequest.getUsername()));
+			likesArray.removeIf(username -> username.equals(likeRequest.getNickName()));
 		    }
 		
 		    

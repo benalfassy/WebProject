@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.UUID;
 
 import javax.naming.Context;
@@ -99,7 +101,7 @@ public class TransactionsServlet extends HttpServlet implements Closeable
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 	try
-	{	    
+	{
 	    Gson gson = new Gson();
 	    
 	    String uri = request.getRequestURI();
@@ -114,7 +116,7 @@ public class TransactionsServlet extends HttpServlet implements Closeable
 	    else
 	    {
 		
-		Collection<Transaction> transactionsResult = new ArrayList<Transaction>();
+		ArrayList<Transaction> transactionsResult = new ArrayList<Transaction>();
 		
 		Statement stmt;
 		
@@ -138,7 +140,9 @@ public class TransactionsServlet extends HttpServlet implements Closeable
 		
 		stmt.close();
 		
-		// convert from customers collection to json
+		transactionsResult.sort(Comparator.comparing(tr -> tr.getDate()));
+		
+		Collections.reverse(transactionsResult);
 		
 		String reviewsJsonResult = gson.toJson(transactionsResult, AppConstants.TRANSACTION_COLLECTION);
 		
@@ -190,11 +194,11 @@ public class TransactionsServlet extends HttpServlet implements Closeable
 	    pstmt.setString(2, transaction.getDate().toString());
 	    pstmt.setString(3, gson.toJson(transaction.getBookList()));
 	    pstmt.setInt(4, transaction.getTotalPrice());
-	   
+	    
 	    pstmt.executeUpdate();
 	    
 	    connection.commit();
-	    	    
+	    
 	    pstmt.close();
 	    
 	}

@@ -1,1 +1,11 @@
-[{"messageId" : "243598123123213","from" : "Books For All", "to" : "ben", "reviewerUsername" : "ben", "content" : "Welcome to Books For All!", "date" : "2018-02-13", "isViewed" : "0"}]
+[
+	{
+		"messageId": "243598123123213",
+		"from": "Books For All",
+		"to": "ben",
+		"reviewerUsername": "ben",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-13",
+		"isViewed": "0"
+	}
+]

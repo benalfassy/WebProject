@@ -61,7 +61,12 @@ app.controller('customerPageController', function($http, $scope, $rootScope) {
 		res.success(function(data, status, headers, config) {
 			var index = $scope.customers.indexOf($scope.customer);
 			$scope.customers.splice(index, 1);
-			$rootScope.rootAdminPath = "HTML/usersPage.html";
+			
+			$http.get('messages').success(function(data, status, headers, config) {
+				$rootScope.rootMessages = data;
+			});
+			
+			$rootScope.path = "HTML/usersPage.html";
 		});
 
 		res.error(function(data, status, headers, config) {

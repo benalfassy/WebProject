@@ -3,34 +3,36 @@
 	background-color: rgba(255, 255, 255, 0.6);
 }
 </style>
-
-
 <div class="container" ng-controller="userProfileController">
 	<br>
 	<div align="center">
-	 <h2><b>Inbox:</b></h2>
+		<h2>
+			<b>Inbox:</b>
+		</h2>
 	</div>
-	<table class="table table-condensed">
-		<tr ng-repeat="message in messages" ng-if="isForMe(message)">
-			<td class="col-lg-3">
-				<div align="left" class="media-body">
-					<div id="messages" class="well well-lg">
-						<div style="display: inline-block">
-							<div>
-								<h4 class="text-uppercase">From: {{message.from}}</h4>
+	<div class="scrollable">
+		<table class="table table-condensed">
+			<tr ng-repeat="message in messages" ng-if="isForMe(message)">
+				<td class="col-lg-3">
+					<div align="left" class="media-body">
+						<div id="messages" class="well well-lg">
+							<div style="display: inline-block">
+								<div>
+									<h4 class="text-uppercase">From: {{message.from}}</h4>
+								</div>
+								<div>
+									<h5 class="text-uppercase">{{message.date}}</h5>
+								</div>
 							</div>
-							<div>
-								<h5 class="text-uppercase">{{message.date}}</h5>
-							</div>
+							<h5 style="font-weight: normal;">{{message.content}}</h5>
 						</div>
-						<h5 style="font-weight: normal;">{{message.content}}</h5>
 					</div>
-				</div>
-			</td>
-			<td class="col-lg-2"><br> <br>
-				<button type="button" ng-click="deleteMsg(message)" class="btn-danger btn">
-					<span class="glyphicon glyphicon-remove"></span> Delete Message
-				</button></td>
-		</tr>
-	</table>
+				</td>
+				<td class="col-lg-2"><br> <br>
+					<button type="button" ng-click="deleteMsg(message)" class="btn-danger btn">
+						<span class="glyphicon glyphicon-remove"></span> Delete Message
+					</button></td>
+			</tr>
+		</table>
+	</div>
 </div>

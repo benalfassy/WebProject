@@ -4,6 +4,8 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 	
 	$scope.filterType = 0;
 	
+	$scope.filterMyBooks = false;
+	
 	$scope.filterMinValue = "";
 	
 	$scope.filterMaxValue = "";
@@ -16,7 +18,35 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		
 	getResult.success(function(data, status, headers, config) {
 		$scope.books = data;
+		
+		angular.forEach(data,function(book){
+			
+			$("#"+book.bookName).mouseover(function(){
+				$("#"+book.bookName+"-likesContent").show();
+			});
+			
+		    $("#"+book.bookName).mouseout(function(){
+		        $("#"+book.bookName+"-likesContent").hide();
+		    });
+		})
 	});
+	
+	$scope.goToCustomerPage = function(nickName){
+		
+		$http.get('customers').success(function(data, status, headers, config) {
+			
+			$rootScope.customers = data;
+			
+			angular.forEach(data,function(customer){
+				if(customer.nickName == nickName){
+					$rootScope.customer = customer;
+				}
+			})
+		});
+		
+		$rootScope.path = "HTML/customerPage.html";
+
+	}
 
 	$scope.goToBookPage = function(book) {
 		$rootScope.book = book;
@@ -70,7 +100,7 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 	}
 
 	$scope.isLiked = function(book) {
-		return $.inArray($rootScope.rootLogedUser.username, book.likes);
+		return $.inArray($rootScope.rootLogedUser.nickName, book.likes);
 	}
 
 	$scope.doLike = function(book) {
@@ -78,12 +108,12 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		var likeRequest = {
 			isLike : true,
 			bookName : book.bookName,
-			username : $rootScope.rootLogedUser.username
+			nickName : $rootScope.rootLogedUser.nickName
 		}
 
 		var res = $http.put("books", likeRequest);
 		res.success(function(data, status, headers, config) {
-			book.likes.push($rootScope.rootLogedUser.username);
+			book.likes.push($rootScope.rootLogedUser.nickName);
 		});
 	}
 
@@ -92,13 +122,13 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		var likeRequest = {
 			isLike : false,
 			bookName : book.bookName,
-			username : $rootScope.rootLogedUser.username
+			nickName : $rootScope.rootLogedUser.nickName
 		}
 
 		var res = $http.put("books", likeRequest);
 		
 		res.success(function(data, status, headers, config) {
-			var index = book.likes.indexOf($rootScope.rootLogedUser.username);
+			var index = book.likes.indexOf($rootScope.rootLogedUser.nickName);
 			book.likes.splice(index, 1);
 		});
 	}
@@ -119,6 +149,9 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 	}
 	
 	$scope.passFilter = function(book){
+		if($scope.filterMyBooks == true && $scope.hasBook(book) == -1){
+			return false;
+		}
 		if($scope.filterType == 0){
 			return filterByName(book);
 		}
@@ -127,28 +160,44 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		}
 		if($scope.filterType == 2){
 			return filterByLike(book);
-			return true;
 		}
+		return true;
 	}
 	
 	var filterByName = function(book){
 		if($scope.filterNameValue == ""){
 			return true;
 		}
-		return book.bookName.indexOf($scope.filterNameValue) !== -1;	
+		return angular.lowercase(book.bookName).indexOf(angular.lowercase($scope.filterNameValue)) !== -1;	
 	}
 	
 	var filterByPrice = function(book){
-		if($scope.filterMinValue == "" || $scope.filterMaxValue == ""){
-			return true;
+		
+		var min = $scope.filterMinValue;
+		var max = $scope.filterMaxValue;
+		
+		if($scope.filterMinValue == ""){
+			min = -Infinity;
 		}
-		return book.price >= $scope.filterMinValue && book.price <=  $scope.filterMaxValue;
+		if($scope.filterMaxValue == ""){
+			max = Infinity;
+		}
+		
+		return book.price >= min && book.price <=  max;
 	}
 	
 	var filterByLike = function(book){
-		if($scope.filterMinLikeValue == "" || $scope.filterMaxLikeValue == ""){
-			return true;
+		
+		var min = $scope.filterMinLikeValue;
+		var max = $scope.filterMaxLikeValue;
+		
+		if($scope.filterMinLikeValue == ""){
+			min = -Infinity;
 		}
-		return book.likes.length >= $scope.filterMinLikeValue && book.likes.length <=  $scope.filterMaxLikeValue;
+		if($scope.filterMaxLikeValue == ""){
+			max = Infinity;
+		}
+		
+		return book.likes.length >= min && book.likes.length <=  max;
 	}
 });

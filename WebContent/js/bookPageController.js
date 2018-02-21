@@ -6,6 +6,14 @@ app
 					$('[data-toggle="tooltip"]').tooltip();
 
 					$scope.book = $rootScope.book;
+					
+					$("#"+$scope.book.bookName).mouseover(function(){
+						$("#"+$scope.book.bookName+"-likesContent").show();
+					});
+					
+				    $("#"+$scope.book.bookName).mouseout(function(){
+				        $("#"+$scope.book.bookName+"-likesContent").hide();
+				    });
 
 					$scope.bookPageBoxPath = "HTML/bookDescription.html";
 
@@ -76,7 +84,7 @@ app
 
 					$scope.isLiked = function() {
 
-						return $.inArray($rootScope.rootLogedUser.username, $scope.book.likes);
+						return $.inArray($rootScope.rootLogedUser.nickName, $scope.book.likes);
 					}
 
 					$scope.doLike = function() {
@@ -84,12 +92,12 @@ app
 						var likeRequest = {
 							isLike : true,
 							bookName : $scope.book.bookName,
-							username : $rootScope.rootLogedUser.username
+							nickName : $rootScope.rootLogedUser.nickName
 						}
 
 						var res = $http.put("books", likeRequest);
 						res.success(function(data, status, headers, config) {
-							$scope.book.likes.push($rootScope.rootLogedUser.username);
+							$scope.book.likes.push($rootScope.rootLogedUser.nickName);
 						});
 					}
 
@@ -98,13 +106,13 @@ app
 						var likeRequest = {
 							isLike : false,
 							bookName : $scope.book.bookName,
-							username : $rootScope.rootLogedUser.username
+							nickName : $rootScope.rootLogedUser.nickName
 						}
 
 						var res = $http.put("books", likeRequest);
 						
 						res.success(function(data, status, headers, config) {
-							var index = $scope.book.likes.indexOf($rootScope.rootLogedUser.username);
+							var index = $scope.book.likes.indexOf($rootScope.rootLogedUser.nickName);
 							$scope.book.likes.splice(index, 1);
 						});
 					}
@@ -127,5 +135,22 @@ app
 							}));
 							
 						});
+					}
+					
+					$scope.goToCustomerPage = function(nickName){
+						
+						$http.get('customers').success(function(data, status, headers, config) {
+							
+							$rootScope.customers = data;
+							
+							angular.forEach(data,function(customer){
+								if(customer.nickName == nickName){
+									$rootScope.customer = customer;
+								}
+							})
+						});
+						
+						$rootScope.path = "HTML/customerPage.html";
+
 					}
 				});

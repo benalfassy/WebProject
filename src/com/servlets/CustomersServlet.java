@@ -73,7 +73,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	BasicDataSource ds = (BasicDataSource) context
 		.lookup(getServletContext().getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.OPEN);
-		
+	
 	connection = ds.getConnection();
     }
     
@@ -344,7 +344,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
     
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
-    {	
+    {
+	Gson gson = new GsonBuilder().create();
+	
 	String uri = request.getRequestURI();
 	
 	if (uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) == -1)
@@ -355,6 +357,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	
 	String username = uri
 		.substring(uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) + AppConstants.CUSTOMERS_RESTFULL.length());
+	
+	String nickName;
+	
+	System.out.println("--------------------------------------");
+	System.out.println("trying to delete username: " + username);
+	System.out.println("--------------------------------------");
 	
 	PreparedStatement pstmt;
 	try
@@ -381,6 +389,8 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    {
 		resultSet.next();
 		
+		nickName = resultSet.getString(9);
+		
 		resultSet.deleteRow();
 		
 		resultSet.close();
@@ -388,6 +398,72 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		pstmt.close();
 	    }
 	    
+	    System.out.println("--------------------------------------");
+	    System.out.println("trying to delete " + username + "'s likes");
+	    System.out.println("--------------------------------------");
+	    
+	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+		    ResultSet.CONCUR_UPDATABLE);
+	    
+	    ResultSet likesResultSet = statement.executeQuery("SELECT * FROM BOOKS");
+	    
+	    while (likesResultSet.next())
+	    {
+		ArrayList<String> likesArray = gson.fromJson(likesResultSet.getString(5),
+			AppConstants.ARRAYLISTSTRING_COLLECTION);
+		
+		likesArray.removeIf(nick -> nick.equals(nickName));
+		
+		likesResultSet.updateString(5, gson.toJson(likesArray));
+		
+		likesResultSet.updateRow();
+	    }
+	    
+	    likesResultSet.close();
+	    
+	    statement.close();
+	    
+	    System.out.println("--------------------------------------");
+	    System.out.println("trying to delete " + username + "'s messages");
+	    System.out.println("--------------------------------------");
+	    
+	    statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    
+	    ResultSet messagesResultSet = statement.executeQuery(AppConstants.SELECT_ALL_MESSAGES_STMT);
+	    
+	    while (messagesResultSet.next())
+	    {
+		if (messagesResultSet.getString(2).equals(username) || messagesResultSet.getString(3).equals(username))
+		{
+		    messagesResultSet.deleteRow();
+		}
+	    }
+	    
+	    messagesResultSet.close();
+	    
+	    statement.close();
+	    
+	    System.out.println("--------------------------------------");
+	    System.out.println("trying to delete " + username + "'s reviews");
+	    System.out.println("--------------------------------------");
+	    
+	    statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+	    
+	    ResultSet reviewsResultSet = statement.executeQuery(AppConstants.SELECT_ALL_REVIEWS_STMT);
+	    
+	    while (reviewsResultSet.next())
+	    {
+		if (reviewsResultSet.getString(4).equals(username))
+		{
+		    reviewsResultSet.deleteRow();
+		}
+	    }
+	    
+	    reviewsResultSet.close();
+	    
+	    statement.close();
+	    
+	    System.out.println("finished delete " + username);
 	}
 	catch (SQLException | NamingException e)
 	{
@@ -405,8 +481,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	LocalDate date = LocalDate.now();
 	
-	
-	
 	Gson gson = new Gson();
 	
 	String result = gson.toJson(date);
@@ -414,7 +488,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	System.out.println(result);
 	
 	date = gson.fromJson(result, LocalDate.class);
-	
 	
 	System.out.println(result);
 	

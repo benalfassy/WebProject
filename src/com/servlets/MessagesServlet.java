@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,8 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.UUID;
 
 import javax.naming.Context;
@@ -22,6 +25,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.derby.tools.dblook;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
@@ -149,7 +153,7 @@ public class MessagesServlet extends HttpServlet implements Closeable
 	    else
 	    {
 		
-		Collection<Message> messagesResult = new ArrayList<Message>();
+		ArrayList<Message> messagesResult = new ArrayList<Message>();
 		
 		Statement stmt;
 		
@@ -169,6 +173,10 @@ public class MessagesServlet extends HttpServlet implements Closeable
 		
 		stmt.close();
 		
+		messagesResult.sort(Comparator.comparing(msg -> LocalDate.parse(msg.getDate())));
+		
+		Collections.reverse(messagesResult);
+				
 		Gson gson = new Gson();
 		
 		// convert from message collection to json

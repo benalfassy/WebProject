@@ -4,13 +4,13 @@ public class LikeRequest
 {
     private boolean isLike;
     
-    private String username;
+    private String nickName;
     
     private String bookName;
     
-    public LikeRequest(String username, String bookName, boolean isLike)
+    public LikeRequest(String nickName, String bookName, boolean isLike)
     {
-	this.username = username;
+	this.nickName = nickName;
 	this.bookName = bookName;
 	this.isLike = isLike;
     }
@@ -20,9 +20,9 @@ public class LikeRequest
 	return bookName;
     }
     
-    public String getUsername()
+    public String getNickName()
     {
-	return username;
+	return nickName;
     }
     
     public boolean getIsLike()

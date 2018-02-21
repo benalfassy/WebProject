@@ -5,27 +5,32 @@
 	border-radius: 0;
 	height: 100%;
 	left: 0;
-	
 }
 
 .navbar-fixed-left .navbar-nav>li {
 	float: none; /* Cancel default li float: left */
 	width: 118px;
 }
+
+#bookRead {
+	background-color: rgba(255, 255, 255, 0.9);
+}
 </style>
 <div class="container" ng-controller="readBookController">
 	<table class="table table-condensed">
 		<tr>
-			<td class="col-lg-1">
-				<div class="navbar navbar-default navbar-fixed-left">
+			<td class="col-md-1">
+				<div id="bookRead" class="navbar navbar-default navbar-fixed-left">
 					<ul class="nav navbar-nav">
-						<li><a href="" ng-click="goToBookPage()"> Go To Book Page</a></li>
-						<li><a href="" ng-click="goToLastScroll()"> Jump to where you stopped</a></li>
+						<li><a href="" ng-click="goToBookPage()"><span class="glyphicon glyphicon-book"></span> Book Page</a></li>
+						<li ng-show="!isAdmin()"><a href="" ng-click="goToLastScroll()"> Jump to where you stopped</a></li>
 					</ul>
 				</div>
 			</td>
-			<td class="col-lg-11">
-				<div ng-include="book.bookPath"></div>
+			<td class="col-md-11">
+				<div class="well well-lg" id="bookRead">
+					<div ng-include="book.bookPath"></div>
+				</div>
 			</td>
 		</tr>
 	</table>

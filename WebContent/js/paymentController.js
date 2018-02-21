@@ -68,7 +68,7 @@ app.controller('paymentController', function($http, $scope, $rootScope) {
 					totalPrice : $scope.amountToPay(),
 					date : {
 						year : today.getFullYear(),
-						month : today.getMonth(),
+						month : today.getMonth()+1,
 						day: today.getDate()
 					}
 			}

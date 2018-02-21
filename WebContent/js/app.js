@@ -13,6 +13,8 @@ app.controller('appController', function($http, $scope, $rootScope) {
 	$scope.logedUser = null;
 
 	$rootScope.customers = null;
+	
+	$rootScope.customer = null;
 
 	$rootScope.rootCartBooks = [];
 	$rootScope.rootBuyNow = [];

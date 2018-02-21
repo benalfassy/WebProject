@@ -33,8 +33,9 @@
 					<form role="form" name="form">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="form-group" ng-class="{ 'has-error': form.cardHolder.$dirty && form.cardHolder.$error.required }">
-									<label for="cardHolder">CARD HOLDER</label> <input type="text" id="cardHolder" name="cardHolder" class="form-control" ng-model="cardHolder" required maxlength="50" /> <span ng-show="form.cardHolder.$dirty && form.cardHolder.$error.required" class="help-block">Card holder is required</span>
+								<div class="form-group" ng-class="{ 'has-error': form.cardHolder.$dirty && (form.cardHolder.$error.required || form.cardHolder.$error.pattern) }">
+									<label for="cardHolder">CARD HOLDER</label> <input type="text" id="cardHolder" name="cardHolder" class="form-control" ng-model="cardHolder" ng-pattern="/^[a-zA-Z]{1,30}$/" required maxlength="50" /> <span ng-show="form.cardHolder.$dirty && form.cardHolder.$error.required" class="help-block">Card holder is required</span>
+									<span ng-show="form.cardHolder.$dirty && form.cardHolder.$error.pattern" class="help-block">Card holder name is not valid</span>
 								</div>
 							</div>
 						</div>

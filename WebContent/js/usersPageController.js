@@ -19,7 +19,7 @@ app.controller('usersPageController', function($http, $scope, $rootScope) {
 	$scope.goToCustomerPage = function(customer) {
 		$rootScope.customer = customer;
 		$rootScope.customers = $scope.customers;
-		$rootScope.rootAdminPath = "HTML/customerPage.html";
+		$rootScope.path = "HTML/customerPage.html";
 	}
 	
 	$scope.getPhoto = function(customer)
@@ -34,6 +34,11 @@ app.controller('usersPageController', function($http, $scope, $rootScope) {
 		res.success(function(data, status, headers, config) {
 			var index = $scope.customers.indexOf(customer);
 			$scope.customers.splice(index, 1);
+			
+			$http.get('messages').success(function(data, status, headers, config) {
+				$rootScope.rootMessages = data;
+			});
+			
 		});
 
 		res.error(function(data, status, headers, config) {
