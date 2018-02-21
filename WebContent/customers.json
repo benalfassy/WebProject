@@ -1,289 +1,914 @@
 [
-	{
-		"username": "admin",
-		"email": "Admin",
-		"street": "Admin",
-		"streetNum": "Admin",
-		"city": "Admin",
-		"zipCode": "Admin",
-		"phoneNum": "Admin",
-		"password": "Passw0rd",
-		"nickName": "AAAadmin",
-		"description": "The Admin",
-		"photo": "Admin",
-		"affiliation": "Admin",
-		"myBooks": null,
-		"bookScroll": []
-	},
-	{
-		"username": "adi",
-		"email": "adi@gmail",
-		"street": "ribuv",
-		"streetNum": "12",
-		"city": "haifa",
-		"zipCode": "2345674",
-		"phoneNum": "0522865659",
-		"password": "Adi",
-		"nickName": "Adidush",
-		"description": "Adiiii",
-		"photo": "Admin",
-		"affiliation": "User",
-		"myBooks": "A Popular School Girl,The Luckiest Girl in The School",
-		"bookScroll": [
-			{
-				"key": "A Popular School Girl",
-				"value": "0"
-			},
-			{
-				"key": "The Luckiest Girl in The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "ben",
-		"email": "benalfasssy@gmail",
-		"street": "hanita",
-		"streetNum": "12",
-		"city": "haifa",
-		"zipCode": "2345123",
-		"phoneNum": "05228245659",
-		"password": "ben",
-		"nickName": "bentheman",
-		"description": "i like stakeboard",
-		"photo": "no have",
-		"affiliation": "User",
-		"myBooks": "The Princess Of The School,Chester Rand",
-		"bookScroll": [
-			{
-				"key": "The Princess Of The School",
-				"value": "0"
-			},
-			{
-				"key": "Chester Rand",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "yuval",
-		"email": "yuval@gmail",
-		"street": "hanita",
-		"streetNum": "23",
-		"city": "haifa",
-		"zipCode": "123321",
-		"phoneNum": "05228223659",
-		"password": "yuval",
-		"nickName": "Yuvalll",
-		"description": "books for me",
-		"photo": "yuval",
-		"affiliation": "User",
-		"myBooks": "The Princess Of The School",
-		"bookScroll": [
-			{
-				"key": "The Princess Of The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "bar",
-		"email": "bar@gmail",
-		"street": "silver",
-		"streetNum": "33",
-		"city": "haifa",
-		"zipCode": "211123",
-		"phoneNum": "05212344659",
-		"password": "bar",
-		"nickName": "bar bar",
-		"description": "barrrrrr",
-		"photo": "bar",
-		"affiliation": "User",
-		"myBooks": "Dan The News Boy,Little Maid Marian",
-		"bookScroll": [
-			{
-				"key": "Dan The News Boy",
-				"value": "500"
-			},
-			{
-				"key": "Little Maid Marian",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "mor",
-		"email": "mor@gmail",
-		"street": "lebel",
-		"streetNum": "52",
-		"city": "haifa",
-		"zipCode": "215573",
-		"phoneNum": "0521946594",
-		"password": "mor",
-		"nickName": "Mori",
-		"description": "mor the mor",
-		"photo": "mor",
-		"affiliation": "User",
-		"myBooks": "The Flying Girl,The Luckiest Girl in The School",
-		"bookScroll": [
-			{
-				"key": "The Flying Girl",
-				"value": "870"
-			},
-			{
-				"key": "The Luckiest Girl in The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "revital",
-		"email": "revital@gmail",
-		"street": "nesher",
-		"streetNum": "87",
-		"city": "haifa",
-		"zipCode": "555573",
-		"phoneNum": "0551946533",
-		"password": "revital",
-		"nickName": "Revi",
-		"description": "revital for fun",
-		"photo": "mor",
-		"affiliation": "User",
-		"myBooks": "The Flying Girl,The Luckiest Girl in The School",
-		"bookScroll": [
-			{
-				"key": "The Flying Girl",
-				"value": "0"
-			},
-			{
-				"key": "The Luckiest Girl in The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "or",
-		"email": "or@gmail",
-		"street": "yam",
-		"streetNum": "12",
-		"city": "haifa",
-		"zipCode": "555878",
-		"phoneNum": "0512365242",
-		"password": "or",
-		"nickName": "CoolOr",
-		"description": "",
-		"photo": "or",
-		"affiliation": "User",
-		"myBooks": "The Princess Of The School,The Rebel of The School",
-		"bookScroll": [
-			{
-				"key": "The Princess Of The School",
-				"value": "1100"
-			},
-			{
-				"key": "The Rebel of The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "shay",
-		"email": "shay@gmail",
-		"street": "wegwud",
-		"streetNum": "15",
-		"city": "haifa",
-		"zipCode": "322878",
-		"phoneNum": "0512366642",
-		"password": "shay",
-		"nickName": "barcaa",
-		"description": "barcaaaaa",
-		"photo": "shay",
-		"affiliation": "User",
-		"myBooks": "The Princess Of The School,The Rebel of The School",
-		"bookScroll": [
-			{
-				"key": "The Princess Of The School",
-				"value": "1100"
-			},
-			{
-				"key": "The Rebel of The School",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "galit",
-		"email": "galit@gmail",
-		"street": "wegwud",
-		"streetNum": "15",
-		"city": "haifa",
-		"zipCode": "322878",
-		"phoneNum": "0527492011",
-		"password": "galit",
-		"nickName": "real-madrid",
-		"description": "barcaaaaa",
-		"photo": "galit",
-		"affiliation": "User",
-		"myBooks": "A Popular School Girl,Chester Rand",
-		"bookScroll": [
-			{
-				"key": "A Popular School Girl",
-				"value": "0"
-			},
-			{
-				"key": "Chester Rand",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "zidan",
-		"email": "zidan@gmail",
-		"street": "madrid",
-		"streetNum": "5",
-		"city": "madrid",
-		"zipCode": "322666",
-		"phoneNum": "0527494444",
-		"password": "zidan",
-		"nickName": "zizu",
-		"description": "real-madrid",
-		"photo": "zidan",
-		"affiliation": "User",
-		"myBooks": "Dan The News Boy,Chester Rand",
-		"bookScroll": [
-			{
-				"key": "Dan The News Boy",
-				"value": "0"
-			},
-			{
-				"key": "Chester Rand",
-				"value": "0"
-			}
-		]
-	},
-	{
-		"username": "hila",
-		"email": "hila@gmail",
-		"street": "gefen",
-		"streetNum": "7",
-		"city": "haifa",
-		"zipCode": "112666",
-		"phoneNum": "0527403652",
-		"password": "zidan",
-		"nickName": "hilalu",
-		"description": "pizzaaa",
-		"photo": "hila",
-		"affiliation": "User",
-		"myBooks": "Dan The News Boy,Little Maid Marian",
-		"bookScroll": [
-			{
-				"key": "Dan The News Boy",
-				"value": "0"
-			},
-			{
-				"key": "Little Maid Marian",
-				"value": "0"
-			}
-		]
-	}
+    {
+        "username": "admin",
+        "email": "Admin",
+        "street": "Admin",
+        "streetNum": "Admin",
+        "city": "Admin",
+        "zipCode": "Admin",
+        "phoneNum": "Admin",
+        "password": "Passw0rd",
+        "nickName": "AAAadmin",
+        "description": "The Admin",
+        "photo": "Admin",
+        "affiliation": "Admin",
+        "myBooks": "All",
+        "myBookList": [],
+        "bookScroll": []
+    },
+    {
+        "username": "adi",
+        "email": "adi@gmail",
+        "street": "ribuv",
+        "streetNum": "12",
+        "city": "haifa",
+        "zipCode": "2345674",
+        "phoneNum": "0522865659",
+        "password": "Adi",
+        "nickName": "Adidush",
+        "description": "Adiiii",
+        "photo": "Admin",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,The Luckiest Girl in The School,The Rebel of The School,The Princess Of The School",
+        "myBookList": [
+            "A Popular School Girl",
+            "The Luckiest Girl in The School",
+            "The Rebel of The School",
+            "The Princess Of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "ben",
+        "email": "benalfasssy@gmail",
+        "street": "hanita",
+        "streetNum": "12",
+        "city": "haifa",
+        "zipCode": "2345123",
+        "phoneNum": "05228245659",
+        "password": "ben",
+        "nickName": "bentheman",
+        "description": "i like stakeboard",
+        "photo": "no have",
+        "affiliation": "User",
+        "myBooks": "The Princess Of The School,Chester Rand,A Popular School Girl,The Rebel of The School,Dan The News Boy,The Jolliest School of All",
+        "myBookList": [
+            "The Princess Of The School",
+            "Chester Rand",
+            "A Popular School Girl",
+            "The Rebel of The School",
+            "Dan The News Boy",
+            "The Jolliest School of All"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "yuval",
+        "email": "yuval@gmail",
+        "street": "hanita",
+        "streetNum": "23",
+        "city": "haifa",
+        "zipCode": "123321",
+        "phoneNum": "05228223659",
+        "password": "yuval",
+        "nickName": "Yuvalll",
+        "description": "books for me",
+        "photo": "yuval",
+        "affiliation": "User",
+        "myBooks": "The Princess Of The School,A Popular School Girl,Chester Rand,Dan The News Boy",
+        "myBookList": [
+            "The Princess Of The School",
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "bar",
+        "email": "bar@gmail",
+        "street": "silver",
+        "streetNum": "33",
+        "city": "haifa",
+        "zipCode": "211123",
+        "phoneNum": "05212344659",
+        "password": "bar",
+        "nickName": "bar bar",
+        "description": "barrrrrr",
+        "photo": "bar",
+        "affiliation": "User",
+        "myBooks": "Dan The News Boy,Little Maid Marian,Chester Rand",
+        "myBookList": [
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "Chester Rand"
+        ],
+        "bookScroll": [
+            {
+                "key": "Dan The News Boy",
+                "value": "500"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "mor",
+        "email": "mor@gmail",
+        "street": "lebel",
+        "streetNum": "52",
+        "city": "haifa",
+        "zipCode": "215573",
+        "phoneNum": "0521946594",
+        "password": "mor",
+        "nickName": "Mori",
+        "description": "mor the mor",
+        "photo": "mor",
+        "affiliation": "User",
+        "myBooks": "The Flying Girl,The Luckiest Girl in The School,The Jolliest School of All",
+        "myBookList": [
+            "The Flying Girl",
+            "The Luckiest Girl in The School",
+            "The Jolliest School of All"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Flying Girl",
+                "value": "870"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "revital",
+        "email": "revital@gmail",
+        "street": "nesher",
+        "streetNum": "87",
+        "city": "haifa",
+        "zipCode": "555573",
+        "phoneNum": "0551946533",
+        "password": "revital",
+        "nickName": "Revi",
+        "description": "revital for fun",
+        "photo": "mor",
+        "affiliation": "User",
+        "myBooks": "The Flying Girl,The Luckiest Girl in The School,The Jolliest School of All,The Princess Of The School",
+        "myBookList": [
+            "The Flying Girl",
+            "The Luckiest Girl in The School",
+            "The Jolliest School of All",
+            "The Princess Of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "or",
+        "email": "or@gmail",
+        "street": "yam",
+        "streetNum": "12",
+        "city": "haifa",
+        "zipCode": "555878",
+        "phoneNum": "0512365242",
+        "password": "or",
+        "nickName": "CoolOr",
+        "description": "",
+        "photo": "or",
+        "affiliation": "User",
+        "myBooks": "The Princess Of The School,The Rebel of The School",
+        "myBookList": [
+            "The Princess Of The School",
+            "The Rebel of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Princess Of The School",
+                "value": "1100"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "shay",
+        "email": "shay@gmail",
+        "street": "wegwud",
+        "streetNum": "15",
+        "city": "haifa",
+        "zipCode": "322878",
+        "phoneNum": "0512366642",
+        "password": "shay",
+        "nickName": "barcaa",
+        "description": "barcaaaaa",
+        "photo": "shay",
+        "affiliation": "User",
+        "myBooks": "The Princess Of The School,The Rebel of The School,Dan The News Boy,Little Maid Marian,Red Rose And Tiger Lily,Chester Rand",
+        "myBookList": [
+            "The Princess Of The School",
+            "The Rebel of The School",
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "Red Rose And Tiger Lily",
+            "Chester Rand"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Princess Of The School",
+                "value": "1100"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "galit",
+        "email": "galit@gmail",
+        "street": "wegwud",
+        "streetNum": "15",
+        "city": "haifa",
+        "zipCode": "322878",
+        "phoneNum": "0527492011",
+        "password": "galit",
+        "nickName": "real-madrid",
+        "description": "barcaaaaa",
+        "photo": "galit",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "zidan",
+        "email": "zidan@gmail",
+        "street": "madrid",
+        "streetNum": "5",
+        "city": "madrid",
+        "zipCode": "322666",
+        "phoneNum": "0527494444",
+        "password": "zidan",
+        "nickName": "zizu",
+        "description": "real-madrid",
+        "photo": "zidan",
+        "affiliation": "User",
+        "myBooks": "Dan The News Boy,Chester Rand,Red Rose And Tiger Lily",
+        "myBookList": [
+            "Dan The News Boy",
+            "Chester Rand",
+            "Red Rose And Tiger Lily"
+        ],
+        "bookScroll": [
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "hila",
+        "email": "hila@gmail",
+        "street": "gefen",
+        "streetNum": "7",
+        "city": "haifa",
+        "zipCode": "112666",
+        "phoneNum": "0527403652",
+        "password": "zidan",
+        "nickName": "hilalu",
+        "description": "pizzaaa",
+        "photo": "hila",
+        "affiliation": "User",
+        "myBooks": "Dan The News Boy,Little Maid Marian",
+        "myBookList": [
+            "Dan The News Boy",
+            "Little Maid Marian"
+        ],
+        "bookScroll": [
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "marcelo",
+        "email": "marcelo@gmail.com",
+        "street": "mrca",
+        "streetNum": "44",
+        "city": "eilat",
+        "zipCode": "443355",
+        "phoneNum": "0527492901",
+        "password": "marcelo",
+        "nickName": "marceloooo",
+        "description": "footvall",
+        "affiliation": "User",
+        "myBooks": "The Jolliest School of All,The Luckiest Girl in The School,The Princess Of The School",
+        "myBookList": [
+            "The Jolliest School of All",
+            "The Luckiest Girl in The School",
+            "The Princess Of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "benzema",
+        "email": "benzema@gmaiul.com",
+        "street": "mika",
+        "streetNum": "12",
+        "city": "aviv",
+        "zipCode": "21334",
+        "phoneNum": "0527492922",
+        "password": "benzema",
+        "nickName": "benZeMa",
+        "affiliation": "User",
+        "myBooks": "The Rebel of The School,The Princess Of The School,The Luckiest Girl in The School",
+        "myBookList": [
+            "The Rebel of The School",
+            "The Princess Of The School",
+            "The Luckiest Girl in The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "hashi",
+        "email": "hashi@gmail.com",
+        "street": "burger",
+        "streetNum": "123",
+        "city": "haifa",
+        "zipCode": "123321",
+        "phoneNum": "0527492933",
+        "password": "hashi",
+        "nickName": "Hash",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Little Maid Marian,The Princess Of The School",
+        "myBookList": [
+            "A Popular School Girl",
+            "Little Maid Marian",
+            "The Princess Of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "isashar",
+        "email": "isashar@gmail.com",
+        "street": "sheva",
+        "streetNum": "12",
+        "city": "haifa",
+        "zipCode": "44332",
+        "phoneNum": "0527492111",
+        "password": "isashar",
+        "nickName": "Isashar",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,Dan The News Boy",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "adir",
+        "email": "miler@gmail.com",
+        "street": "bokoly",
+        "streetNum": "123",
+        "city": "haifa",
+        "zipCode": "123321",
+        "phoneNum": "0527491112",
+        "password": "adir",
+        "nickName": "AdirMiler",
+        "affiliation": "User",
+        "myBooks": "The Flying Girl,The Jolliest School of All,The Luckiest Girl in The School",
+        "myBookList": [
+            "The Flying Girl",
+            "The Jolliest School of All",
+            "The Luckiest Girl in The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "yossi",
+        "email": "yosi@gmail.com",
+        "street": "shlomi",
+        "streetNum": "123",
+        "city": "haifa",
+        "zipCode": "12332",
+        "phoneNum": "0512353421",
+        "password": "yossi",
+        "nickName": "Yossi!!!",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,Dan The News Boy,Little Maid Marian,Red Rose And Tiger Lily,The Flying Girl",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "Red Rose And Tiger Lily",
+            "The Flying Girl"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            },
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "reader",
+        "email": "reader@gmail.com",
+        "street": "radar",
+        "streetNum": "123",
+        "city": "rodrim",
+        "zipCode": "55445",
+        "phoneNum": "0527411225",
+        "password": "reader",
+        "nickName": "ReaderForAll",
+        "affiliation": "User",
+        "myBooks": "The Luckiest Girl in The School,The Jolliest School of All,The Flying Girl,Red Rose And Tiger Lily,Little Maid Marian,Dan The News Boy",
+        "myBookList": [
+            "The Luckiest Girl in The School",
+            "The Jolliest School of All",
+            "The Flying Girl",
+            "Red Rose And Tiger Lily",
+            "Little Maid Marian",
+            "Dan The News Boy"
+        ],
+        "bookScroll": [
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "Eli",
+        "email": "eli@gmail.com",
+        "street": "silver",
+        "streetNum": "59",
+        "city": "haifa",
+        "zipCode": "53212",
+        "phoneNum": "0523532154",
+        "password": "eli",
+        "nickName": "eliG",
+        "description": "readerrrrrrr",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,The Rebel of The School,The Princess Of The School,The Luckiest Girl in The School",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "The Rebel of The School",
+            "The Princess Of The School",
+            "The Luckiest Girl in The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "MegaReader",
+        "email": "MegaReader@read.com",
+        "street": "read",
+        "streetNum": "123",
+        "city": "Book",
+        "zipCode": "55555",
+        "phoneNum": "0514145141",
+        "password": "MegaRead",
+        "nickName": "MegaReaderrr",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,Dan The News Boy,Little Maid Marian,Red Rose And Tiger Lily,The Flying Girl,The Jolliest School of All,The Luckiest Girl in The School,The Princess Of The School,The Rebel of The School",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "Red Rose And Tiger Lily",
+            "The Flying Girl",
+            "The Jolliest School of All",
+            "The Luckiest Girl in The School",
+            "The Princess Of The School",
+            "The Rebel of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            },
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "picaso",
+        "email": "picaso@walla.com",
+        "street": "silver",
+        "streetNum": "15",
+        "city": "haifa",
+        "zipCode": "66446",
+        "phoneNum": "0556753234",
+        "password": "picaso",
+        "nickName": "Picaso",
+        "description": "paint and read",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,Dan The News Boy,Little Maid Marian,The Rebel of The School,The Princess Of The School,The Luckiest Girl in The School,The Jolliest School of All",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "The Rebel of The School",
+            "The Princess Of The School",
+            "The Luckiest Girl in The School",
+            "The Jolliest School of All"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            }
+        ]
+    },
+    {
+        "username": "reviewer",
+        "email": "reviewr@r.com",
+        "street": "elaor",
+        "streetNum": "52",
+        "city": "yafim",
+        "zipCode": "33122",
+        "phoneNum": "0565654323",
+        "password": "reviewer",
+        "nickName": "TheReviewer",
+        "description": "I read everything!!!",
+        "affiliation": "User",
+        "myBooks": "A Popular School Girl,Chester Rand,Dan The News Boy,Little Maid Marian,Red Rose And Tiger Lily,The Flying Girl,The Jolliest School of All,The Luckiest Girl in The School,The Princess Of The School,The Rebel of The School",
+        "myBookList": [
+            "A Popular School Girl",
+            "Chester Rand",
+            "Dan The News Boy",
+            "Little Maid Marian",
+            "Red Rose And Tiger Lily",
+            "The Flying Girl",
+            "The Jolliest School of All",
+            "The Luckiest Girl in The School",
+            "The Princess Of The School",
+            "The Rebel of The School"
+        ],
+        "bookScroll": [
+            {
+                "key": "A Popular School Girl",
+                "value": "0"
+            },
+            {
+                "key": "Chester Rand",
+                "value": "0"
+            },
+            {
+                "key": "Dan The News Boy",
+                "value": "0"
+            },
+            {
+                "key": "Little Maid Marian",
+                "value": "0"
+            },
+            {
+                "key": "Red Rose And Tiger Lily",
+                "value": "0"
+            },
+            {
+                "key": "The Flying Girl",
+                "value": "0"
+            },
+            {
+                "key": "The Jolliest School of All",
+                "value": "0"
+            },
+            {
+                "key": "The Luckiest Girl in The School",
+                "value": "0"
+            },
+            {
+                "key": "The Princess Of The School",
+                "value": "0"
+            },
+            {
+                "key": "The Rebel of The School",
+                "value": "0"
+            }
+        ]
+    }
 ]

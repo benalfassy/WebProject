@@ -1,92 +1,874 @@
 [
-	{
-		"messageId": "243598123123213",
-		"from": "Books For All",
-		"to": "ben",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-13",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "243591233123213",
-		"from": "Books For All",
-		"to": "hila",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-13",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "2435954323213",
-		"from": "Books For All",
-		"to": "zidan",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-13",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "897598123123213",
-		"from": "Books For All",
-		"to": "galit",
-		"reviewerUsername": "ben",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-13",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "12348123123213",
-		"from": "Books For All",
-		"to": "shay",
-		"reviewerUsername": "ben",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-13",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "243598128123213",
-		"from": "Books For All",
-		"to": "or",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-14",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "24322336123213",
-		"from": "Books For All",
-		"to": "revital",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-14",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "24322336153213",
-		"from": "Books For All",
-		"to": "mor",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-14",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "24322331123213",
-		"from": "Books For All",
-		"to": "bar",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-14",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "2432212341213",
-		"from": "Books For All",
-		"to": "yuval",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-14",
-		"isViewed": "0"
-	},
-	{
-		"messageId": "2432218841213",
-		"from": "Books For All",
-		"to": "adi",
-		"content": "Welcome to Books For All!",
-		"date": "2018-02-16",
-		"isViewed": "0"
-	}
+    {
+        "messageId": "c5e71009-ada6-4e6f-9bc5-4241fe53c0ad",
+        "from": "zidan",
+        "to": "Admin",
+        "content": "give me a book, i'll give you a ticked to real-madrid's game.\nwhat do you say?",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "1099e5e2-7127-4e55-a7b2-b22dea2ee4f2",
+        "from": "ben",
+        "to": "Admin",
+        "content": "There is any discount for students ?",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "9589f857-de0e-44c6-be30-adcb8d19ac07",
+        "from": "BooksForAll",
+        "to": "ben",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "343b4314-d686-4b85-8ed1-029306100910",
+        "from": "BooksForAll",
+        "to": "ben",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "e35359bc-dd11-4337-b612-6c4aec4c014a",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "5f9783b9-fe32-4bee-9fdc-52763e989940",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "99713316-c500-4f16-ae4a-65e0a1070235",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "70b18863-df97-4cf7-a36b-dcb925e93c03",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book The Jolliest School of All was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "a13f5cb9-6322-4c9a-9893-1f9db467ee30",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book The Flying Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "1294bb03-9368-4c25-8f44-92b2193e7885",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "33048e43-ab33-48ca-bfb2-cea04a1a7ca8",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "d1052539-3cbf-465e-b61d-fe3c62ccf559",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "091f3b98-9f97-47aa-888b-3c717d7d249f",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "5dffa36b-66f3-4234-9371-a2325bc56d17",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "d2896e6e-6dc3-4d5a-88b8-ed83e13221f1",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "ef2377be-fc9b-4cd5-b963-dd255b6a9245",
+        "from": "BooksForAll",
+        "to": "reviewer",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "af58a6a1-4ca7-4c2c-95da-7f23564fedb5",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "9bb25bd5-46af-4e87-8020-58030ac04c74",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "b71d1055-84c1-4026-88e5-65249d4fd89c",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "e3b9a163-aa93-483d-bb42-c442b1d9946e",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book The Jolliest School of All was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "4ade7693-897f-41de-a337-fbe753982cc9",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "a198b96a-9075-4ed5-94f8-9ad2cbee6f21",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "0cb0b047-e6c3-4850-8a68-df7f02616e3d",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "1c0d6f8d-ce26-43dd-a524-beea152d9604",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "2b64b375-db60-4ead-8bd3-871183c85796",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "88257001-43b3-436d-b928-a2a4da1b9c64",
+        "from": "BooksForAll",
+        "to": "picaso",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "3f1e5623-892f-4764-8a78-125c1aac9f7e",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "bb6f93e6-c75f-47a1-9481-a4d40cd0308a",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "9c70e87f-a4ba-40c9-b3ac-d2a183bc9d91",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "35846d27-d23e-4c5f-8ea6-2723b31b8298",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "bc1f8850-8f5f-4f5d-8c3c-ccc3b992cf8d",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "897b3743-0c70-4991-be3d-b3d164163b6a",
+        "from": "BooksForAll",
+        "to": "MegaReader",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "b9c06411-0422-4406-a36d-2d2b7d68c399",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "664645bc-fab7-427b-b6c9-bb2678d469eb",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "55235f08-d1e2-4a63-8198-5ae4f2655531",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "d6752a68-3a3b-484e-99b4-df58607ba664",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "8d7a6b6d-971f-4a0e-8b76-948797bec241",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "63563667-9059-42d1-b9a1-f2aab2fb247f",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "af6ea8c4-583b-4c78-b930-aa42456841e3",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "c9660c5e-21e0-40eb-9a95-6aa5315f4135",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "840b1061-8852-436c-afaf-ca67cd67511e",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book The Jolliest School of All was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "793f737f-2413-49cf-afe6-82dfa9ee9601",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book The Flying Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "49dfa642-519c-4864-bedc-e73d104f836e",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "3deeb54e-4ad3-46fe-b4b6-016bff790ad2",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "20cce3af-9073-490c-89ea-0c36231861df",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "69775f7c-4b76-442f-9db8-a7add13f3337",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "7b7e21b5-c4b3-408e-8ba2-ba483f0cde6f",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "d8acd870-853c-4b9c-903e-4011ab6213f4",
+        "from": "BooksForAll",
+        "to": "Eli",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "cd0cbdb0-2fbf-4ae1-a458-c900069c45dd",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "a68dfc46-1998-49b4-94ef-f852896cbbca",
+        "from": "BooksForAll",
+        "to": "reader",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "c9726ef8-240b-434f-a991-64f1cb163a9c",
+        "from": "BooksForAll",
+        "to": "adi",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "8283ea1d-c259-4eb4-a495-f2c6d9fb9cab",
+        "from": "BooksForAll",
+        "to": "adi",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "a652dfbb-568f-45e0-9f91-a9b966192517",
+        "from": "BooksForAll",
+        "to": "adi",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "bbfbb468-fafa-4895-bd95-f95c67ad3f05",
+        "from": "BooksForAll",
+        "to": "adi",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "20327009-44f2-421e-b9ed-35323958ee23",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "84f11e2e-f2d0-4bc3-8003-1a65d1266885",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "bbf9e7fd-62ba-42c8-a75a-9bb0c10b51af",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "3fb98ea8-450c-4220-8cae-742ed03eb311",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "62ff43f9-7e1d-4ff0-b264-450a173b0f23",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "064a40d4-61bf-4112-aa43-f4eb0d8b2ad3",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book Chester Rand was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "197d4609-efbd-4041-9240-266d5f697115",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "7d0ca881-c60a-46a7-b6b1-a0900bc1acb8",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "08f3a1ea-b902-4fc0-867d-6842256606fc",
+        "from": "BooksForAll",
+        "to": "yossi",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "6809586e-6624-4eb1-9b6a-77c5c64c8cf0",
+        "from": "BooksForAll",
+        "to": "adir",
+        "content": "Your review for the book The Luckiest Girl in The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "8a49ac0c-4aed-4a65-9d1e-db2c62cc78da",
+        "from": "BooksForAll",
+        "to": "adir",
+        "content": "Your review for the book The Flying Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "210de57a-5af3-4dc4-b18b-5f1dc3e28365",
+        "from": "BooksForAll",
+        "to": "ben",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "a637ea9d-d69e-4b08-930f-3747849bf509",
+        "from": "BooksForAll",
+        "to": "isashar",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "da8d62d6-7eb3-4c5e-aa62-427b09e98fa0",
+        "from": "BooksForAll",
+        "to": "isashar",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "74cec397-cd2c-45f0-ae2c-5fb7392c87d9",
+        "from": "BooksForAll",
+        "to": "hashi",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "030975ab-5bf6-47f0-84a3-35571b29253b",
+        "from": "BooksForAll",
+        "to": "hashi",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "b026e9b4-cd82-4b28-a7d0-78f974889d92",
+        "from": "BooksForAll",
+        "to": "benzema",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "204abbae-1dea-4de2-8912-450d648e5d43",
+        "from": "BooksForAll",
+        "to": "mor",
+        "content": "Your review for the book The Jolliest School of All was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "e9548825-9c2b-4e5a-98e8-eea867846805",
+        "from": "BooksForAll",
+        "to": "mor",
+        "content": "Your review for the book The Flying Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "1cf26ad8-8362-4fae-9498-24963bf8d06e",
+        "from": "BooksForAll",
+        "to": "adir",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "fcbfbb05-8c01-4193-85ff-0511949ffe86",
+        "from": "BooksForAll",
+        "to": "adir",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "4f828152-7a7e-4b72-829c-33de2e968a5d",
+        "from": "BooksForAll",
+        "to": "isashar",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "72370698-c049-4fa3-8e67-2bd9513abe2b",
+        "from": "BooksForAll",
+        "to": "isashar",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "c93a9d31-2d05-4a0d-9f66-88782ad0ac5f",
+        "from": "BooksForAll",
+        "to": "hashi",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "e98c0649-ad74-4ff5-84d8-14dea601aa61",
+        "from": "BooksForAll",
+        "to": "hashi",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "95b6ac88-4d6f-4301-80e2-e5be96dedf91",
+        "from": "BooksForAll",
+        "to": "benzema",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "b3811d9e-917a-4ea7-b965-5a10b040a4ca",
+        "from": "BooksForAll",
+        "to": "ben",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "dce9b91f-c3f3-49a0-97d7-e377cafb3175",
+        "from": "BooksForAll",
+        "to": "marcelo",
+        "content": "Your review for the book The Princess Of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "24e95b82-9389-466d-9549-2893115a4d14",
+        "from": "BooksForAll",
+        "to": "benzema",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "b3e6a025-5bed-401a-8c57-2228b9285fe1",
+        "from": "BooksForAll",
+        "to": "marcelo",
+        "content": "Welcome to Books For All! We hope you enjoy!!!",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "e1219afd-477c-4d06-a333-a2fa186fba3a",
+        "from": "BooksForAll",
+        "to": "mor",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "966d6d95-9d6c-41c9-92a9-42469a106c92",
+        "from": "BooksForAll",
+        "to": "adi",
+        "content": "Your review for the book A Popular School Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "4725bd74-cf44-41c6-bd95-d08b12ef84a5",
+        "from": "BooksForAll",
+        "to": "shay",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "9c5f0bf4-23cf-4f40-b379-53ffa53d16e2",
+        "from": "BooksForAll",
+        "to": "shay",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "6606d8e3-efd5-4a3d-9f0e-e42138e54f1e",
+        "from": "BooksForAll",
+        "to": "shay",
+        "content": "Your review for the book The Rebel of The School was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "fcec9669-1425-4dd2-a7e6-52d3526e8e31",
+        "from": "BooksForAll",
+        "to": "zidan",
+        "content": "Your review for the book Red Rose And Tiger Lily was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "5e615b11-6728-4e20-9003-24577b67d96e",
+        "from": "BooksForAll",
+        "to": "bar",
+        "content": "Your review for the book Little Maid Marian was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "5caae0cc-75e5-4893-8f07-be7e2133e131",
+        "from": "BooksForAll",
+        "to": "yuval",
+        "content": "Your review for the book Dan The News Boy was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "d9c5be77-a2fc-4497-9d38-690456c7510e",
+        "from": "BooksForAll",
+        "to": "revital",
+        "content": "Your review for the book The Flying Girl was approved and now available on the book's page.",
+        "date": "2018-02-21",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "ca83e81e-8b95-40b9-b2f5-8fd0090d5962",
+        "from": "BooksForAll",
+        "to": "shay",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "b4828c5d-b3c0-4743-9f88-155a6b162d07",
+        "from": "BooksForAll",
+        "to": "shay",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "fbb6e273-fb78-413e-a91f-74d078ad9baa",
+        "from": "BooksForAll",
+        "to": "zidan",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "728bf194-55b2-4988-ba35-c487769f9132",
+        "from": "BooksForAll",
+        "to": "bar",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "b6d228bb-7c11-4458-9c4d-73585780c676",
+        "from": "BooksForAll",
+        "to": "yuval",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "6478c364-730b-40b1-9438-88605ed28751",
+        "from": "BooksForAll",
+        "to": "revital",
+        "content": "Thank for purchasing in \"Books For All\". Hope you will enjoy the reading and leave a review after :) ",
+        "date": "2018-02-21",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "2432218841213",
+        "from": "Books For All",
+        "to": "adi",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-16",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "2432212341213",
+        "from": "Books For All",
+        "to": "yuval",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-14",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "24322331123213",
+        "from": "Books For All",
+        "to": "bar",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-14",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "24322336153213",
+        "from": "Books For All",
+        "to": "mor",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-14",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "24322336123213",
+        "from": "Books For All",
+        "to": "revital",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-14",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "243598128123213",
+        "from": "Books For All",
+        "to": "or",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-14",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "12348123123213",
+        "from": "Books For All",
+        "to": "shay",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-13",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "897598123123213",
+        "from": "Books For All",
+        "to": "galit",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-13",
+        "isViewed": "0"
+    },
+    {
+        "messageId": "2435954323213",
+        "from": "Books For All",
+        "to": "zidan",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-13",
+        "isViewed": "1"
+    },
+    {
+        "messageId": "243591233123213",
+        "from": "Books For All",
+        "to": "hila",
+        "content": "Welcome to Books For All!",
+        "date": "2018-02-13",
+        "isViewed": "0"
+    }
 ]

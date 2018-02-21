@@ -1,4 +1,11 @@
-<style>
+<!-- <style>
+
+.scrollable-menu {
+    height: auto;
+    max-height: 100px;
+    overflow-x: hidden;
+}
+
 .bookBtn {
 	border-radius: 7px;
 	background-color: rgba(253, 216, 53, 0.7);
@@ -64,7 +71,7 @@
 	border-color: transparent transparent white transparent;
 }
 
-</style>
+</style> -->
 <div class="container" ng-controller="bookPageController">
 	<div class="table-responsive">
 		<table class="table table-condensed">
@@ -87,7 +94,7 @@
 										<div ng-switch-when="-1">
 											<button id="{{book.bookName}}" type="button" class="btn btn-sm bookBtn dropdown dropmenu" ng-click="doLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
 												<span class="glyphicon glyphicon-thumbs-up"></span><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
-												<div ng-show="book.likes.length > 0" class="dropdown-content" id="{{book.bookName}}-likesContent">
+												<div ng-show="book.likes.length > 0" class="scrollable-menu dropdown-content" id="{{book.bookName}}-likesContent">
 													<div ng-switch on="isAdmin()">
 														<div ng-switch-when="true">
 															<a href="" ng-repeat="nickName in book.likes" ng-click="goToCustomerPage(nickName)"><b>{{nickName}}</b></a>
@@ -102,7 +109,7 @@
 										<div ng-switch-default>
 											<button id="{{book.bookName}}" data-container="body" data-toggle="popover" data-content="test" data-placement="top" type="button" class="btn btn-sm bookBtn dropdown dropmenu" ng-click="doUnLike(book)" ng-disabled="hasBook(book)==-1 || isAdmin()">
 												<font color="blue"> <span class="glyphicon glyphicon-thumbs-up"></span></font><b> Like </b>{{(book.likes.length)>0? book.likes.length : ""}}
-												<div ng-show="book.likes.length > 0" class="dropdown-content" id="{{book.bookName}}-likesContent">
+												<div ng-show="book.likes.length > 0" class="scrollable-menu dropdown-content" id="{{book.bookName}}-likesContent">
 													<div ng-switch on="isAdmin()">
 														<div ng-switch-when="true">
 															<a href="" ng-repeat="nickName in book.likes" ng-click="goToCustomerPage(nickName)"><b>{{nickName}}</b></a>

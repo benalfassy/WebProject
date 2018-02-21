@@ -1,11 +1,594 @@
 [
-	{
-		"reviewId": "243598",
-		"bookName": "A Popular School Girl",
-		"review": "Four stars for the story, but Ingred deserves far less than that. As a main character I could never like her, and in fact found Bess to be the more interesting one. I wish she had stepped up sooner and gotten over her jealousy, she came across as a sulk for three quarters of the book! Still enjoyed the story though, so we'll go with four stars for this one.",
-		"reviewerUsername": "adi",
-		"isApproved": "2",
-		"date": "2018-02-13"
-	}
-	
+    {
+        "reviewId": "243598",
+        "bookName": "A Popular School Girl",
+        "review": "Four stars for the story, but Ingred deserves far less than that. As a main character I could never like her, and in fact found Bess to be the more interesting one. I wish she had stepped up sooner and gotten over her jealousy, she came across as a sulk for three quarters of the book! Still enjoyed the story though, so we'll go with four stars for this one.",
+        "reviewerUsername": "adi",
+        "isApproved": "2",
+        "date": "2018-02-13"
+    },
+    {
+        "reviewId": "8a257f72-11bf-47d6-a496-2e3076f1dc05",
+        "bookName": "The Flying Girl",
+        "review": "I?m all filled up right now with the state of women in America at the turn of the 20th Century -- I recently read a book of poems by a woman of that era, and then a paper on the British and American Sufferage movements and how they were impacted by WWI. So this book came to me at exactly the right time. I was perfectly primed to find this feminist little adventure suggesting that ? gasp!",
+        "reviewerUsername": "revital",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "1cff9908-5407-46bf-aeff-40a7fe5e0a0a",
+        "bookName": "Dan The News Boy",
+        "review": "Another crackling good read from Horatio Alger. A fun story with the usual complications of poor boy navigating all kinds of challenges to triumph in the end. Like most of his books, this one has witty dialogue.",
+        "reviewerUsername": "yuval",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "262406d4-88d1-4932-8ecf-5b66582e82d7",
+        "bookName": "Little Maid Marian",
+        "review": "Well, what can I say about this book other than WOW! Lexi C Foss takes her storytelling to a whole new level with this new PNR series. I adore her Immortal Curse series, but now, with Dark Provenance, I have two PNR series to go at - each one different yet brilliant",
+        "reviewerUsername": "bar",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "28b020c5-db2f-40dd-8e4d-d9969b62a3c9",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "Absolutely brilliant read. I've read other books by this author before and I have to say I loved those, however, DOD felt like it was on another level. I can only assume it's because DOD is a little darker than Foss's other novels. This has the sadistic and the hard-core feel to it and I find myself drawn to it more.",
+        "reviewerUsername": "zidan",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "2cf2f9fd-5618-4651-8e53-8a48b7cd9a40",
+        "bookName": "The Rebel of The School",
+        "review": "Brilliant sheer Billiant.Fast paced electrifying rollocoaster of a book that keep me up till the early hours.I have missed Lexi's writing and her DOD book was just what i needed for my pnr fix as this is my preferred genre to read,and Lexi did not dissappoint.",
+        "reviewerUsername": "shay",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "08b13f1c-061c-45c5-b39d-676bc57c941f",
+        "bookName": "Little Maid Marian",
+        "review": "I am sooo loving this collection of Bad Girls \nIf you are looking for a strong kick @$$ heroine look no further than heavens own fallen -Evangeline \nAnd if you like your men sexy with just a touch of darkness than Xai is definitely your demonic angel",
+        "reviewerUsername": "shay",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "b90b4567-f154-4e14-b441-b9ee0e2691fc",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "Omg. I know I have said this before but now I am cementing it in stone... Lexi C. Foss is an auto-buy author for me. This book was dark, exciting and sexy as hell. I love the main character Eve. She is a bad ass ex assassin / fallen angel who used to work for a demon lord.",
+        "reviewerUsername": "shay",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "b14059ee-5d7c-4e5b-9326-40e43ce69461",
+        "bookName": "Chester Rand",
+        "review": "This is the first book in the dark provenance series. I've loved everything Lexi C Foss has written so far and I have to say this is no exception. The story follows Xai and Eve, who have been tormented by love, lust and hate over the millennia, as much sparring partners as lovers.",
+        "reviewerUsername": "ben",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "d3ecea08-7571-4afd-b172-275ef62c9cd1",
+        "bookName": "The Flying Girl",
+        "review": "I really enjoyed this book. Every time I thought I knew where the author was going she threw in something new. Angels, demons, good guys and bad guys you never know who is going to be the hero/heroine. Terrific world building. I am looking forward to more in this series.",
+        "reviewerUsername": "mor",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "5272658e-3d35-45ff-a962-6c057ca4e69e",
+        "bookName": "The Jolliest School of All",
+        "review": "WOW!! Lexi C. Foss has done it again. this was an amazing book you read! I loved the characters and storyline. As usual with Lexi C. Foss's work it caught and held my attention that I couldn't put it down!! I found the story really well written and interesting.",
+        "reviewerUsername": "mor",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "947ad83e-2638-47f9-91ca-052bc29c6db4",
+        "bookName": "The Princess Of The School",
+        "review": "There are no words to describe or express how amazing this story is!I have said it before and i will never stop saying that R.S. Grey is so talented! She really nailed this one!The Beau & the Belle has everything I wanted in a story and even more, slow burn,fun moments and a sweet romance!",
+        "reviewerUsername": "marcelo",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "aabdbb70-27eb-448e-ba71-1e03326313bc",
+        "bookName": "A Popular School Girl",
+        "review": "i like it very much. as much as i like drugs",
+        "reviewerUsername": "ben",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "34101055-44b2-4460-be86-2fe8e0ca631b",
+        "bookName": "The Rebel of The School",
+        "review": "There's probably nothing much I \"learned\" in the introspective sense, but this is a novel like a novel ought to be. This is an epic film on paper, gloomy and engaging, smokey, noir with crumbling ruins, young love, disfigurment, lust, torture...the stuff of Dumas, DuMauier and, as of late, The Historian. I woke up at five a.m. and had to sweet talk myself back to sleep: all I wanted to do was read.",
+        "reviewerUsername": "benzema",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "abc006ed-39e3-4685-825e-9998884f1514",
+        "bookName": "Little Maid Marian",
+        "review": "After reading The Shadow of the Wind, I was left with somewhat mixed feelings. On the one hand, this is such a beautifully written book, and is in essence an ode to literature. On the other hand, there are some serious flaws which distracts from the whole experience.",
+        "reviewerUsername": "hashi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "52d50522-c3e8-40a8-9b1a-48027c85793c",
+        "bookName": "The Princess Of The School",
+        "review": "The best thing about the book, in my opinion, is Zafon's skill in artistic writing. It reminds me of why I love to read in the first place, and makes me wish I could write as beautiful as this.",
+        "reviewerUsername": "hashi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "6b945f84-5b79-46da-a60a-6bf4df7e90de",
+        "bookName": "A Popular School Girl",
+        "review": "Of course I love this book soooo much. It's my all-time favorite. This is the 4th year in a row I've read it, and it never gets old. If you haven't already read this at my suggestion, WHAT ARE YOU WAITING FOR?!",
+        "reviewerUsername": "isashar",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "34a174b1-4d57-43d8-be72-558c9ed98237",
+        "bookName": "Dan The News Boy",
+        "review": "It's been a couple years since I read this book so I shouldn't and won't go into details, but the effect has lingered all this time. There's no other book I'm quicker to recommend than this one. It's not that it's particularly important in a lot of the ways \"important\" books are, it's just that it works as pure reading pleasure (and sometimes, isn't that enough?)",
+        "reviewerUsername": "isashar",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "81a11a54-0bd8-4021-820a-015ff0037298",
+        "bookName": "The Princess Of The School",
+        "review": "I can't believe someone actually published this book. Even worse, in my opinion is the fact that this book is on the New York Times Bestseller List. How is this possible? It must only mean that there are a lot of people out there that think very differently from me. Don't you be one of them. Seriously. Don't be fooled by this book. It is insipid, lame, and poorly written.",
+        "reviewerUsername": "ben",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "cb31a5aa-1364-4dc4-bb27-7b5be5bbe0b6",
+        "bookName": "The Flying Girl",
+        "review": "This is an excellent piece of literature. It contains poetic storytelling, shocking twists, thoroughly developed characters, symbolism, humor, romance, betrayal, action, sentimentality, nostalgia, and much, much more.",
+        "reviewerUsername": "adir",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "b2c5a4d8-1972-49fa-977a-3ace38dc4b18",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "I found this novel by accident, while quickly browsing shelves at the local library, and let me just say it was the best accidental find i've had in years. From the very first line to the end i loved it, and as a reader i am not easily pleased by anything. I love stories out of the ordinary that captivate my imagination and run away with it. That is exactly what The Shadow of The Wind did.",
+        "reviewerUsername": "adir",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "d37d7c4c-f3d1-41ed-b25f-7d90b1a8638d",
+        "bookName": "A Popular School Girl",
+        "review": "I simply love this series. Not only was this emotional, it was a beautifully written triad.\n\nMallory just broke my heart from day one. Openly admitting to his family he was gay, he was disowned and cut off financially, but he picked himself up and got on with life, working his way through college in a coffee shop.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "ace5421c-a40e-4075-81df-920bbe51acfc",
+        "bookName": "Chester Rand",
+        "review": "This is the second book by JJ Harper I?ve read and I have to say I New it would be hot but the emotions I felt while reading it had me crying, laughing and hoping, I love how all the characters from book one are involved and make an impact on this story. This book is a Hot MMM story. \nWe follow the story of Archer, Dan and Carter and how they all falling in love. This story is so full that once you start you can put it down I was pulled into the story the more I read.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "2a46457e-06c8-418d-beed-6d8622feffd1",
+        "bookName": "Dan The News Boy",
+        "review": "I enjoyed the chase Archer gave Mallory in the beginningnand loved watching their budding relationship grow. I got so mad at his mom and her craziness. Skipping forward, I love the connection between the three and hope to see them in future books like three other guys we had glimpses of. Overall a great book. I cried and awwwed a lot.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "d296e814-782f-40ce-be45-489c22ccb442",
+        "bookName": "Little Maid Marian",
+        "review": "This is book two from the series, Cooper?s Ridge. I would say that you could enjoy this book reading it as a standalone, but I would encourage anyone to read book one, Denver?s Calling first, simply because it?s a beautiful story that needs to be read.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "f1dd7317-7e46-43f9-9897-84e1d29027c1",
+        "bookName": "Little Maid Marian",
+        "review": "1 1/2 stars. I really wish I could say I liked this. A couple of years back, I gave in to the hype and read Weir's The Martian, and I have to say-- I loved it. The scary scenario of being stranded so far away from everything and everyone you know, the very high probability that Mark Watney wouldn't survive, his chirpy sense of humour that keeps him going... unfortunately,Artemis's plot is convoluted and less exciting.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "09992fa5-c855-43e8-9bab-5fe24049dec5",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "A new book from Andy Weir? Happening on the moon? A heist where the main character survives with her scientific knowledge?\nCOUNT ME IN!!\n\nI was so excited for this book but I didn't end up loving nearly as much as The Martian.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "2c86a0be-6f01-4a7a-a361-69678e6c2064",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "This book was great. \n\nI admit to worrying that he wouldn't be able to keep up the quality from The Martian, and this is definitely a very different kind of tale from that, being half a heist novel but otherwise just a great adventure, but he pulls it off. Better than pulling it off, even. I love his characters and the feel of the moon city, Artemis, is vital and detailed.",
+        "reviewerUsername": "yossi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "e1822ed2-4434-4b1a-9df4-ab90b284a50f",
+        "bookName": "The Rebel of The School",
+        "review": "Apologies in advance. You're not gonna like what I have to say. \n\nThis is not the review I was expecting to write, but this is not the book I was expecting to read.\n\nAndy Weir has successfully taken the one element I didn't like in THE MARTIAN and expanded on that until ARTEMIS is almost a chore to read. Major disappointment.",
+        "reviewerUsername": "adi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "042c6b35-2ffc-442d-982d-f850148b08f0",
+        "bookName": "The Princess Of The School",
+        "review": "This book was great. \n\nI admit to worrying that he wouldn't be able to keep up the quality from The Martian, and this is definitely a very different kind of tale from that, being half a heist novel but otherwise just a great adventure, but he pulls it off. Better than pulling it off, even. I love his characters and the feel of the moon city, Artemis, is vital and detailed.",
+        "reviewerUsername": "adi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "72f0b1da-6da2-4093-b43c-72693e584145",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "M-O-O-N. That spells Andy Weir?s new novel. (OK, if you haven?t read Stephen King?s The Stand that joke won?t make sense to you, but rather than think that?s a failure of my review I?m going to say that it?s your own fault for not having read The Stand. Serves you right.)",
+        "reviewerUsername": "adi",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "940f2d19-e5fb-4933-85fe-2e54ee78f4ef",
+        "bookName": "Dan The News Boy",
+        "review": "When Artemis first came out I started seeing lots of one and two star reviews. Not wanting to spoil the book, I didn't read them very in depth. But, the star situation had me concerned as I was looking forward to this book as I enjoyed The Martian very much. Was I in for a big letdown?",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "c5f4e16d-af51-43b5-bc9d-693b0da1cce7",
+        "bookName": "Little Maid Marian",
+        "review": "Although it has been a few years since Andy Weir published The Martian , he hasn't been missing from the literary world, thanks to his sharing a number of free super-short stories with the reading public. ( Annie's Day remains my favorite of the bunch.) Even so, I was anxious for him to come out with a new novel.",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "c84af1f7-5b4f-4c03-8f1d-330764089451",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "This book is awful. It's not just awful, it's offensive and immature and badly written. I wasn't expecting a masterpiece, but I'd enjoyed The Martian and hoped the followup would be fun in a similar way. It wasn't. There was nothing fun about this book.",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "65d03d48-a71a-4e50-890f-2da3296c0ff4",
+        "bookName": "The Flying Girl",
+        "review": "I never read The Flying girl but am aware that it is a hugely popular book and movie. I don't read much science fiction but I loved Artemis. Weir goes into a lot of depth and detail in his world building of a city on the moon that has adopted Kenyan time, with its 5 bubbles named after famous astronauts with their own distinct identities and linked by tunnels.",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "37d532f5-c46e-4544-a77c-885253d79045",
+        "bookName": "The Jolliest School of All",
+        "review": "Right off the bat I'll just say, I think the first half of this book is awful. It was like Weir conceded that plot set-up and characterization are things that novels should include, so he gave it his best shot and attempted to cover up his lack of ability in those areas by making lots and lots of (middle school) jokes.",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "ebaeff88-3588-454e-a1c7-c4fcd8c727bc",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "This is the first book I've read by Davies, and I was given the book in exchange for an honest review. I was surprised at rich detail, and historically accurate account of Japan during the time of Samurais. It's a good and enjoyable read. Check it out.",
+        "reviewerUsername": "reader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "6971b7f5-f018-411f-9777-98cddb478261",
+        "bookName": "A Popular School Girl",
+        "review": "My heart is bursting with a warm smile inside as I turn the last page. This was a one sitting book because I could not bear to put it down. With phrases like ?He wanted her more than he wanted to breathe ? this was a perfect romantic story. Garrick Helmsley is having to marry a bride he has not met to save his mother and their lands, as the alliance is crucial to the future.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "738db27e-249c-464e-a4ff-c3ca378700dd",
+        "bookName": "Chester Rand",
+        "review": "How I love this series , it just seems to keep getting better , the stories drag you further into the Waryn/Scott World on the border between England and Scotland.\nIn this book Geoffrey and Bryce?s sister Emma takes center stage , a vivacious, beautiful and passionate young woman , who loves her family and lives for riding her horse , a visiting Earl, Garrick takes an instant liking to her and she to him , but unbeknown to her ,he?s on his way to Scotland to meet his betrothed.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "e92512e5-f835-4315-bf99-4e77d66cceb8",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "How I love this series , it just seems to keep getting better , the stories drag you further into the Waryn/Scott World on the border between England and Scotland.\nIn this book Geoffrey and Bryce?s sister Emma takes center stage , a vivacious, beautiful and passionate young woman , who loves her family and lives for riding her horse , a visiting Earl, Garrick takes an instant liking to her and she to him , but unbeknown to her ,he?s on his way to Scotland to meet his betrothed.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "e834cb55-66a7-47fd-9e27-f920c5b71723",
+        "bookName": "Chester Rand",
+        "review": "I love Ms. Mecca's Border Series. I especially love this book. It has become my favorite. I thoroughly enjoyed revisiting characters I have met before and I absolutely love Garrick and Emma. I didn't envy our hero for the tough choices he was forced to make and just couldn't imagine how there could be a happy ending for our H and h. I highly recommend not just this book but the whole series!",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "28ec1bee-3141-44c8-bc8b-d166a295f8b4",
+        "bookName": "The Princess Of The School",
+        "review": "I absolutely love this \"Border Series\" written by Ms. Mecca. I have had the honor to be chosen to read her books early for an honest review. However I still go back and buy the books for my library so I can re-read them when I want to. I have got to say I enjoyed \"The Earls Entanglement\" as much or more as the previous books.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "e942ac18-f559-4025-bee0-347097e2857c",
+        "bookName": "The Princess Of The School",
+        "review": "Garrick is to be betrothed and married to a women he has never met. His mother has arranged this to keep peace on their lands and to protect his people. He has agreed but then he meets Lady Emma and feels something for her that he has never felt before. The more time they spend together the more he is determined to find a way to marry Emma and get out of his arranged marriage without having to go to war.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "4414e308-3d39-49be-9001-5eb879b70c58",
+        "bookName": "The Rebel of The School",
+        "review": "Garrick is to be betrothed and married to a women he has never met. His mother has arranged this to keep peace on their lands and to protect his people. He has agreed but then he meets Lady Emma and feels something for her that he has never felt before. The more time they spend together the more he is determined to find a way to marry Emma and get out of his arranged marriage without having to go to war.",
+        "reviewerUsername": "Eli",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "99f5f8d1-9caf-4783-812c-1af1092c413c",
+        "bookName": "A Popular School Girl",
+        "review": "I loved this book! The handsome Earl in England, also through his Scottish Mother, has inherited an Earldom in Scotland. To keep the peace between the borders, his mother has arranged a marriage between him, Garrick, and the clan of Magnus. On his way to meet his betrothed, he meets beautiful, vivacious, Lady Emma, he is stunned by her beauty and her ability to ride a horse , with grace, without complaining.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "f8829f7e-db4f-4d2e-9f74-5b9179a20fbd",
+        "bookName": "Chester Rand",
+        "review": "Sir Garrick Helmsley, Earl of Clave is on his way to his lands in Scotland to see his mother. She has been trying to persuade him to marry since he came back from the war in Acre. She has a bride in mind whose father is one of the most powerful clan chiefs in the area. \nHis uncle thinks the Scottish property and title should belong to him instead.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "d9ccd019-2597-4dfd-96c7-c41e9584396f",
+        "bookName": "Dan The News Boy",
+        "review": "I was gifted with an ARC of this book for an honest review.\n\nNothing is more enticing to a man than something he cannot have. Garrick inherits a title when his father dies with ties to his Scottish mother. He already held a title in England. With his mother's encouragement, he agrees to marry the daughter of Mangus for an alliance between clans. Peace along the border was crucial at this time.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "5c6f0ef3-4571-43a3-8b45-9791663bf089",
+        "bookName": "Little Maid Marian",
+        "review": "I really loved Emma and Garrick's story!! We get to know Emma in the previous book, so I was excited to see she would get her HEA!\n\nThe spark between Emma and Garrick was instantaneous and red hot...too bad he was on his way to be officially betrothed when they meet. As Garrick gets to know Emma along their journey to Scotland, he wishes he was not obligated to go through with the betrothal. But with trouble from his uncle, he might not have a choice.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "b74e0eff-9432-4efd-8381-4105cbc47d90",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "I would like to thank the author Cecelia Mecca for a copy of this book in return for an honest review.\n\nThis book focuses on the Waryn sister, Emma and Garrick, an earl in both England and Scotland. When enemies make the need for a strong Scottish marriage alliance necessary, Garrick travels to Scotland to meet his future wife. However he stops at an old friends castle and meets Lady Emma.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "a555f195-ee66-4ac4-9f81-1f0fa91bec85",
+        "bookName": "The Flying Girl",
+        "review": "I got entangled in the Earl's Entanglement. I gotta say this was (at least for me) the best of the series so far. I knew from the first few pages that the spark between Garrick and Emma had been lit. And that someone was going to go down in flames. I enjoyed this book immensely! And I look forward to continuing this series. I voluntarily read this book in exchange for my honest opinion.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "ec2c0627-b8a6-4f1b-9e15-20a0463607c8",
+        "bookName": "The Jolliest School of All",
+        "review": "I loved Emma?s story. Sparks fly when Emma and Garrick meet for the first time. Emotions are up and down when Garrick?s secret is revealed, but can they overcome all outside concerns to reach their happy ever after? This is a wonderful addition to the series and I look forward to reading the next book. Well done Cecelia.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "3f5d2268-6d1c-48e4-9c46-af2276d78fc3",
+        "bookName": "The Jolliest School of All",
+        "review": "Meg Gardiner, Meg Gardiner, Meg Gardiner...you SLAY me! Reading UNSUB a month or two ago just blew me away, and here you are again, with another heart-pounding, completely riveting novel featuring FBI profiler Caitlin Hendrix. What an amazing series this is turning out to be!!",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "06b5b5aa-ae30-4923-b59d-4ec4dd9d93fd",
+        "bookName": "The Princess Of The School",
+        "review": "This book is FANTASTIC. It?s the best thriller I?ve read so far this year, I literally could not put it down.. it was THAT GOOD. And I absolutely love the main character Caitlin, she?s extremely smart and doesn?t back down to anyone. Run don?t walk to pick this up. I rated all the stars.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "0b69551e-e81f-4e8d-93cf-62e101a29740",
+        "bookName": "The Rebel of The School",
+        "review": "Women are disappearing in Gideon County, Texas. All five of them abducted late at night on Saturdays over the past six months. FBI Special Agent Caitlin Hendrix works in the Behavioral Analysis Unit. When the BAU is put on the case, Hendrix travels to Solace, TX with two other special agents to investigate the abductions. They might be able to find the last victim alive if they move fast.",
+        "reviewerUsername": "MegaReader",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "1e295bef-09aa-4c8a-9646-5be5e751143c",
+        "bookName": "A Popular School Girl",
+        "review": "This book is FANTASTIC. It?s the best thriller I?ve read so far this year, I literally could not put it down.. it was THAT GOOD. And I absolutely love the main character Caitlin, she?s extremely smart and doesn?t back down to anyone. Run don?t walk to pick this up. I rated all the stars",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "e8ea3503-2d15-4710-8054-3de6c5945c2e",
+        "bookName": "Chester Rand",
+        "review": "Women are disappearing in Gideon County, Texas. All five of them abducted late at night on Saturdays over the past six months. FBI Special Agent Caitlin Hendrix works in the Behavioral Analysis Unit. When the BAU is put on the case, Hendrix travels to Solace, TX with two other special agents to investigate the abductions. They might be able to find the last victim alive if they move fast.",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "6c837435-ba85-4670-aef4-516660e191bb",
+        "bookName": "Dan The News Boy",
+        "review": "Omggggg I LOVE THE UNSUB SERIES! And, can we say girl power?! I love Caitlin and Rainey! They are bad ass!!! Into the Black Nowhere is book two in the Unsub series and it was AWESOME! I believe you could read it is as standalone but why do that when Unsub 1 was AMAZING!",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "94df1a41-3dba-4964-8db1-e616c0699594",
+        "bookName": "Little Maid Marian",
+        "review": "I really enjoyed this book! I was a huge fan of the first book in this series, UNSUB, so I was really excited to read this one. I will admit that I didn't like this book quite as much as the first book in the series but it was a very strong book. I was hooked by this book from the very start and enjoyed it to the very end. This series has quickly made its way onto my must read list.",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "6978ac98-20e8-4db8-898b-1b74eb3ccd65",
+        "bookName": "The Jolliest School of All",
+        "review": "Meg Gardiner?s second book in the UNSUB series is on par with the first book. Using short, jabbing chapters made the book fast-paced initially, and as the FBI drew closer to the Unsub, the chapters were more extended. Most characters, especially Special Agents Caitlin Hendrix and Brianne Rainey, were well-drawn, but an exception is SAC C. J. Emmerich. He was present and accounted for, but I don?t feel I know him as well.",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "22e6abf5-9a9d-4f7c-9bd3-81d35e22156a",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "UNSUB, which is the first book in this outstanding series made my Best of 2017 list and while I was ecstatic to get my hands on the follow up novel, I was also nervous. When the first book in a series is as fantastic as UNSUB was I can?t help but be worried that the next won?t measure up, but rest assured this one was just as gripping, terrifying and all around amazing! Meg Gardiner is a master and I?ll follow this series as long as she keeps writing it.",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "19ce8a76-8768-4ee8-bfa0-3915c56dce2c",
+        "bookName": "The Princess Of The School",
+        "review": "Last year, I was completely obsessed with Unsub, the start of a new series by Meg Gardiner that featured FBI agent Caitlin Hendrix. Heart pounding, dark and visceral, Unsub had me holding on to the edge of my seat and screaming for more. So, of course, I was extremely excited when I found out that the second book in the series, Into the Black Nowhere, would be publishing in January 2018!",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "5d05dd02-7da1-4947-bb32-48a7316aed13",
+        "bookName": "The Rebel of The School",
+        "review": "This book was amazing... well-written, fast-paced, fantastic storyline and characters. I loved every minute reading it! If you enjoy the tv show Criminal Minds you will definitely love this book... has the same vibe to it. I'm already looking forward to the next book in the series! Highly recommend!",
+        "reviewerUsername": "picaso",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "49d873dd-950e-4e0e-a8f3-b37754649868",
+        "bookName": "A Popular School Girl",
+        "review": "I am really enjoying Gardiner's Unsub series--this is the second. The opening gets central TX right and the Oklahoma scenes are well-done (many thanks to Gardiner for that) instead of stereotypes.",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "bc4a2421-0e64-48cf-a8a2-848e08932756",
+        "bookName": "Chester Rand",
+        "review": "The second installment of Meg Gardiner's UNSUBseries, INTO THE BLACK NOWHERE, is a blistering read. The pace is fast, and the characters are all super real, flesh-and-blood creations with whom you will enjoy spending time.",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "4b4a5b09-da3a-4f86-a180-20b391f4c368",
+        "bookName": "Dan The News Boy",
+        "review": "INTO THE BLACK NOWHERE IS SO GOOD. I didn't think there was any way it could top Unsub, but I think it may have happened. The story was amazing, fast-paced, and addictive. I may or may not have a slight fascination with Ted Bundy research, so this a good book for me. I was genuinely unhappy when I had to leave my house, and set this book down today, but I came straight home to finish it",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "05deab7d-279d-4434-84d7-c7c8013d5f5c",
+        "bookName": "Little Maid Marian",
+        "review": "The guy next door - handsome, kind, encouraging, steady, patient, churchgoer, a volunteer- could he be a murderer - a psychopath? Catilin Hendrix with the FBI, is determined to find the killer and bring him down. \n\nWomen are missing in Solace, Texas; taken on Saturday nights. When bodies of the missing turn up, displayed in white nightgowns, surrounded by Polaroids of their lifeless bodies on display taunting law .",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "f3a11056-168b-48ad-8768-41462125e48d",
+        "bookName": "Red Rose And Tiger Lily",
+        "review": "Wow! I am so glad I didn?t have to wait long to read it. It didn?t disappoint. It was well written and suspenseful on tracking and catching a serial killer. I couldnt put it down. I am now a Meg Gardiner fan. Can?t wait to see what her next one will be.",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "4b30dd5a-6b2f-4b1f-83ae-1357afbb24f0",
+        "bookName": "The Flying Girl",
+        "review": "The premise of this story that anyone can vanish at any moment without a trace is one that makes your skin crawl; a chill sends shivers through your body and goosebumps pop up on your arm along with the little hairs on the back of your neck and you feel like your not alone, but you are, right?",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "07388695-6b06-4dd3-a767-180306e319c7",
+        "bookName": "The Jolliest School of All",
+        "review": "I absolutely love stories dealing with behavioral analysis. The UNSUB series absolutely delivers... in every way. These books have been compared to the show Criminal Minds and for good reason. I especially love that this book takes place in Gideon County... a nod to the original CM character, Gideon? I'm just going to believe that this is so. ?",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "2e8e54fd-2d4e-4d44-aca4-47aeb5fac40e",
+        "bookName": "The Luckiest Girl in The School",
+        "review": "I remember reading \"UNSUB\" last year and it giving me nightmares. I read tons of horror and that never happens so I was a tad disturbed by the fact. Fast forward a year and now the second one has come out. I was a little leery to pick it up even though I was dying to see if this one could hold up to the first. I'm glad to say it did.",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "41cc79f5-5160-436f-aa45-f2ada9931209",
+        "bookName": "The Princess Of The School",
+        "review": "If you have read Unsub, you know just how creepy and twisty this new series can be. Into the Black Nowhere was no exception and if anything it was more intense than the last! We get to follow Caitlyn Hendrix in her new life at the FBI as a rookie profiler in the Behavior Analysis Unit. A small town in Texas calls the FBI team in to investigate a series of disappearances leading .",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "4ee458de-1ef8-4478-b410-463b6b8def79",
+        "bookName": "The Rebel of The School",
+        "review": "In this second mystery in The Rebel of The School, Caitlin Hendrix, former Alameda County, California, Sheriff's Detective, is fresh from both victory and tragedy, and the continuing identify puzzle still disturbs her. At the end of UNSUB, she was instrumental in wrapping up the long-standing case which had trapped and ruined her father, Detective Mack Hendrix.",
+        "reviewerUsername": "reviewer",
+        "isApproved": "1",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "a24b0add-838b-4562-ac70-133dc6ad952f",
+        "bookName": "The Rebel of The School",
+        "review": "This is book two from the series, Cooper?s Ridge. I would say that you could enjoy this book reading it as a standalone, but I would encourage anyone to read book one, Denver?s Calling first, simply because it?s a beautiful story that needs to be read.",
+        "reviewerUsername": "ben",
+        "isApproved": "0",
+        "date": "2018-02-21"
+    },
+    {
+        "reviewId": "97bdfb6a-fee5-44ac-8254-744eb6ee3b21",
+        "bookName": "The Jolliest School of All",
+        "review": "This is the first book I've read by Davies, and I was given the book in exchange for an honest review. I was surprised at rich detail, and historically accurate account of Japan during the time of Samurais. It's a good and enjoyable read. Check it out.",
+        "reviewerUsername": "ben",
+        "isApproved": "0",
+        "date": "2018-02-21"
+    }
 ]

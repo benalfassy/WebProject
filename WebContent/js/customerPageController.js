@@ -51,7 +51,7 @@ app.controller('customerPageController', function($http, $scope, $rootScope) {
 	}
 	
 	$scope.isLiked = function(book) {
-		return $.inArray($scope.customer.username, book.likes);
+		return $.inArray($scope.customer.nickName, book.likes);
 	}
 
 	$scope.deleteCustomer = function() {

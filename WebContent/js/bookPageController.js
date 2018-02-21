@@ -148,9 +148,10 @@ app
 									$rootScope.customer = customer;
 								}
 							})
+							$rootScope.path = "HTML/customerPage.html";
+
 						});
 						
-						$rootScope.path = "HTML/customerPage.html";
 
 					}
 				});
