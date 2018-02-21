@@ -3,9 +3,90 @@
 		"messageId": "243598123123213",
 		"from": "Books For All",
 		"to": "ben",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-13",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "243591233123213",
+		"from": "Books For All",
+		"to": "hila",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-13",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "2435954323213",
+		"from": "Books For All",
+		"to": "zidan",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-13",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "897598123123213",
+		"from": "Books For All",
+		"to": "galit",
 		"reviewerUsername": "ben",
 		"content": "Welcome to Books For All!",
 		"date": "2018-02-13",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "12348123123213",
+		"from": "Books For All",
+		"to": "shay",
+		"reviewerUsername": "ben",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-13",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "243598128123213",
+		"from": "Books For All",
+		"to": "or",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-14",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "24322336123213",
+		"from": "Books For All",
+		"to": "revital",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-14",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "24322336153213",
+		"from": "Books For All",
+		"to": "mor",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-14",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "24322331123213",
+		"from": "Books For All",
+		"to": "bar",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-14",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "2432212341213",
+		"from": "Books For All",
+		"to": "yuval",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-14",
+		"isViewed": "0"
+	},
+	{
+		"messageId": "2432218841213",
+		"from": "Books For All",
+		"to": "adi",
+		"content": "Welcome to Books For All!",
+		"date": "2018-02-16",
 		"isViewed": "0"
 	}
 ]

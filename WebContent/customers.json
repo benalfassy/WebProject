@@ -64,5 +64,226 @@
 				"value": "0"
 			}
 		]
+	},
+	{
+		"username": "yuval",
+		"email": "yuval@gmail",
+		"street": "hanita",
+		"streetNum": "23",
+		"city": "haifa",
+		"zipCode": "123321",
+		"phoneNum": "05228223659",
+		"password": "yuval",
+		"nickName": "Yuvalll",
+		"description": "books for me",
+		"photo": "yuval",
+		"affiliation": "User",
+		"myBooks": "The Princess Of The School",
+		"bookScroll": [
+			{
+				"key": "The Princess Of The School",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "bar",
+		"email": "bar@gmail",
+		"street": "silver",
+		"streetNum": "33",
+		"city": "haifa",
+		"zipCode": "211123",
+		"phoneNum": "05212344659",
+		"password": "bar",
+		"nickName": "bar bar",
+		"description": "barrrrrr",
+		"photo": "bar",
+		"affiliation": "User",
+		"myBooks": "Dan The News Boy,Little Maid Marian",
+		"bookScroll": [
+			{
+				"key": "Dan The News Boy",
+				"value": "500"
+			},
+			{
+				"key": "Little Maid Marian",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "mor",
+		"email": "mor@gmail",
+		"street": "lebel",
+		"streetNum": "52",
+		"city": "haifa",
+		"zipCode": "215573",
+		"phoneNum": "0521946594",
+		"password": "mor",
+		"nickName": "Mori",
+		"description": "mor the mor",
+		"photo": "mor",
+		"affiliation": "User",
+		"myBooks": "The Flying Girl,The Luckiest Girl in The School",
+		"bookScroll": [
+			{
+				"key": "The Flying Girl",
+				"value": "870"
+			},
+			{
+				"key": "The Luckiest Girl in The School",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "revital",
+		"email": "revital@gmail",
+		"street": "nesher",
+		"streetNum": "87",
+		"city": "haifa",
+		"zipCode": "555573",
+		"phoneNum": "0551946533",
+		"password": "revital",
+		"nickName": "Revi",
+		"description": "revital for fun",
+		"photo": "mor",
+		"affiliation": "User",
+		"myBooks": "The Flying Girl,The Luckiest Girl in The School",
+		"bookScroll": [
+			{
+				"key": "The Flying Girl",
+				"value": "0"
+			},
+			{
+				"key": "The Luckiest Girl in The School",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "or",
+		"email": "or@gmail",
+		"street": "yam",
+		"streetNum": "12",
+		"city": "haifa",
+		"zipCode": "555878",
+		"phoneNum": "0512365242",
+		"password": "or",
+		"nickName": "CoolOr",
+		"description": "",
+		"photo": "or",
+		"affiliation": "User",
+		"myBooks": "The Princess Of The School,The Rebel of The School",
+		"bookScroll": [
+			{
+				"key": "The Princess Of The School",
+				"value": "1100"
+			},
+			{
+				"key": "The Rebel of The School",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "shay",
+		"email": "shay@gmail",
+		"street": "wegwud",
+		"streetNum": "15",
+		"city": "haifa",
+		"zipCode": "322878",
+		"phoneNum": "0512366642",
+		"password": "shay",
+		"nickName": "barcaa",
+		"description": "barcaaaaa",
+		"photo": "shay",
+		"affiliation": "User",
+		"myBooks": "The Princess Of The School,The Rebel of The School",
+		"bookScroll": [
+			{
+				"key": "The Princess Of The School",
+				"value": "1100"
+			},
+			{
+				"key": "The Rebel of The School",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "galit",
+		"email": "galit@gmail",
+		"street": "wegwud",
+		"streetNum": "15",
+		"city": "haifa",
+		"zipCode": "322878",
+		"phoneNum": "0527492011",
+		"password": "galit",
+		"nickName": "real-madrid",
+		"description": "barcaaaaa",
+		"photo": "galit",
+		"affiliation": "User",
+		"myBooks": "A Popular School Girl,Chester Rand",
+		"bookScroll": [
+			{
+				"key": "A Popular School Girl",
+				"value": "0"
+			},
+			{
+				"key": "Chester Rand",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "zidan",
+		"email": "zidan@gmail",
+		"street": "madrid",
+		"streetNum": "5",
+		"city": "madrid",
+		"zipCode": "322666",
+		"phoneNum": "0527494444",
+		"password": "zidan",
+		"nickName": "zizu",
+		"description": "real-madrid",
+		"photo": "zidan",
+		"affiliation": "User",
+		"myBooks": "Dan The News Boy,Chester Rand",
+		"bookScroll": [
+			{
+				"key": "Dan The News Boy",
+				"value": "0"
+			},
+			{
+				"key": "Chester Rand",
+				"value": "0"
+			}
+		]
+	},
+	{
+		"username": "hila",
+		"email": "hila@gmail",
+		"street": "gefen",
+		"streetNum": "7",
+		"city": "haifa",
+		"zipCode": "112666",
+		"phoneNum": "0527403652",
+		"password": "zidan",
+		"nickName": "hilalu",
+		"description": "pizzaaa",
+		"photo": "hila",
+		"affiliation": "User",
+		"myBooks": "Dan The News Boy,Little Maid Marian",
+		"bookScroll": [
+			{
+				"key": "Dan The News Boy",
+				"value": "0"
+			},
+			{
+				"key": "Little Maid Marian",
+				"value": "0"
+			}
+		]
 	}
 ]
