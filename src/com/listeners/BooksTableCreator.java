@@ -19,18 +19,18 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import com.utilities.AppConstants;
 import com.models.Book;
-import com.models.Customer;
+import com.utilities.AppConstants;
 
+// TODO: Auto-generated Javadoc
 /**
- * An example listener that reads the customer json file and populates the data
- * into a Derby database
+ * listener that reads the books json file and populates the data into a Derby
+ * database.
  */
 @WebListener
 public class BooksTableCreator implements ServletContextListener
@@ -44,7 +44,14 @@ public class BooksTableCreator implements ServletContextListener
 	// TODO Auto-generated constructor stub
     }
     
-    // utility that checks whether the customer tables already exists
+    /**
+     * utility that checks whether the books tables already exists
+     *
+     * @param e
+     *            the exception
+     * @return true, if successful
+     */
+    
     private boolean tableAlreadyExists(SQLException e)
     {
 	boolean exists;
@@ -60,6 +67,10 @@ public class BooksTableCreator implements ServletContextListener
     }
     
     /**
+     * Context initialized.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event)
@@ -83,8 +94,6 @@ public class BooksTableCreator implements ServletContextListener
 		
 		stmt.executeUpdate(AppConstants.CREATE_BOOKS_TABLE);
 		
-		// commit update
-		
 		conn.commit();
 		
 		stmt.close();
@@ -103,7 +112,6 @@ public class BooksTableCreator implements ServletContextListener
 	    // in the table
 	    if (!created)
 	    {
-		// populate customers table with customer data from json file
 		Collection<Book> books = loadBooks(cntx.getResourceAsStream(File.separator + AppConstants.BOOKS_FILE));
 		
 		PreparedStatement pstmt = conn.prepareStatement(AppConstants.INSERT_BOOKS_STMT);
@@ -124,13 +132,10 @@ public class BooksTableCreator implements ServletContextListener
 		    pstmt.executeUpdate();
 		}
 		
-		// commit update
 		conn.commit();
-		// close statements
 		pstmt.close();
 	    }
 	    
-	    // close connection
 	    conn.close();
 	    
 	}
@@ -142,6 +147,10 @@ public class BooksTableCreator implements ServletContextListener
     }
     
     /**
+     * Context destroyed.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent event)
@@ -166,13 +175,14 @@ public class BooksTableCreator implements ServletContextListener
     }
     
     /**
-     * Loads customers data from json file that is read from the input stream
-     * into a collection of Customer objects
-     * 
+     * Loads books data from json file that is read from the input stream into a
+     * collection of Books objects.
+     *
      * @param is
      *            input stream to json file
-     * @return collection of customers
+     * @return collection of books
      * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     private Collection<Book> loadBooks(InputStream is) throws IOException
     {
