@@ -1,6 +1,6 @@
 package com.models;
 
-import java.util.ArrayList;
+import java.util.ArrayList;//book.image
 
 /**
  * A simple bean to hold data

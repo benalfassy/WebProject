@@ -303,12 +303,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    
 	    Customer customer = gson.fromJson(request.getReader(), Customer.class);
 	    
-	    if (!ValidateCustomer(customer))
-	    {
-		response.sendError(400);
-		return;
-	    }
-	    
 	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
 	    

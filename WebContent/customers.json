@@ -1,7 +1,7 @@
 [
     {
         "username": "admin",
-        "email": "Admin",
+        "email": "Admin@gmail.com",
         "street": "Admin",
         "streetNum": "Admin",
         "city": "Admin",
@@ -18,7 +18,7 @@
     },
     {
         "username": "adi",
-        "email": "adi@gmail",
+        "email": "adi@gmail.com",
         "street": "ribuv",
         "streetNum": "12",
         "city": "haifa",
@@ -57,7 +57,7 @@
     },
     {
         "username": "ben",
-        "email": "benalfasssy@gmail",
+        "email": "benalfasssy@gmail.com",
         "street": "hanita",
         "streetNum": "12",
         "city": "haifa",
@@ -106,7 +106,7 @@
     },
     {
         "username": "yuval",
-        "email": "yuval@gmail",
+        "email": "yuval@gmail.com",
         "street": "hanita",
         "streetNum": "23",
         "city": "haifa",
@@ -145,7 +145,7 @@
     },
     {
         "username": "bar",
-        "email": "bar@gmail",
+        "email": "bar@gmail.com",
         "street": "silver",
         "streetNum": "33",
         "city": "haifa",
@@ -179,7 +179,7 @@
     },
     {
         "username": "mor",
-        "email": "mor@gmail",
+        "email": "mor@gmail.com",
         "street": "lebel",
         "streetNum": "52",
         "city": "haifa",
@@ -213,7 +213,7 @@
     },
     {
         "username": "revital",
-        "email": "revital@gmail",
+        "email": "revital@gmail.com",
         "street": "nesher",
         "streetNum": "87",
         "city": "haifa",
@@ -252,7 +252,7 @@
     },
     {
         "username": "or",
-        "email": "or@gmail",
+        "email": "or@gmail.com",
         "street": "yam",
         "streetNum": "12",
         "city": "haifa",
@@ -281,7 +281,7 @@
     },
     {
         "username": "shay",
-        "email": "shay@gmail",
+        "email": "shay@gmail.com",
         "street": "wegwud",
         "streetNum": "15",
         "city": "haifa",
@@ -330,7 +330,7 @@
     },
     {
         "username": "galit",
-        "email": "galit@gmail",
+        "email": "galit@gmail.com",
         "street": "wegwud",
         "streetNum": "15",
         "city": "haifa",
@@ -359,7 +359,7 @@
     },
     {
         "username": "zidan",
-        "email": "zidan@gmail",
+        "email": "zidan@gmail.com",
         "street": "madrid",
         "streetNum": "5",
         "city": "madrid",
@@ -393,7 +393,7 @@
     },
     {
         "username": "hila",
-        "email": "hila@gmail",
+        "email": "hila@gmail.com",
         "street": "gefen",
         "streetNum": "7",
         "city": "haifa",
@@ -845,7 +845,7 @@
     },
     {
         "username": "reviewer",
-        "email": "reviewr@r.com",
+        "email": "reviewr@rs.com",
         "street": "elaor",
         "streetNum": "52",
         "city": "yafim",
