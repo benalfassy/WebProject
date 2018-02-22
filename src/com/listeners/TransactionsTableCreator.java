@@ -10,10 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -22,20 +19,18 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import com.utilities.AppConstants;
-import com.models.Book;
-import com.models.Customer;
-import com.models.Review;
 import com.models.Transaction;
+import com.utilities.AppConstants;
 
+// TODO: Auto-generated Javadoc
 /**
- * An example listener that reads the customer json file and populates the data
- * into a Derby database
+ * Listener that reads the transactions json file and populates the data into a
+ * Derby database.
  */
 @WebListener
 public class TransactionsTableCreator implements ServletContextListener
@@ -49,7 +44,13 @@ public class TransactionsTableCreator implements ServletContextListener
 	// TODO Auto-generated constructor stub
     }
     
-    // utility that checks whether the customer tables already exists
+    /**
+     * utility that checks whether the customer tables already exists
+     *
+     * @param e
+     *            the exception
+     * @return true, if successful
+     */
     private boolean tableAlreadyExists(SQLException e)
     {
 	boolean exists;
@@ -65,12 +66,16 @@ public class TransactionsTableCreator implements ServletContextListener
     }
     
     /**
+     * Context initialized.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event)
     {
 	ServletContext cntx = event.getServletContext();
-		
+	
 	try
 	{
 	    Gson gson = new Gson();
@@ -88,8 +93,6 @@ public class TransactionsTableCreator implements ServletContextListener
 		Statement stmt = conn.createStatement();
 		
 		stmt.executeUpdate(AppConstants.CREATE_TRANSACTION_TABLE);
-		
-		// commit update
 		
 		conn.commit();
 		
@@ -109,7 +112,6 @@ public class TransactionsTableCreator implements ServletContextListener
 	    // in the table
 	    if (!created)
 	    {
-		// populate customers table with customer data from json file
 		Collection<Transaction> transactions = loadTransactions(
 			cntx.getResourceAsStream(File.separator + AppConstants.TRANSACTIONS_FILE));
 		
@@ -125,13 +127,10 @@ public class TransactionsTableCreator implements ServletContextListener
 		    pstmt.executeUpdate();
 		}
 		
-		// commit update
 		conn.commit();
-		// close statements
 		pstmt.close();
 	    }
 	    
-	    // close connection
 	    conn.close();
 	    
 	}
@@ -143,6 +142,10 @@ public class TransactionsTableCreator implements ServletContextListener
     }
     
     /**
+     * Context destroyed.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent event)
@@ -152,7 +155,6 @@ public class TransactionsTableCreator implements ServletContextListener
 	// shut down database
 	try
 	{
-	    // obtain CustomerDB data source from Tomcat's context and shutdown
 	    Context context = new InitialContext();
 	    BasicDataSource ds = (BasicDataSource) context
 		    .lookup(cntx.getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.SHUTDOWN);
@@ -167,20 +169,21 @@ public class TransactionsTableCreator implements ServletContextListener
     }
     
     /**
-     * Loads customers data from json file that is read from the input stream
-     * into a collection of Customer objects
-     * 
+     * Loads transactions data from json file that is read from the input stream
+     * into a collection of Transaction objects.
+     *
      * @param is
      *            input stream to json file
-     * @return collection of customers
+     * @return collection of Transaction
      * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     private Collection<Transaction> loadTransactions(InputStream is) throws IOException
     {
 	BufferedReader br = new BufferedReader(new InputStreamReader(is));
 	
 	StringBuilder jsonFileContent = new StringBuilder();
-		
+	
 	String nextLine = null;
 	
 	while ((nextLine = br.readLine()) != null)
@@ -193,8 +196,6 @@ public class TransactionsTableCreator implements ServletContextListener
 	Type type = new TypeToken<Collection<Transaction>>()
 	{
 	}.getType();
-	
-	//System.out.println("trying to parse: " + jsonFileContent.toString());
 	
 	Collection<Transaction> transactions = gson.fromJson(jsonFileContent.toString(), type);
 	

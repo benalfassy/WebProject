@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import com.models.Message;
 import com.utilities.AppConstants;
 
+// TODO: Auto-generated Javadoc
 /**
- * An example listener that reads the customer json file and populates the data
- * into a Derby database
+ * Listener that reads the messages json file and populates the data into a
+ * Derby database.
  */
 @WebListener
 public class MessagesTableCreator implements ServletContextListener
@@ -43,7 +44,13 @@ public class MessagesTableCreator implements ServletContextListener
 	// TODO Auto-generated constructor stub
     }
     
-    // utility that checks whether the customer tables already exists
+    /**
+     * utility that checks whether the messages table already exists
+     *
+     * @param e
+     *            the exception
+     * @return true, if successful
+     */
     private boolean tableAlreadyExists(SQLException e)
     {
 	boolean exists;
@@ -59,12 +66,16 @@ public class MessagesTableCreator implements ServletContextListener
     }
     
     /**
+     * Context initialized.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event)
     {
 	ServletContext cntx = event.getServletContext();
-		
+	
 	try
 	{
 	    
@@ -81,8 +92,6 @@ public class MessagesTableCreator implements ServletContextListener
 		Statement stmt = conn.createStatement();
 		
 		stmt.executeUpdate(AppConstants.CREATE_MESSAGES_TABLE);
-		
-		// commit update
 		
 		conn.commit();
 		
@@ -102,7 +111,6 @@ public class MessagesTableCreator implements ServletContextListener
 	    // in the table
 	    if (!created)
 	    {
-		// populate customers table with customer data from json file
 		Collection<Message> messages = loadMessages(
 			cntx.getResourceAsStream(File.separator + AppConstants.MESSAGES_FILE));
 		
@@ -119,13 +127,10 @@ public class MessagesTableCreator implements ServletContextListener
 		    pstmt.executeUpdate();
 		}
 		
-		// commit update
 		conn.commit();
-		// close statements
 		pstmt.close();
 	    }
 	    
-	    // close connection
 	    conn.close();
 	    
 	}
@@ -137,6 +142,10 @@ public class MessagesTableCreator implements ServletContextListener
     }
     
     /**
+     * Context destroyed.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent event)
@@ -146,7 +155,6 @@ public class MessagesTableCreator implements ServletContextListener
 	// shut down database
 	try
 	{
-	    // obtain CustomerDB data source from Tomcat's context and shutdown
 	    Context context = new InitialContext();
 	    BasicDataSource ds = (BasicDataSource) context
 		    .lookup(cntx.getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.SHUTDOWN);
@@ -161,20 +169,21 @@ public class MessagesTableCreator implements ServletContextListener
     }
     
     /**
-     * Loads customers data from json file that is read from the input stream
-     * into a collection of Customer objects
-     * 
+     * Loads messages data from json file that is read from the input stream
+     * into a collection of Message objects.
+     *
      * @param is
      *            input stream to json file
-     * @return collection of customers
+     * @return collection of messages
      * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     private Collection<Message> loadMessages(InputStream is) throws IOException
     {
 	BufferedReader br = new BufferedReader(new InputStreamReader(is));
 	
 	StringBuilder jsonFileContent = new StringBuilder();
-		
+	
 	String nextLine = null;
 	
 	while ((nextLine = br.readLine()) != null)
@@ -187,8 +196,6 @@ public class MessagesTableCreator implements ServletContextListener
 	Type type = new TypeToken<Collection<Message>>()
 	{
 	}.getType();
-	
-	//System.out.println("trying to parse: " + jsonFileContent.toString());
 	
 	Collection<Message> messages = gson.fromJson(jsonFileContent.toString(), type);
 	

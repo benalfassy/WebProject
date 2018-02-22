@@ -27,20 +27,26 @@ import com.models.Book;
 import com.models.LikeRequest;
 import com.utilities.AppConstants;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class CustomersServlet1
+ * Servlet implementation class BooksServlet.
  */
 public class BooksServlet extends HttpServlet implements Closeable
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
     
+    /** The context. */
     private Context context;
     
+    /** The connection. */
     private Connection connection;
     
     /**
-     * @throws NamingException
-     * @throws SQLException
+     * Instantiates a new books servlet.
+     *
+     * @throws NamingException the naming exception
      * @see HttpServlet#HttpServlet()
      */
     public BooksServlet() throws NamingException
@@ -58,6 +64,12 @@ public class BooksServlet extends HttpServlet implements Closeable
 	}
     }
     
+    /**
+     * Open DB connection.
+     *
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     private void openConnection() throws SQLException, NamingException
     {
 	BasicDataSource ds = (BasicDataSource) context
@@ -66,6 +78,9 @@ public class BooksServlet extends HttpServlet implements Closeable
 	connection = ds.getConnection();
     }
     
+    /* (non-Javadoc)
+     * @see java.io.Closeable#close()
+     */
     @Override
     public void close()
     {
@@ -81,6 +96,12 @@ public class BooksServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do get.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -91,9 +112,7 @@ public class BooksServlet extends HttpServlet implements Closeable
 	    Gson gson = new Gson();
 	    
 	    String uri = request.getRequestURI();
-	    
-	    System.out.println(uri);
-	    
+	    	    
 	    if (uri.indexOf(AppConstants.BOOKS_RESTFULL) != -1)
 	    {
 		Book book = null;
@@ -176,9 +195,7 @@ public class BooksServlet extends HttpServlet implements Closeable
 		rs.close();
 		
 		stmt.close();
-		
-		// convert from customers collection to json
-		
+				
 		String booksJsonResult = gson.toJson(booksResult, AppConstants.BOOKS_COLLECTION);
 		
 		response.addHeader("Content-Type", "application/json");
@@ -203,6 +220,12 @@ public class BooksServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do post.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -212,6 +235,12 @@ public class BooksServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do put.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -280,6 +309,12 @@ public class BooksServlet extends HttpServlet implements Closeable
 	
     }
     
+    /**
+     * Validate like request.
+     *
+     * @param likeRequest the like request
+     * @return true, if successful
+     */
     private boolean ValidateLikeRequest(LikeRequest likeRequest)
     {
 	if (likeRequest == null || likeRequest.getBookName() == null || likeRequest.getNickName().length() > 20)

@@ -29,20 +29,26 @@ import com.utilities.AppConstants;
 
 import javafx.util.Pair;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class CustomersServlet1
+ * Servlet implementation class CustomersServlet.
  */
 public class CustomersServlet extends HttpServlet implements Closeable
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
     
+    /** The context. */
     private Context context;
     
+    /** The connection. */
     private Connection connection;
     
     /**
-     * @throws NamingException
-     * @throws SQLException
+     * Instantiates a new customers servlet.
+     *
+     * @throws NamingException the naming exception
      * @see HttpServlet#HttpServlet()
      */
     public CustomersServlet() throws NamingException
@@ -61,6 +67,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	}
     }
     
+    /**
+     * Open connection.
+     *
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     private void openConnection() throws SQLException, NamingException
     {
 	BasicDataSource ds = (BasicDataSource) context
@@ -69,6 +81,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	connection = ds.getConnection();
     }
     
+    /* (non-Javadoc)
+     * @see java.io.Closeable#close()
+     */
     @Override
     public void close()
     {
@@ -83,6 +98,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do get.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -181,9 +202,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		rs.close();
 		
 		stmt.close();
-		
-		// convert from customers collection to json
-		
+				
 		String customerJsonResult = gson.toJson(customersResult, AppConstants.CUSTOMER_COLLECTION);
 		
 		response.addHeader("Content-Type", "application/json");
@@ -208,6 +227,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do post.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -289,6 +314,10 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	
     }
     
+    
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doPut(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 	try
@@ -345,6 +374,10 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	}
     }
     
+    
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doDelete(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
     {
@@ -483,6 +516,12 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	}
     }
     
+    /**
+     * Validate customer.
+     *
+     * @param customer the customer
+     * @return true, if successful
+     */
     private boolean ValidateCustomer(Customer customer)
     {
 	if (customer == null || customer.getUsername() == null || customer.getEmail() == null

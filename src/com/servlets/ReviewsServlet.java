@@ -28,20 +28,26 @@ import com.google.gson.GsonBuilder;
 import com.models.Review;
 import com.utilities.AppConstants;
 
+// TODO: Auto-generated Javadoc
 /**
- * Servlet implementation class CustomersServlet1
+ * Servlet implementation class ReviewsServlet.
  */
 public class ReviewsServlet extends HttpServlet implements Closeable
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 1L;
     
+    /** The context. */
     private Context context;
     
+    /** The connection. */
     private Connection connection;
     
     /**
-     * @throws NamingException
-     * @throws SQLException
+     * Instantiates a new reviews servlet.
+     *
+     * @throws NamingException the naming exception
      * @see HttpServlet#HttpServlet()
      */
     public ReviewsServlet() throws NamingException
@@ -59,6 +65,12 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	}
     }
     
+    /**
+     * Open connection.
+     *
+     * @throws SQLException the SQL exception
+     * @throws NamingException the naming exception
+     */
     private void openConnection() throws SQLException, NamingException
     {
 	BasicDataSource ds = (BasicDataSource) context
@@ -67,6 +79,9 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	connection = ds.getConnection();
     }
     
+    /* (non-Javadoc)
+     * @see java.io.Closeable#close()
+     */
     @Override
     public void close()
     {
@@ -82,6 +97,12 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do get.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -197,6 +218,12 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     }
     
     /**
+     * Do post.
+     *
+     * @param request the request
+     * @param response the response
+     * @throws ServletException the servlet exception
+     * @throws IOException Signals that an I/O exception has occurred.
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
      *      response)
      */
@@ -244,6 +271,10 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	
     }
     
+   
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doPut(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
 	try
@@ -300,6 +331,10 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	}
     }
     
+   
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#doDelete(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
     {

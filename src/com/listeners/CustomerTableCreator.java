@@ -27,9 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import com.utilities.AppConstants;
 import com.models.Customer;
 
+// TODO: Auto-generated Javadoc
 /**
- * An example listener that reads the customer json file and populates the data
- * into a Derby database
+ * Listener that reads the customer json file and populates the data into a
+ * Derby database.
  */
 @WebListener
 public class CustomerTableCreator implements ServletContextListener
@@ -43,7 +44,13 @@ public class CustomerTableCreator implements ServletContextListener
 	// TODO Auto-generated constructor stub
     }
     
-    // utility that checks whether the customer tables already exists
+    /**
+     * utility that checks whether the customer tables already exists
+     *
+     * @param e
+     *            the exception
+     * @return true, if successful
+     */
     private boolean tableAlreadyExists(SQLException e)
     {
 	boolean exists;
@@ -59,6 +66,10 @@ public class CustomerTableCreator implements ServletContextListener
     }
     
     /**
+     * Context initialized.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent event)
@@ -82,8 +93,6 @@ public class CustomerTableCreator implements ServletContextListener
 		
 		stmt.executeUpdate(AppConstants.CREATE_CUSTOMERS_TABLE);
 		
-		// commit update
-		
 		conn.commit();
 		
 		stmt.close();
@@ -102,7 +111,6 @@ public class CustomerTableCreator implements ServletContextListener
 	    // in the table
 	    if (!created)
 	    {
-		// populate customers table with customer data from json file
 		Collection<Customer> customers = loadCustomers(
 			cntx.getResourceAsStream(File.separator + AppConstants.CUSTOMERS_FILE));
 		
@@ -132,13 +140,10 @@ public class CustomerTableCreator implements ServletContextListener
 		    pstmt.executeUpdate();
 		}
 		
-		// commit update
 		conn.commit();
-		// close statements
 		pstmt.close();
 	    }
 	    
-	    // close connection
 	    conn.close();
 	    
 	}
@@ -150,6 +155,10 @@ public class CustomerTableCreator implements ServletContextListener
     }
     
     /**
+     * Context destroyed.
+     *
+     * @param event
+     *            the event
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent event)
@@ -159,7 +168,6 @@ public class CustomerTableCreator implements ServletContextListener
 	// shut down database
 	try
 	{
-	    // obtain CustomerDB data source from Tomcat's context and shutdown
 	    Context context = new InitialContext();
 	    BasicDataSource ds = (BasicDataSource) context
 		    .lookup(cntx.getInitParameter(AppConstants.DB_DATASOURCE) + AppConstants.SHUTDOWN);
@@ -175,21 +183,19 @@ public class CustomerTableCreator implements ServletContextListener
     
     /**
      * Loads customers data from json file that is read from the input stream
-     * into a collection of Customer objects
-     * 
+     * into a collection of Customer objects.
+     *
      * @param is
      *            input stream to json file
      * @return collection of customers
      * @throws IOException
+     *             Signals that an I/O exception has occurred.
      */
     private Collection<Customer> loadCustomers(InputStream is) throws IOException
     {
 	
-	// wrap input stream with a buffered reader to allow reading the file
-	// line by line
 	BufferedReader br = new BufferedReader(new InputStreamReader(is));
 	StringBuilder jsonFileContent = new StringBuilder();
-	// read line by line from file
 	String nextLine = null;
 	while ((nextLine = br.readLine()) != null)
 	{
@@ -197,14 +203,11 @@ public class CustomerTableCreator implements ServletContextListener
 	}
 	
 	Gson gson = new Gson();
-	// this is a require type definition by the Gson utility so Gson will
-	// understand what kind of object representation should the json file
-	// match
+	
 	Type type = new TypeToken<Collection<Customer>>()
 	{
 	}.getType();
 	Collection<Customer> customers = gson.fromJson(jsonFileContent.toString(), type);
-	// close
 	br.close();
 	return customers;
 	
