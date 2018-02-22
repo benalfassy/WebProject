@@ -112,9 +112,7 @@ public class MessagesServlet extends HttpServlet implements Closeable
 	try
 	{
 	    String uri = request.getRequestURI();
-	    
-	    System.out.println(uri);
-	    
+	    	    
 	    if (uri.indexOf(AppConstants.MESSAGES_RESTFULL) != -1)
 	    {
 		Message message = null;

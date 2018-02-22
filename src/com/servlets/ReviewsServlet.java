@@ -111,9 +111,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	try
 	{
 	    String uri = request.getRequestURI();
-	    
-	    System.out.println(uri);
-	    
+	    	    
 	    if (uri.indexOf(AppConstants.REVIEWS_RESTFULL) != -1)
 	    {
 		Review review = null;

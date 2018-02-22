@@ -115,9 +115,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    Gson gson = new Gson();
 	    
 	    String uri = request.getRequestURI();
-	    
-	    System.out.println(uri);
-	    
+	    	    
 	    if (uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) != -1)
 	    {
 		Customer customer = null;
