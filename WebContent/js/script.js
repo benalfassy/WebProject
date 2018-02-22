@@ -1,3 +1,4 @@
+//script for the popover of the likes tooltip
 $(".pop").popover({ trigger: "manual" , html: true, animation:false})
     .on("mouseenter", function () {
         var _this = this;

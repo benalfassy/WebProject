@@ -1,7 +1,10 @@
+//Controller for the add review section in the book page for users that purchased the book
+
 app.controller('addReviewController', function($rootScope, $scope, $http) {
 
 	$scope.submitSucceed = false;
-
+	
+	//function that add the review to the DB
 	$scope.submitReview = function() {
 
 		var reviewObj = {

@@ -1,3 +1,5 @@
+//controller for the login page
+
 app.controller('loginController', function($http, $scope, $rootScope) {
 	$rootScope.rootLogedUser = null;
 
@@ -6,7 +8,8 @@ app.controller('loginController', function($http, $scope, $rootScope) {
 	$scope.submit = function() {
 
 		var res = $http.get('customers/' + $scope.username);
-
+		
+		//validate the username and password
 		res.success(function(data, status, headers, config) {
 			if (data.password == $scope.password) {
 				if (data.affiliation == "Admin") {

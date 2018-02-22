@@ -1,3 +1,5 @@
+//main controller for all the app that gets main data (books+messages) from DB
+
 var app = angular.module('app', []);
 
 app.controller('appController', function($http, $scope, $rootScope) {

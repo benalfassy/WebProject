@@ -1,3 +1,4 @@
+//controller for the admin messages page
 app.controller('adminMessagesController', function($http, $scope, $rootScope) {
 	
 	$scope.replyOrReplied = function(message){
@@ -16,7 +17,7 @@ app.controller('adminMessagesController', function($http, $scope, $rootScope) {
 	$scope.getMessageImage = function(message) {
 		return "Images/" + message.from + ".jpg";
 	}
-	
+	//function that delete msgs from DB
 	$scope.deleteMsg = function(message){
 		var res = $http.delete('messages/' + message.messageId);
 		
@@ -35,6 +36,7 @@ app.controller('adminMessagesController', function($http, $scope, $rootScope) {
 	}
 });
 
+//controller to the reply section for messages for admin
 app.controller('adminReplyController', function($http, $scope, $rootScope) {
 	$scope.replyMessage="";
 	

@@ -1,3 +1,5 @@
+//controller for the book page 
+
 app
 		.controller(
 				'bookPageController',
@@ -116,7 +118,7 @@ app
 							$scope.book.likes.splice(index, 1);
 						});
 					}
-					
+					//function for the admin that allow him to delete a review from DB
 					$scope.deleteReview = function(review){
 						
 						var res = $http.delete('reviews/'+review.reviewId);
@@ -136,6 +138,7 @@ app
 							
 						});
 					}
+					//function for the admin - if click on likes tooltip on a user, set page to the user page
 					
 					$scope.goToCustomerPage = function(nickName){
 						

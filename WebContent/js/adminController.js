@@ -1,3 +1,4 @@
+//controller for the admin nav bar
 app.controller('adminController', function($http, $scope, $rootScope) {
 
 	$scope.reviews = null;

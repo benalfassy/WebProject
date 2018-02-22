@@ -1,3 +1,5 @@
+//Controller for the displayed content of the book
+
 app.controller('readBookController', function($log, $window, $http, $scope,
 		$rootScope) {
 

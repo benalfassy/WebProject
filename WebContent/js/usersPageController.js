@@ -1,3 +1,5 @@
+//controller for the admin users page the present all the users and their details
+
 app.controller('usersPageController', function($http, $scope, $rootScope) {
 
 	$scope.customers = null;
@@ -26,7 +28,8 @@ app.controller('usersPageController', function($http, $scope, $rootScope) {
 	{
 		return "Images/"+customer.username+".jpg;"
 	}
-
+	
+	//function that delete customer from DB
 	$scope.deleteCustomer = function(customer) {
 		
 		var res = $http.delete('customers/'+customer.username);

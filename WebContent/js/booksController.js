@@ -1,3 +1,5 @@
+//main controller of the home page for the user and admin that shows all the books
+
 app.controller('booksController',function($rootScope, $scope, $http) {
 	
 	$scope.filterNameValue = "";
@@ -132,7 +134,8 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 			book.likes.splice(index, 1);
 		});
 	}
-
+	
+	//show in this page only a short description of the book --> max 15 words
 	$scope.shortDescription = function(description) {
 		var count = 0;
 		var i = 0;
@@ -147,6 +150,8 @@ app.controller('booksController',function($rootScope, $scope, $http) {
 		result += '...';
 		return result;
 	}
+	
+	//functions of the filter nav bar-> check if someone pass on filter and show the books by the filter
 	
 	$scope.passFilter = function(book){
 		if($scope.filterMyBooks == true && $scope.hasBook(book) == -1){

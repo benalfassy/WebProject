@@ -1,3 +1,5 @@
+//controller of the shopping cart page
+
 app.controller('shoppingCartController', function($http, $scope, $rootScope) {
 
 	$scope.cartBooks = $rootScope.rootCartBooks;

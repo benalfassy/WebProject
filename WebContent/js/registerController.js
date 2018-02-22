@@ -1,3 +1,5 @@
+//controller for the register page
+
 app.controller('registerController', function($http, $scope, $rootScope) {
 
 	$scope.alreadyExists = false;
@@ -20,7 +22,7 @@ app.controller('registerController', function($http, $scope, $rootScope) {
 			myBookList : [],
 			bookScroll : []
 		}
-
+		//function that add the customer to the DB
 		var res = $http.post('customers', customer);
 		res.success(function(data, status, headers, config) {
 			

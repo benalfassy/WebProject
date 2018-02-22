@@ -1,3 +1,5 @@
+//controller of the payment page
+
 app.controller('paymentController', function($http, $scope, $rootScope) {
 
 	if ($rootScope.rootBuyNow.length > 0) {
@@ -5,11 +7,11 @@ app.controller('paymentController', function($http, $scope, $rootScope) {
 	} else {
 		$scope.cartBooks = $rootScope.rootCartBooks;
 	}
-
+	//checks that is someone close the controllet, remove the item from buy now
 	$scope.$on("$destroy", function() {
 		$rootScope.rootBuyNow.pop();
 	});
-
+	
 	$scope.amountToPay = function() {
 		var sum = 0;
 
@@ -31,7 +33,8 @@ app.controller('paymentController', function($http, $scope, $rootScope) {
 
 		return checkedDate > today;
 	}
-
+	//when payment is approved, add the books for the customer, set scroll character of the cook to 0, add all the details to transactions table in DB, send message to user that thanks for the purchase 
+	
 	$scope.onBuy = function() {
 		var customer = $rootScope.rootLogedUser;
 

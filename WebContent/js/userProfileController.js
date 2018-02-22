@@ -1,3 +1,5 @@
+//controller for the user profile page of the customer with all the function that updates its details/delete messages
+
 app.controller('userProfileController', function($http, $scope, $rootScope) {
 
 	$scope.user = $rootScope.rootLogedUser;

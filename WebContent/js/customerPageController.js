@@ -1,3 +1,5 @@
+//controller for the admin customer page->vire customer detailes
+
 app.controller('customerPageController', function($http, $scope, $rootScope) {
 
 	$scope.books = null;

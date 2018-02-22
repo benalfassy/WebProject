@@ -1,3 +1,5 @@
+//contoller for the admin for the section of the review messages to approve/decline
+
 app.controller('reviewsMessagesController', function($rootScope, $scope, $http) {
 	
 	$scope.reviews = $rootScope.rootReviews;

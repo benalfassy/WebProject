@@ -1,8 +1,11 @@
+//controller for the transaction page of the admin
+
 app.controller('transactionsController', function($rootScope, $scope, $http) {
 
 	$scope.transactions = null;
 	var getTransactions = $http.get("transactions");
 
+	//get all the transactions from DB
 	getTransactions.success(function(data, status, headers, config) {
 		$scope.transactions = data;
 	});
