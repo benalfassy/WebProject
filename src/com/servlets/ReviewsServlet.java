@@ -2,8 +2,6 @@ package com.servlets;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,26 +17,20 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.utilities.AppConstants;
-import com.models.Book;
-import com.models.Customer;
 import com.models.Review;
-import com.sun.jmx.snmp.Timestamp;
+import com.utilities.AppConstants;
 
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/reviews", "/reviews/*" })
 public class ReviewsServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -108,9 +100,9 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		String reviewId = uri
 			.substring(uri.indexOf(AppConstants.REVIEWS_RESTFULL) + AppConstants.REVIEWS_RESTFULL.length());
 		
-		System.out.println("trying to get review: " + reviewId);
-		
-		System.out.println(reviewId);
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get review " + reviewId);
+		System.out.println("--------------------------");
 		
 		PreparedStatement preparedStatement;
 		
@@ -143,8 +135,6 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		
 		String result = gson.toJson(review, Review.class);
 		
-		System.out.println("trying to return review: " + reviewId);
-		
 		response.addHeader("Content-Type", "application/json");
 		
 		PrintWriter writer = response.getWriter();
@@ -156,6 +146,9 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	    }
 	    else
 	    {
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get all reviews ");
+		System.out.println("--------------------------");
 		
 		Collection<Review> reviewsResult = new ArrayList<Review>();
 		
@@ -178,8 +171,6 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 		stmt.close();
 		
 		Gson gson = new Gson();
-		
-		// convert from customers collection to json
 		
 		String reviewsJsonResult = gson.toJson(reviewsResult, AppConstants.REVIEWS_COLLECTION);
 		
@@ -211,13 +202,18 @@ public class ReviewsServlet extends HttpServlet implements Closeable
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-	Gson gson = new GsonBuilder().create();
-	
-	Review review = gson.fromJson(request.getReader(), Review.class);
-		
-	PreparedStatement pstmt;
 	try
 	{
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to add review ");
+	    System.out.println("--------------------------");
+	    
+	    Gson gson = new GsonBuilder().create();
+	    
+	    Review review = gson.fromJson(request.getReader(), Review.class);
+	    
+	    PreparedStatement pstmt;
+	    
 	    openConnection();
 	    
 	    pstmt = connection.prepareStatement(AppConstants.INSERT_REVIEWS_STMT);
@@ -238,7 +234,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	}
 	catch (SQLException | NamingException e)
 	{
-	    getServletContext().log("Error on Customer post", e);
+	    e.printStackTrace();
 	    response.sendError(500);
 	}
 	finally
@@ -252,6 +248,10 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to update review ");
+	    System.out.println("--------------------------");
+	    
 	    openConnection();
 	    
 	    Gson gson = new GsonBuilder().create();
@@ -303,6 +303,10 @@ public class ReviewsServlet extends HttpServlet implements Closeable
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
     {
+	System.out.println("\n--------------------------");
+	System.out.println("trying to delete review ");
+	System.out.println("--------------------------");
+	
 	String uri = request.getRequestURI();
 	
 	if (uri.indexOf(AppConstants.REVIEWS_RESTFULL) == -1)
@@ -349,7 +353,7 @@ public class ReviewsServlet extends HttpServlet implements Closeable
 	}
 	catch (SQLException | NamingException e)
 	{
-	    getServletContext().log("Error on Customer post", e);
+	    e.printStackTrace();
 	    response.sendError(500);
 	}
 	finally

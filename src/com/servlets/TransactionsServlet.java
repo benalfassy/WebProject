@@ -2,8 +2,6 @@ package com.servlets;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,16 +10,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.UUID;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,20 +25,12 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.utilities.AppConstants;
-
-import javafx.util.Pair;
-
-import com.models.Book;
-import com.models.Customer;
-import com.models.Review;
 import com.models.Transaction;
-import com.sun.jmx.snmp.Timestamp;
+import com.utilities.AppConstants;
 
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/transactions", })
 public class TransactionsServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -115,6 +102,9 @@ public class TransactionsServlet extends HttpServlet implements Closeable
 	    }
 	    else
 	    {
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get all transactions");
+		System.out.println("--------------------------");
 		
 		ArrayList<Transaction> transactionsResult = new ArrayList<Transaction>();
 		
@@ -176,9 +166,11 @@ public class TransactionsServlet extends HttpServlet implements Closeable
     {
 	try
 	{
-	    openConnection();
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to add transaction");
+	    System.out.println("--------------------------");
 	    
-	    System.out.println("adding transaction");
+	    openConnection();
 	    
 	    Gson gson = new GsonBuilder().create();
 	    
@@ -204,7 +196,7 @@ public class TransactionsServlet extends HttpServlet implements Closeable
 	}
 	catch (SQLException | NamingException e)
 	{
-	    getServletContext().log("Error on Customer post", e);
+	    e.printStackTrace();
 	    response.sendError(500);
 	}
 	finally

@@ -8,38 +8,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.regex.Pattern;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.Scrollable;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.models.Customer;
 import com.utilities.AppConstants;
 
 import javafx.util.Pair;
 
-import com.models.Customer;
-import com.models.LikeRequest;
-import com.sun.corba.se.impl.orb.ParserTable.TestAcceptor1;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/customers", "/customers/*" })
 public class CustomersServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -112,7 +104,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		String username = uri.substring(
 			uri.indexOf(AppConstants.CUSTOMERS_RESTFULL) + AppConstants.CUSTOMERS_RESTFULL.length());
 		
+		System.out.println("\n--------------------------");
 		System.out.println("trying to get customer: " + username);
+		System.out.println("--------------------------");
 		
 		PreparedStatement preparedStatement;
 		
@@ -149,8 +143,6 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		
 		String result = gson.toJson(customer, Customer.class);
 		
-		System.out.println("trying to return customer: " + username);
-		
 		response.addHeader("Content-Type", "application/json");
 		
 		PrintWriter writer = response.getWriter();
@@ -162,6 +154,9 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    }
 	    else
 	    {
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get all customers");
+		System.out.println("--------------------------");
 		
 		Collection<Customer> customersResult = new ArrayList<Customer>();
 		
@@ -218,9 +213,20 @@ public class CustomersServlet extends HttpServlet implements Closeable
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+	
+	System.out.println("\n--------------------------");
+	System.out.println("trying add customer");
+	System.out.println("--------------------------");
+	
 	Gson gson = new GsonBuilder().create();
 	
 	Customer customer = gson.fromJson(request.getReader(), Customer.class);
+	
+	if (!ValidateCustomer(customer))
+	{
+	    response.sendError(400);
+	    return;
+	}
 	
 	PreparedStatement pstmt;
 	try
@@ -287,18 +293,21 @@ public class CustomersServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to update customer");
+	    System.out.println("--------------------------");
+	    
 	    openConnection();
 	    
 	    Gson gson = new GsonBuilder().create();
 	    
 	    Customer customer = gson.fromJson(request.getReader(), Customer.class);
 	    
-	    System.out.println("--------------------------");
-	    System.out.println("updating customer: " + customer.getUsername());
-	    System.out.println(customer.getBookScroll());
-	    System.out.println(customer.getMyBooks());
-	    System.out.println(customer.getMyBookList());
-	    System.out.println("--------------------------");
+	    if (!ValidateCustomer(customer))
+	    {
+		response.sendError(400);
+		return;
+	    }
 	    
 	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
@@ -345,6 +354,10 @@ public class CustomersServlet extends HttpServlet implements Closeable
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
     {
+	System.out.println("\n--------------------------");
+	System.out.println("trying to delete customer");
+	System.out.println("--------------------------");
+	
 	Gson gson = new GsonBuilder().create();
 	
 	String uri = request.getRequestURI();
@@ -360,7 +373,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	
 	String nickName;
 	
-	System.out.println("--------------------------------------");
+	System.out.println("\n--------------------------------------");
 	System.out.println("trying to delete username: " + username);
 	System.out.println("--------------------------------------");
 	
@@ -398,14 +411,14 @@ public class CustomersServlet extends HttpServlet implements Closeable
 		pstmt.close();
 	    }
 	    
-	    System.out.println("--------------------------------------");
+	    System.out.println("\n--------------------------------------");
 	    System.out.println("trying to delete " + username + "'s likes");
 	    System.out.println("--------------------------------------");
 	    
 	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
 	    
-	    ResultSet likesResultSet = statement.executeQuery("SELECT * FROM BOOKS");
+	    ResultSet likesResultSet = statement.executeQuery(AppConstants.SELECT_ALL_BOOKS_STMT);
 	    
 	    while (likesResultSet.next())
 	    {
@@ -423,7 +436,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    
 	    statement.close();
 	    
-	    System.out.println("--------------------------------------");
+	    System.out.println("\n--------------------------------------");
 	    System.out.println("trying to delete " + username + "'s messages");
 	    System.out.println("--------------------------------------");
 	    
@@ -443,7 +456,7 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	    
 	    statement.close();
 	    
-	    System.out.println("--------------------------------------");
+	    System.out.println("\n--------------------------------------");
 	    System.out.println("trying to delete " + username + "'s reviews");
 	    System.out.println("--------------------------------------");
 	    
@@ -474,23 +487,29 @@ public class CustomersServlet extends HttpServlet implements Closeable
 	{
 	    close();
 	}
-	
     }
     
-    public static void main(String[] args)
+    private boolean ValidateCustomer(Customer customer)
     {
-	LocalDate date = LocalDate.now();
+	if (customer == null || customer.getUsername() == null || customer.getEmail() == null
+		|| customer.getStreetNum() == null || customer.getStreet() == null || customer.getCity() == null
+		|| customer.getZipCode() == null || customer.getNickName() == null || customer.getPhoneNum() == null
+		|| customer.getPassword() == null || !Pattern.matches("^[a-zA-Z1-9]{1,10}$", customer.getUsername())
+		|| !Pattern.matches("^.+@.+\\..+$", customer.getEmail())
+		|| !Pattern.matches("^[a-zA-Z_ ]{1,100}$", customer.getStreet())
+		|| !Pattern.matches("^[1-9]\\d{0,10}$", customer.getStreetNum())
+		|| !Pattern.matches("^[a-zA-Z_ ]{1,100}$", customer.getCity())
+		|| !Pattern.matches("^[1-9]{5,7}$", customer.getZipCode())
+		|| !Pattern.matches("^([0][5]\\d{1}[- ]?\\d{3}[- ]?\\d{4}|[0][2,3,4,8,9][- ]?\\d{7})$",
+			customer.getPhoneNum())
+		|| customer.getPassword().length() > 8 || customer.getNickName().length() == 0)
+	{
+	    System.out.println("\nfailed validate customer");
+	    
+	    return false;
+	}
 	
-	Gson gson = new Gson();
-	
-	String result = gson.toJson(date);
-	
-	System.out.println(result);
-	
-	date = gson.fromJson(result, LocalDate.class);
-	
-	System.out.println(result);
-	
+	return true;
     }
     
 }

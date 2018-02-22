@@ -3,45 +3,33 @@ package com.servlets;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringReader;
-import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
-import org.omg.CORBA.PRIVATE_MEMBER;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
-import com.utilities.AppConstants;
-
-import javafx.util.Pair;
-
 import com.models.Book;
-import com.models.Customer;
 import com.models.LikeRequest;
+import com.utilities.AppConstants;
 
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/books", "/books/*" })
 public class BooksServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -113,7 +101,9 @@ public class BooksServlet extends HttpServlet implements Closeable
 		String bookName = uri
 			.substring(uri.indexOf(AppConstants.BOOKS_RESTFULL) + AppConstants.BOOKS_RESTFULL.length());
 		
+		System.out.println("\n--------------------------");
 		System.out.println("trying to get book: " + bookName);
+		System.out.println("--------------------------");
 		
 		System.out.println(bookName);
 		
@@ -137,7 +127,8 @@ public class BooksServlet extends HttpServlet implements Closeable
 		{
 		    resultSet.next();
 		    
-		    ArrayList<String> likes = gson.fromJson(resultSet.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
+		    ArrayList<String> likes = gson.fromJson(resultSet.getString(5),
+			    AppConstants.ARRAYLISTSTRING_COLLECTION);
 		    
 		    book = new Book(resultSet.getString(1), resultSet.getString(2), resultSet.getInt(3),
 			    resultSet.getString(4), likes, resultSet.getString(6));
@@ -147,8 +138,6 @@ public class BooksServlet extends HttpServlet implements Closeable
 		preparedStatement.close();
 		
 		String result = gson.toJson(book, Book.class);
-		
-		System.out.println("trying to return book: " + bookName);
 		
 		response.addHeader("Content-Type", "application/json");
 		
@@ -162,6 +151,9 @@ public class BooksServlet extends HttpServlet implements Closeable
 	    
 	    else
 	    {
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get all books");
+		System.out.println("--------------------------");
 		
 		Collection<Book> booksResult = new ArrayList<Book>();
 		
@@ -177,14 +169,14 @@ public class BooksServlet extends HttpServlet implements Closeable
 		{
 		    ArrayList<String> likes = gson.fromJson(rs.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
 		    
-		    booksResult.add(new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4),
-			    likes, rs.getString(6)));
+		    booksResult.add(new Book(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getString(4), likes,
+			    rs.getString(6)));
 		}
 		
 		rs.close();
 		
 		stmt.close();
-				
+		
 		// convert from customers collection to json
 		
 		String booksJsonResult = gson.toJson(booksResult, AppConstants.BOOKS_COLLECTION);
@@ -227,23 +219,34 @@ public class BooksServlet extends HttpServlet implements Closeable
     {
 	try
 	{
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to update book");
+	    System.out.println("--------------------------");
+	    
 	    openConnection();
 	    
 	    Gson gson = new GsonBuilder().create();
 	    
 	    LikeRequest likeRequest = gson.fromJson(request.getReader(), LikeRequest.class);
 	    
+	    if (!ValidateLikeRequest(likeRequest))
+	    {
+		response.sendError(400);
+		return;
+	    }
+	    
 	    Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
 		    ResultSet.CONCUR_UPDATABLE);
 	    
-	    ResultSet resultSet = statement.executeQuery("SELECT * FROM BOOKS");
+	    ResultSet resultSet = statement.executeQuery(AppConstants.SELECT_ALL_BOOKS_STMT);
 	    
 	    while (resultSet.next())
 	    {
 		if (resultSet.getString(1).equals(likeRequest.getBookName()))
 		{
 		    
-		    ArrayList<String> likesArray = gson.fromJson(resultSet.getString(5), AppConstants.ARRAYLISTSTRING_COLLECTION);
+		    ArrayList<String> likesArray = gson.fromJson(resultSet.getString(5),
+			    AppConstants.ARRAYLISTSTRING_COLLECTION);
 		    
 		    if (likeRequest.getIsLike())
 		    {
@@ -253,7 +256,6 @@ public class BooksServlet extends HttpServlet implements Closeable
 		    {
 			likesArray.removeIf(username -> username.equals(likeRequest.getNickName()));
 		    }
-		
 		    
 		    resultSet.updateString(5, gson.toJson(likesArray));
 		    
@@ -276,6 +278,18 @@ public class BooksServlet extends HttpServlet implements Closeable
 	    close();
 	}
 	
+    }
+    
+    private boolean ValidateLikeRequest(LikeRequest likeRequest)
+    {
+	if (likeRequest == null || likeRequest.getBookName() == null || likeRequest.getNickName().length() > 20)
+	{
+	    System.out.println("Failed validating like request ");
+	    
+	    return false;
+	}
+	
+	return true;
     }
     
 }

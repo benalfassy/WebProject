@@ -4,6 +4,59 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
+   <servlet>
+    <servlet-name>BooksServlet</servlet-name>
+    <servlet-class>com.servlets.BooksServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BooksServlet</servlet-name>
+    <url-pattern>/books</url-pattern>
+    <url-pattern>/books/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomersServlet</servlet-name>
+    <servlet-class>com.servlets.CustomersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomersServlet</servlet-name>
+    <url-pattern>/customers</url-pattern>
+    <url-pattern>/customers/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MessagesServlet</servlet-name>
+    <servlet-class>com.servlets.MessagesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessagesServlet</servlet-name>
+    <url-pattern>/messages</url-pattern>
+    <url-pattern>/messages/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReviewsServlet</servlet-name>
+    <servlet-class>com.servlets.ReviewsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReviewsServlet</servlet-name>
+    <url-pattern>/reviews</url-pattern>
+    <url-pattern>/reviews/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>TransactionsServlet</servlet-name>
+    <servlet-class>com.servlets.TransactionsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransactionsServlet</servlet-name>
+    <url-pattern>/transactions</url-pattern>
+    <url-pattern>/transactions/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  
   <context-param>
     <param-name>DB_DATASOURCE</param-name>
     <param-value>java:comp/env/jdbc/ExampleDatasource</param-value>

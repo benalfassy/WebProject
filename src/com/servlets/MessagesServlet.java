@@ -4,14 +4,12 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.UUID;
@@ -20,12 +18,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.derby.tools.dblook;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.google.gson.Gson;
@@ -36,7 +32,6 @@ import com.utilities.AppConstants;
 /**
  * Servlet implementation class CustomersServlet1
  */
-@WebServlet(description = "Servlet to provide details about customers", urlPatterns = { "/messages", "/messages/*" })
 public class MessagesServlet extends HttpServlet implements Closeable
 {
     private static final long serialVersionUID = 1L;
@@ -106,8 +101,9 @@ public class MessagesServlet extends HttpServlet implements Closeable
 		String messageId = uri.substring(
 			uri.indexOf(AppConstants.MESSAGES_RESTFULL) + AppConstants.MESSAGES_RESTFULL.length());
 		
+		System.out.println("\n--------------------------");
 		System.out.println("trying to get message: " + messageId);
-		
+		System.out.println("--------------------------");
 		PreparedStatement preparedStatement;
 		
 		openConnection();
@@ -139,8 +135,6 @@ public class MessagesServlet extends HttpServlet implements Closeable
 		
 		String result = gson.toJson(message, Message.class);
 		
-		System.out.println("trying to return message: " + messageId);
-		
 		response.addHeader("Content-Type", "application/json");
 		
 		PrintWriter writer = response.getWriter();
@@ -152,6 +146,9 @@ public class MessagesServlet extends HttpServlet implements Closeable
 	    }
 	    else
 	    {
+		System.out.println("\n--------------------------");
+		System.out.println("trying to get all messages");
+		System.out.println("--------------------------");
 		
 		ArrayList<Message> messagesResult = new ArrayList<Message>();
 		
@@ -176,10 +173,8 @@ public class MessagesServlet extends HttpServlet implements Closeable
 		messagesResult.sort(Comparator.comparing(msg -> LocalDate.parse(msg.getDate())));
 		
 		Collections.reverse(messagesResult);
-				
-		Gson gson = new Gson();
 		
-		// convert from message collection to json
+		Gson gson = new Gson();
 		
 		String messagesJsonResult = gson.toJson(messagesResult, AppConstants.MESSAGES_COLLECTION);
 		
@@ -211,12 +206,13 @@ public class MessagesServlet extends HttpServlet implements Closeable
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+	System.out.println("\n--------------------------");
+	System.out.println("trying to add messages");
+	System.out.println("--------------------------");
+	
 	Gson gson = new GsonBuilder().create();
 	
 	Message message = gson.fromJson(request.getReader(), Message.class);
-	
-	System.out.println("Posting message from: " + message.getFrom() + " to: " + message.getTo() + " content: "
-		+ message.getContent());
 	
 	PreparedStatement pstmt;
 	try
@@ -251,17 +247,22 @@ public class MessagesServlet extends HttpServlet implements Closeable
 	
     }
     
-    protected synchronized void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    protected synchronized void doPut(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException
     {
 	try
 	{
+	    System.out.println("\n--------------------------");
+	    System.out.println("trying to update messages");
+	    System.out.println("--------------------------");
+	    
 	    openConnection();
 	    
 	    Gson gson = new GsonBuilder().create();
 	    
 	    Message message = gson.fromJson(request.getReader(), Message.class);
 	    
-	    System.out.println("--------------------------");
+	    System.out.println("\n--------------------------");
 	    System.out.println("updating message: " + message.getMessageId());
 	    System.out.println("--------------------------");
 	    
@@ -306,6 +307,10 @@ public class MessagesServlet extends HttpServlet implements Closeable
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException
     {
+	System.out.println("\n--------------------------");
+	System.out.println("trying to delete messages");
+	System.out.println("--------------------------");
+	
 	String uri = request.getRequestURI();
 	
 	if (uri.indexOf(AppConstants.MESSAGES_RESTFULL) == -1)
@@ -352,7 +357,7 @@ public class MessagesServlet extends HttpServlet implements Closeable
 	}
 	catch (SQLException | NamingException e)
 	{
-	    getServletContext().log("Error on Customer post", e);
+	    e.printStackTrace();
 	    response.sendError(500);
 	}
 	finally
